@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class ADSRManager : MonoBehaviour
 {
-
     [SerializeField] private bool ShowPhases = true;
 
     [SerializeField] private float Speed = 10.0f;
+
+    [SerializeField] private float JumpForce = 5.0f;
 
     [SerializeField] private float AttackDuration = 0.5f;
     [SerializeField] private AnimationCurve Attack;
@@ -21,68 +22,30 @@ public class ADSRManager : MonoBehaviour
     [SerializeField] private float ReleaseDuration = 0.25f;
     [SerializeField] private AnimationCurve Release;
 
-    private string RightInputButton = "Fire1";
-    private string LeftInputButton = "Fire2";
-
     private float AttackTimer;
     private float DecayTimer;
     private float SustainTimer;
     private float ReleaseTimer;
 
     private float InputDirection = 0.0f;
+    private bool IsJumping = false;
 
-    private enum Phase { Attack, Decay, Sustain, Release, None};
+    private enum Phase { Attack, Decay, Sustain, Release, None };
 
     private Phase CurrentPhase;
+
+    private Rigidbody2D rb; 
 
     void Start()
     {
         this.CurrentPhase = Phase.None;
+        rb = GetComponent<Rigidbody2D>(); 
     }
 
     void Update()
     {
-        //Challenge: fix intermixing between presses to Fire1 and Fire2
-
-        if (Input.GetButtonDown(RightInputButton) )
-        {
-            this.ResetTimers();
-            this.CurrentPhase = Phase.Attack;
-            this.InputDirection = 1.0f;
-            this.GetComponent<Animator>().SetBool("Running", true);
-        }
-
-        if(Input.GetButton(RightInputButton)) 
-        {
-            this.InputDirection = 1.0f;
-        }
-
-        if (Input.GetButtonUp(RightInputButton))
-        {
-            this.InputDirection = 1.0f;
-            this.CurrentPhase = Phase.Release;
-            this.GetComponent<Animator>().SetBool("Running", false);
-        }
-
-        if (Input.GetButtonDown(LeftInputButton))
-        {
-            this.ResetTimers();
-            this.CurrentPhase = Phase.Attack;
-            this.InputDirection = -1.0f;
-            this.GetComponent<Animator>().SetBool("Running", true);
-        }
-
-        if (Input.GetButton(LeftInputButton))
-        {
-            this.InputDirection = -1.0f;
-        }
-
-        if (Input.GetButtonUp(LeftInputButton))
-        {
-            this.InputDirection = -1.0f;
-            this.CurrentPhase = Phase.Release;
-            this.GetComponent<Animator>().SetBool("Running", false);
-        }
+        CheckMovementInput();
+        CheckJumpInput();
 
         if (this.CurrentPhase != Phase.None)
         {
@@ -96,6 +59,60 @@ public class ADSRManager : MonoBehaviour
             this.SetColorByPhase();
         }
     }
+
+    void CheckMovementInput()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            this.ResetTimers();
+            this.CurrentPhase = Phase.Attack;
+            this.InputDirection = 1.0f;
+            this.GetComponent<Animator>().SetBool("Running", true);
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            this.InputDirection = 1.0f;
+        }
+
+        if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            this.InputDirection = 1.0f;
+            this.CurrentPhase = Phase.Release;
+            this.GetComponent<Animator>().SetBool("Running", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            this.ResetTimers();
+            this.CurrentPhase = Phase.Attack;
+            this.InputDirection = -1.0f;
+            this.GetComponent<Animator>().SetBool("Running", true);
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            this.InputDirection = -1.0f;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            this.InputDirection = -1.0f;
+            this.CurrentPhase = Phase.Release;
+            this.GetComponent<Animator>().SetBool("Running", false);
+        }
+    }
+
+    void CheckJumpInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && !IsJumping)
+        {
+            rb.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
+            IsJumping = true;
+        }
+    }
+
+    //Not super happy with the current movement code but it works. A bit over complicated, plan on changing to "Horizontal" so we can use controllers.
 
     float ADSREnvelope()
     {
@@ -169,5 +186,13 @@ public class ADSRManager : MonoBehaviour
             color = Color.grey;
         }
         this.gameObject.GetComponent<Renderer>().material.color = color;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            IsJumping = false;
+        }
     }
 }
