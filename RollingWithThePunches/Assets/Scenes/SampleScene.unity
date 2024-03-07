@@ -422,7 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1089b8eb86610f4458420806759b3e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowPhases: 0
+  ShowPhases: 1
   Speed: 1.5
   JumpForce: 5
   AttackDuration: 0.66
@@ -736,7 +736,7 @@ GameObject:
   - component: {fileID: 528616170}
   m_Layer: 0
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
