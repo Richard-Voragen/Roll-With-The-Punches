@@ -2373,9 +2373,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowPhases: 1
-  Speed: 1.5
+  Speed: 6.5
   JumpForce: 5
-  AttackDuration: 0.66
+  AttackDuration: 0.1
   Attack:
     serializedVersion: 2
     m_Curve:
@@ -2400,7 +2400,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  DecayDuration: 0.25
+  DecayDuration: 0
   Decay:
     serializedVersion: 2
     m_Curve:
@@ -2450,7 +2450,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  ReleaseDuration: 0.66
+  ReleaseDuration: 0.3
   Release:
     serializedVersion: 2
     m_Curve:

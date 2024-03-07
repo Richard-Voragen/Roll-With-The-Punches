@@ -35,11 +35,13 @@ public class ADSRManager : MonoBehaviour
     private Phase CurrentPhase;
 
     private Rigidbody2D rb; 
+    private Animator animator;
 
     void Start()
     {
         this.CurrentPhase = Phase.None;
         rb = GetComponent<Rigidbody2D>(); 
+        animator = this.GetComponent<Animator>();
     }
 
     void Update()
@@ -58,6 +60,9 @@ public class ADSRManager : MonoBehaviour
         {
             this.SetColorByPhase();
         }
+
+        animator.SetFloat("YVelocity", rb.velocity.y);
+        animator.SetBool("Grounded", !IsJumping);
     }
 
     void CheckMovementInput()
@@ -67,7 +72,7 @@ public class ADSRManager : MonoBehaviour
             this.ResetTimers();
             this.CurrentPhase = Phase.Attack;
             this.InputDirection = 1.0f;
-            this.GetComponent<Animator>().SetBool("Running", true);
+            animator.SetBool("Running", true);
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
@@ -79,7 +84,7 @@ public class ADSRManager : MonoBehaviour
         {
             this.InputDirection = 1.0f;
             this.CurrentPhase = Phase.Release;
-            this.GetComponent<Animator>().SetBool("Running", false);
+            animator.SetBool("Running", false);
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -87,7 +92,7 @@ public class ADSRManager : MonoBehaviour
             this.ResetTimers();
             this.CurrentPhase = Phase.Attack;
             this.InputDirection = -1.0f;
-            this.GetComponent<Animator>().SetBool("Running", true);
+            animator.SetBool("Running", true);
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
@@ -99,7 +104,7 @@ public class ADSRManager : MonoBehaviour
         {
             this.InputDirection = -1.0f;
             this.CurrentPhase = Phase.Release;
-            this.GetComponent<Animator>().SetBool("Running", false);
+            animator.SetBool("Running", false);
         }
     }
 
@@ -107,6 +112,7 @@ public class ADSRManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && !IsJumping)
         {
+            animator.SetTrigger("Jump");
             rb.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
             IsJumping = true;
         }
