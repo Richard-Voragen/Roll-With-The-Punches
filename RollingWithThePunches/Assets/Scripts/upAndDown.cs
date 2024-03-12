@@ -21,7 +21,7 @@ public class upAndDown : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("hjer");
+        //Debug.Log("hjer");
         Debug.Log(collision.gameObject.name);
         if (collision.gameObject.name == "Bumper")
         {
