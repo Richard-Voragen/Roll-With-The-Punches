@@ -70,7 +70,7 @@ public class ADSRManager : MonoBehaviour
 
     void CheckMovementInput()
     {
-        if (this.CurrentPhase != Phase.Attack && Input.GetAxis("Horizontal") > 0.01)
+        if (this.velocity < 0.1f && this.CurrentPhase != Phase.Attack && Input.GetAxis("Horizontal") > 0.01)
         {
             this.ResetTimers();
             this.CurrentPhase = Phase.Attack;
@@ -83,7 +83,7 @@ public class ADSRManager : MonoBehaviour
             animator.SetBool("Running", false);
         }
 
-        if (this.CurrentPhase != Phase.Attack && Input.GetAxis("Horizontal") < -0.01)
+        if (this.velocity < 0.1f && this.CurrentPhase != Phase.Attack && Input.GetAxis("Horizontal") < -0.01)
         {
             this.ResetTimers();
             this.CurrentPhase = Phase.Attack;
