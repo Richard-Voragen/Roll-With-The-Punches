@@ -6,20 +6,20 @@ public class ADSRManager : MonoBehaviour
 {
     [SerializeField] private bool ShowPhases = true;
 
-    [SerializeField] private float Speed = 10.0f;
+    [SerializeField] private float Speed = 6.5f;
 
     [SerializeField] private float JumpForce = 5.0f;
 
-    [SerializeField] private float AttackDuration = 0.5f;
+    [SerializeField] private float AttackDuration = 0.1f;
     [SerializeField] private AnimationCurve Attack;
 
-    [SerializeField] private float DecayDuration = 0.25f;
+    [SerializeField] private float DecayDuration = 0f;
     [SerializeField] private AnimationCurve Decay;
 
     [SerializeField] private float SustainDuration = 5.0f;
     [SerializeField] private AnimationCurve Sustain;
 
-    [SerializeField] private float ReleaseDuration = 0.25f;
+    [SerializeField] private float ReleaseDuration = 0.3f;
     [SerializeField] private AnimationCurve Release;
 
     private float AttackTimer;
@@ -37,6 +37,8 @@ public class ADSRManager : MonoBehaviour
     private Rigidbody2D rb; 
     private Animator animator;
 
+    private float velocity;
+
     void Start()
     {
         this.CurrentPhase = Phase.None;
@@ -52,7 +54,8 @@ public class ADSRManager : MonoBehaviour
         if (this.CurrentPhase != Phase.None)
         {
             var position = this.gameObject.transform.position;
-            position.x += this.InputDirection * this.Speed * this.ADSREnvelope() * Time.deltaTime;
+            this.velocity = this.ADSREnvelope();
+            position.x += this.InputDirection * this.Speed * this.velocity * Time.deltaTime;
             this.gameObject.transform.position = position;
         }
 
@@ -67,33 +70,33 @@ public class ADSRManager : MonoBehaviour
 
     void CheckMovementInput()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (this.CurrentPhase != Phase.Attack && Input.GetAxis("Horizontal") > 0.01)
         {
             this.ResetTimers();
             this.CurrentPhase = Phase.Attack;
-            this.InputDirection = 1.0f;
             animator.SetBool("Running", true);
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (this.InputDirection > 0.0f && Input.GetAxis("Horizontal") < 0.1f)
         {
-            this.InputDirection = 1.0f;
-        }
-
-        if (Input.GetKeyUp(KeyCode.RightArrow))
-        {
-            this.InputDirection = 1.0f;
             this.CurrentPhase = Phase.Release;
             animator.SetBool("Running", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (this.CurrentPhase != Phase.Attack && Input.GetAxis("Horizontal") < -0.01)
         {
             this.ResetTimers();
             this.CurrentPhase = Phase.Attack;
-            this.InputDirection = -1.0f;
             animator.SetBool("Running", true);
         }
+
+        if (this.InputDirection < 0.0f && Input.GetAxis("Horizontal") > -0.1f)
+        {
+            this.CurrentPhase = Phase.Release;
+            animator.SetBool("Running", false);
+        }
+
+        Debug.Log(Input.GetAxis("Horizontal"));
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -106,6 +109,8 @@ public class ADSRManager : MonoBehaviour
             this.CurrentPhase = Phase.Release;
             animator.SetBool("Running", false);
         }
+
+        this.InputDirection = Input.GetAxis("Horizontal");
     }
 
     void CheckJumpInput()
@@ -129,15 +134,6 @@ public class ADSRManager : MonoBehaviour
             velocity = this.Attack.Evaluate(this.AttackTimer / this.AttackDuration);
             this.AttackTimer += Time.deltaTime;
             if(this.AttackTimer > this.AttackDuration)
-            {
-                this.CurrentPhase = Phase.Decay;
-            }
-        } 
-        else if(Phase.Decay == this.CurrentPhase)
-        {
-            velocity = this.Decay.Evaluate(this.DecayTimer / this.DecayDuration);
-            this.DecayTimer += Time.deltaTime;
-            if (this.DecayTimer > this.DecayDuration)
             {
                 this.CurrentPhase = Phase.Sustain;
             }
