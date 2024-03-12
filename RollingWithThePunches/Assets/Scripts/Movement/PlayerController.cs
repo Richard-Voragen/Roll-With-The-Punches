@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject fireballPrefab; 
     public float fireballSpawnDistance = 1f;
+    public float fireballSpawnHeight = 0.5f;
 
     bool isJumping = false;
     
@@ -21,7 +22,7 @@ public class PlayerController : MonoBehaviour
         this.right = ScriptableObject.CreateInstance<MoveCharacterRight>();
         this.left = ScriptableObject.CreateInstance<MoveCharacterLeft>();
         this.jump = ScriptableObject.CreateInstance<MoveCharacterJump>();
-        this.shoot = new ShootFireball(fireballPrefab, fireballSpawnDistance);
+        this.shoot = new ShootFireball(fireballPrefab, fireballSpawnDistance, fireballSpawnHeight);
     }
 
     void Update()
@@ -69,17 +70,20 @@ public class PlayerController : MonoBehaviour
     {
         private readonly GameObject fireballPrefab;
         private readonly float spawnDistance;
+        private readonly float spawnHeight;
 
-        public ShootFireball(GameObject prefab, float spawnDistance)
+        public ShootFireball(GameObject prefab, float spawnDistance, float spawnHeight)
         {
             this.fireballPrefab = prefab;
             this.spawnDistance = spawnDistance;
+            this.spawnHeight = spawnHeight;
         }
 
         public void Execute(GameObject gameObject)
         {
-            Vector3 spawnPosition = gameObject.transform.position + gameObject.transform.right * spawnDistance;
+            Vector3 spawnPosition = gameObject.transform.position + gameObject.transform.right * spawnDistance + new Vector3(0, spawnHeight, 0);
             Instantiate(fireballPrefab, spawnPosition, Quaternion.identity);
         }
     }
+    //Could Probably put the fireball stuff in a seperate script
 }
