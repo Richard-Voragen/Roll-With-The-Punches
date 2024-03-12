@@ -60,6 +60,14 @@ public class EnemyController : MonoBehaviour
         Debug.Log("Hit Boundary!");
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 31) //Current "Out of Bounds" layer #
+        {
+            Destroy(gameObject); 
+        }
+    }
+
     private void OnDrawGizmosSelected()
     {
         //To visually see the attack radius in the editor
