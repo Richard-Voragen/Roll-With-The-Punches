@@ -13,9 +13,6 @@ public class ADSRManager : MonoBehaviour
     [SerializeField] private float AttackDuration = 0.1f;
     [SerializeField] private AnimationCurve Attack;
 
-    [SerializeField] private float DecayDuration = 0f;
-    [SerializeField] private AnimationCurve Decay;
-
     [SerializeField] private float SustainDuration = 5.0f;
     [SerializeField] private AnimationCurve Sustain;
 
@@ -23,7 +20,6 @@ public class ADSRManager : MonoBehaviour
     [SerializeField] private AnimationCurve Release;
 
     private float AttackTimer;
-    private float DecayTimer;
     private float SustainTimer;
     private float ReleaseTimer;
 
@@ -38,6 +34,8 @@ public class ADSRManager : MonoBehaviour
     private Animator animator;
 
     private float velocity;
+    private float jumpButtonActive = 0.15f;
+    private float jumpTimer = 0.0f;
 
     void Start()
     {
@@ -51,11 +49,20 @@ public class ADSRManager : MonoBehaviour
         CheckMovementInput();
         CheckJumpInput();
 
+        if (this.InputDirection < 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if (this.InputDirection > 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }
+
         if (this.CurrentPhase != Phase.None)
         {
             var position = this.gameObject.transform.position;
             this.velocity = this.ADSREnvelope();
-            position.x += this.InputDirection * this.Speed * this.velocity * Time.deltaTime;
+            this.rb.velocity = new Vector2(this.InputDirection * this.Speed * this.velocity, this.rb.velocity.y);
             this.gameObject.transform.position = position;
         }
 
@@ -96,8 +103,6 @@ public class ADSRManager : MonoBehaviour
             animator.SetBool("Running", false);
         }
 
-        Debug.Log(Input.GetAxis("Horizontal"));
-
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             this.InputDirection = -1.0f;
@@ -115,11 +120,17 @@ public class ADSRManager : MonoBehaviour
 
     void CheckJumpInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !IsJumping)
+        if (Input.GetButtonDown("Jump") && !IsJumping)
         {
-            animator.SetTrigger("Jump");
-            rb.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(0, JumpForce/4.0f), ForceMode2D.Impulse);
+            this.jumpTimer = 0.0f;
             IsJumping = true;
+        }
+
+        if (Input.GetButton("Jump") && this.jumpTimer < this.jumpButtonActive)
+        {
+            this.jumpTimer += Time.deltaTime;
+            rb.AddForce(new Vector2(0, (JumpForce)*(Time.deltaTime/this.jumpButtonActive)), ForceMode2D.Impulse);
         }
     }
 
@@ -142,10 +153,6 @@ public class ADSRManager : MonoBehaviour
         {
             velocity = this.Sustain.Evaluate(this.SustainTimer / this.SustainDuration);
             this.SustainTimer += Time.deltaTime;
-            if (this.SustainTimer > this.SustainDuration)
-            {
-                this.CurrentPhase = Phase.Release;
-            }
         } 
         else if (Phase.Release == this.CurrentPhase)
         {
@@ -162,7 +169,6 @@ public class ADSRManager : MonoBehaviour
     private void ResetTimers()
     {
         this.AttackTimer = 0.0f;
-        this.DecayTimer = 0.0f;
         this.SustainTimer = 0.0f;
         this.ReleaseTimer = 0.0f;
     }

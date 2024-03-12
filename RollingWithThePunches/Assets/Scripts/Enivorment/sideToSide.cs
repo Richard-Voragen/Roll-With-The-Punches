@@ -7,6 +7,8 @@ public class sideToSide : MonoBehaviour
 
     [SerializeField] private float speed = 3.5f;
 
+    private GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,13 +21,24 @@ public class sideToSide : MonoBehaviour
         transform.position += new Vector3(Vector2.right.x, Vector2.right.y, 0) * speed * Time.deltaTime;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("hjer");
-        Debug.Log(collision.gameObject.name);
-        if (collision.gameObject.name == "Bumper")
+        Debug.Log("Trigger");
+        if (collision.gameObject.tag == "Bumper")
         {
             speed = -speed;
+        }
+
+        if (collision.gameObject.tag == "Player")
+        {
+            this.player = collision.gameObject;
+        }
+    }
+
+    void OnCollisionStay2D(Collision2D other) {
+        if (other.gameObject.name == "Player")
+        {
+            player.transform.position += new Vector3(Vector2.right.x, Vector2.right.y, 0) * speed * Time.deltaTime;
         }
     }
 }
