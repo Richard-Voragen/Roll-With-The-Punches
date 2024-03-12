@@ -38,8 +38,8 @@ TagManager:
   - 
   - 
   - 
-  - 
   - Boundary
+  - Out of Bounds
   m_SortingLayers:
   - name: Default
     uniqueID: 0
