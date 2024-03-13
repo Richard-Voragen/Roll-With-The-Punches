@@ -37,21 +37,18 @@ public class ADSRManager : MonoBehaviour
     private float velocity;
     private float jumpButtonActive = 0.15f;
     private float jumpTimer = 0.0f;
-    private IPlayerCommand shoot;
 
     void Start()
     {
         this.CurrentPhase = Phase.None;
         rb = GetComponent<Rigidbody2D>(); 
         animator = this.sprite.GetComponent<Animator>();
-        this.shoot = GetComponent<ShootFireball>();
     }
 
     void Update()
     {
         CheckMovementInput();
         CheckJumpInput();
-        CheckAttackInput();
 
         if (this.InputDirection < 0)
         {
@@ -75,74 +72,49 @@ public class ADSRManager : MonoBehaviour
             this.SetColorByPhase();
         }
 
+        if (transform.position.y < -20f) {
+            transform.position = new Vector3(5.5f, 24f, 0f);
+            
+        }
+
         animator.SetFloat("YVelocity", rb.velocity.y);
         animator.SetBool("Grounded", !IsJumping);
     }
 
-    void CheckAttackInput()
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            this.shoot.Execute(this.gameObject);
-            animator.SetBool("Punch", true);
-            this.InputDirection = 0f;
-        }
-
-        if (Input.GetButton("Fire1"))
-        {
-            this.shoot.Execute(this.gameObject);
-            this.velocity = 0f;
-        }
-
-        if (Input.GetButtonUp("Fire1"))
-        {
-            this.shoot.Execute(this.gameObject);
-            animator.SetBool("Punch", false);
-            this.velocity = 0f;
-        }
-    }
-
     void CheckMovementInput()
     {
-        if (this.velocity < 0.1f && this.CurrentPhase != Phase.Attack && Input.GetAxis("Horizontal") > 0.01)
+        float input = Input.GetAxis("Horizontal");
+        if (animator.GetBool((Animator.StringToHash("Punch")))){
+            CurrentPhase = Phase.Release;
+        }
+
+        if (this.velocity < 0.1f && this.CurrentPhase != Phase.Attack && input > 0.01)
         {
             this.ResetTimers();
             this.CurrentPhase = Phase.Attack;
             animator.SetBool("Running", true);
         }
 
-        if (this.InputDirection > 0.0f && Input.GetAxis("Horizontal") < 0.1f)
+        if (this.InputDirection > 0.0f && input < 0.1f)
         {
             this.CurrentPhase = Phase.Release;
             animator.SetBool("Running", false);
         }
 
-        if (this.velocity < 0.1f && this.CurrentPhase != Phase.Attack && Input.GetAxis("Horizontal") < -0.01)
+        if (this.velocity < 0.1f && this.CurrentPhase != Phase.Attack && input < -0.01)
         {
             this.ResetTimers();
             this.CurrentPhase = Phase.Attack;
             animator.SetBool("Running", true);
         }
 
-        if (this.InputDirection < 0.0f && Input.GetAxis("Horizontal") > -0.1f)
+        if (this.InputDirection < 0.0f && input > -0.1f)
         {
             this.CurrentPhase = Phase.Release;
             animator.SetBool("Running", false);
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            this.InputDirection = -1.0f;
-        }
-
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
-        {
-            this.InputDirection = -1.0f;
-            this.CurrentPhase = Phase.Release;
-            animator.SetBool("Running", false);
-        }
-
-        this.InputDirection = Input.GetAxis("Horizontal");
+        this.InputDirection = input;
     }
 
     void CheckJumpInput()
@@ -161,7 +133,6 @@ public class ADSRManager : MonoBehaviour
         }
     }
 
-    //Not super happy with the current movement code but it works. A bit over complicated, plan on changing to "Horizontal" so we can use controllers.
 
     float ADSREnvelope()
     {
@@ -231,11 +202,24 @@ public class ADSRManager : MonoBehaviour
         }
     }
 
+    void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            IsJumping = false;
+        }
+    }
+
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
             IsJumping = true;
         }
+    }
+
+    public void SetPhaseRelease() 
+    {
+        this.CurrentPhase = Phase.Release;
     }
 }
