@@ -37,6 +37,7 @@ public class ADSRManager : MonoBehaviour
     private float velocity;
     private float jumpButtonActive = 0.15f;
     private float jumpTimer = 0.0f;
+    private bool canJump = true;
 
     void Start()
     {
@@ -48,8 +49,10 @@ public class ADSRManager : MonoBehaviour
     void Update()
     {
         CheckMovementInput();
-        if (Input.GetAxis("Vertical") > -0.1)
+        if (canJump)
+        {
             CheckJumpInput();
+        }
 
         if (this.InputDirection < 0)
         {
@@ -207,13 +210,18 @@ public class ADSRManager : MonoBehaviour
         if (collision.gameObject.layer >= 29)
         {
             IsJumping = false;
+            canJump = true;
         }
-
+        
         if (collision.gameObject.layer == 30)
         {
-            if (Input.GetAxis("Vertical") < 0.1 && Input.GetButton("Jump"))
+            if (Input.GetAxis("Vertical") < -0.1)
             {
-                collision.gameObject.GetComponent<PlatformController>().PhaseThrough();
+                canJump = false;
+                if (Input.GetButton("Jump"))
+                {
+                    collision.gameObject.GetComponent<PlatformController>().PhaseThrough();
+                }
             }
         }
     }

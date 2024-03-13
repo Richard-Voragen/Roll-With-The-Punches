@@ -69,7 +69,11 @@ public class ShootFireball : MonoBehaviour, IPlayerCommand
 
         if (Input.GetButtonDown("Fire2"))
         {
-            
+            currentPrefab += 1;
+            if (currentPrefab >= 3) 
+            {
+                currentPrefab = 0;
+            }
         }
     }
 
