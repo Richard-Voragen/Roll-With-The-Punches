@@ -3123,7 +3123,7 @@ GameObject:
   - component: {fileID: 462210234}
   - component: {fileID: 462210233}
   - component: {fileID: 462210236}
-  m_Layer: 31
+  m_Layer: 21
   m_Name: Platform B1
   m_TagString: Boundary
   m_Icon: {fileID: 0}
@@ -9015,7 +9015,7 @@ GameObject:
   - component: {fileID: 1593569694}
   - component: {fileID: 1593569693}
   - component: {fileID: 1593569696}
-  m_Layer: 31
+  m_Layer: 21
   m_Name: Platform B2
   m_TagString: Boundary
   m_Icon: {fileID: 0}
