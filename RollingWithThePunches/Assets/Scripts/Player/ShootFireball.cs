@@ -58,7 +58,22 @@ public class ShootFireball : MonoBehaviour, IPlayerCommand
 
     public void Execute(GameObject gameObject)
     {
-        Vector3 spawnPosition = gameObject.transform.position + gameObject.transform.right * spawnDistance + new Vector3(0, spawnHeight, 0);
-        Instantiate(fireballPrefab, spawnPosition, Quaternion.identity);
+        Vector2 spawnOffset = new Vector2(Mathf.Sign(gameObject.transform.localScale.x) * spawnDistance, spawnHeight);
+    Vector3 spawnPosition = gameObject.transform.position + new Vector3(spawnOffset.x, spawnOffset.y, 0);
+    GameObject fireball = Instantiate(fireballPrefab, spawnPosition, Quaternion.identity);
+
+    Fireball fireballScript = fireball.GetComponent<Fireball>();
+    if (fireballScript != null)
+    {
+        //Set the direction for the fireball
+        float directionX = Mathf.Sign(gameObject.transform.localScale.x);
+        fireballScript.direction = new Vector2(directionX, 0);
+
+        //Flip the fireball sprite when shooting left
+        if (directionX < 0)
+        {
+            fireball.transform.localScale = new Vector3(-1 * fireball.transform.localScale.x, fireball.transform.localScale.y, fireball.transform.localScale.z);
+        }
+    }
     }
 }
