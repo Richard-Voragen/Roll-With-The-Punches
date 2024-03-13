@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,8 @@ public class ShootFireball : MonoBehaviour, IPlayerCommand
 {
     [SerializeField] private GameObject sprite;
     [SerializeField] private GameObject fireballPrefab; 
+    [SerializeField] private GameObject waterballPrefab; 
+    [SerializeField] private GameObject electricballPrefab; 
     [SerializeField] private float spawnDistance = 1f;
     [SerializeField] private float spawnHeight = 0.5f;
     [SerializeField] private float PunchDuration = 0.3f;
@@ -13,11 +16,20 @@ public class ShootFireball : MonoBehaviour, IPlayerCommand
     private float punchTimer = 0.0f;
     private Animator animator;
     private Rigidbody2D rb; 
+    private GameObject[] prefabs = new GameObject[3];
+    private String[] sounds = new string[3];
+    private int currentPrefab = 0;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); 
         animator = this.sprite.GetComponent<Animator>();
+        prefabs[0] = fireballPrefab;
+        prefabs[1] = waterballPrefab;
+        prefabs[2] = electricballPrefab;
+        sounds[0] = "Fireball";
+        sounds[1] = "Waterball";
+        sounds[2] = "Laser";
     }
 
     void LateUpdate()
@@ -54,26 +66,32 @@ public class ShootFireball : MonoBehaviour, IPlayerCommand
         }
 
         this.punchTimer += Time.deltaTime;
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            
+        }
     }
 
     public void Execute(GameObject gameObject)
     {
         Vector2 spawnOffset = new Vector2(Mathf.Sign(gameObject.transform.localScale.x) * spawnDistance, spawnHeight);
-    Vector3 spawnPosition = gameObject.transform.position + new Vector3(spawnOffset.x, spawnOffset.y, 0);
-    GameObject fireball = Instantiate(fireballPrefab, spawnPosition, Quaternion.identity);
+        Vector3 spawnPosition = gameObject.transform.position + new Vector3(spawnOffset.x, spawnOffset.y, 0);
+        GameObject fireball = Instantiate(prefabs[currentPrefab], spawnPosition, Quaternion.identity);
+        FindObjectOfType<SoundManager>().PlaySoundEffect(sounds[currentPrefab]);
 
-    Fireball fireballScript = fireball.GetComponent<Fireball>();
-    if (fireballScript != null)
-    {
-        //Set the direction for the fireball
-        float directionX = Mathf.Sign(gameObject.transform.localScale.x);
-        fireballScript.direction = new Vector2(directionX, 0);
-
-        //Flip the fireball sprite when shooting left
-        if (directionX < 0)
+        Fireball fireballScript = fireball.GetComponent<Fireball>();
+        if (fireballScript != null)
         {
-            fireball.transform.localScale = new Vector3(-1 * fireball.transform.localScale.x, fireball.transform.localScale.y, fireball.transform.localScale.z);
+            //Set the direction for the fireball
+            float directionX = Mathf.Sign(gameObject.transform.localScale.x);
+            fireballScript.direction = new Vector2(directionX, 0);
+
+            //Flip the fireball sprite when shooting left
+            if (directionX < 0)
+            {
+                fireball.transform.localScale = new Vector3(-1 * fireball.transform.localScale.x, fireball.transform.localScale.y, fireball.transform.localScale.z);
+            }
         }
-    }
     }
 }

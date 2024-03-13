@@ -48,7 +48,8 @@ public class ADSRManager : MonoBehaviour
     void Update()
     {
         CheckMovementInput();
-        CheckJumpInput();
+        if (Input.GetAxis("Vertical") > -0.1)
+            CheckJumpInput();
 
         if (this.InputDirection < 0)
         {
@@ -133,7 +134,6 @@ public class ADSRManager : MonoBehaviour
         }
     }
 
-
     float ADSREnvelope()
     {
         float velocity = 0.0f;
@@ -196,7 +196,7 @@ public class ADSRManager : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.layer >= 29)
         {
             IsJumping = false;
         }
@@ -204,15 +204,23 @@ public class ADSRManager : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.layer >= 29)
         {
             IsJumping = false;
+        }
+
+        if (collision.gameObject.layer == 30)
+        {
+            if (Input.GetAxis("Vertical") < 0.1 && Input.GetButton("Jump"))
+            {
+                collision.gameObject.GetComponent<PlatformController>().PhaseThrough();
+            }
         }
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.layer >= 29)
         {
             IsJumping = true;
         }

@@ -134,7 +134,8 @@ GameObject:
   - component: {fileID: 26733496}
   - component: {fileID: 26733495}
   - component: {fileID: 26733494}
-  m_Layer: 0
+  - component: {fileID: 26733497}
+  m_Layer: 30
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -170,7 +171,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -253,6 +254,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1250220458}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &26733497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26733493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd585628a0eb9d47b3072da783f73f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &57621744
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,7 +825,7 @@ GameObject:
   - component: {fileID: 87241852}
   - component: {fileID: 87241851}
   - component: {fileID: 87241850}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -942,7 +955,7 @@ GameObject:
   - component: {fileID: 97790178}
   - component: {fileID: 97790177}
   - component: {fileID: 97790176}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1082,7 +1095,7 @@ GameObject:
   - component: {fileID: 117978618}
   - component: {fileID: 117978617}
   - component: {fileID: 117978616}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1999,7 +2012,7 @@ GameObject:
   - component: {fileID: 206782717}
   - component: {fileID: 206782716}
   - component: {fileID: 206782715}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2129,7 +2142,7 @@ GameObject:
   - component: {fileID: 238481674}
   - component: {fileID: 238481673}
   - component: {fileID: 238481672}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2259,7 +2272,7 @@ GameObject:
   - component: {fileID: 298682487}
   - component: {fileID: 298682486}
   - component: {fileID: 298682485}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2389,7 +2402,7 @@ GameObject:
   - component: {fileID: 327086288}
   - component: {fileID: 327086287}
   - component: {fileID: 327086286}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2821,7 +2834,7 @@ GameObject:
   - component: {fileID: 414024929}
   - component: {fileID: 414024928}
   - component: {fileID: 414024927}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3779,7 +3792,7 @@ GameObject:
   - component: {fileID: 528616172}
   - component: {fileID: 528616171}
   - component: {fileID: 528616170}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3909,7 +3922,7 @@ GameObject:
   - component: {fileID: 565397233}
   - component: {fileID: 565397232}
   - component: {fileID: 565397231}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4341,7 +4354,7 @@ GameObject:
   - component: {fileID: 674510683}
   - component: {fileID: 674510682}
   - component: {fileID: 674510681}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -5177,7 +5190,7 @@ GameObject:
   - component: {fileID: 891112177}
   - component: {fileID: 891112176}
   - component: {fileID: 891112175}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -5560,7 +5573,19 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 1
-  sfxClips: []
+  sfxClips:
+  - clip: {fileID: 8300000, guid: 8894fa5f84f4b6f42ad249985ae5faa2, type: 3}
+    audioSource: {fileID: 0}
+    title: Fireball
+    volume: 0.3
+    pitch: 3
+    loop: 0
+  - clip: {fileID: 8300000, guid: 3cffc726316b91144b98444e23b8c947, type: 3}
+    audioSource: {fileID: 0}
+    title: Laser
+    volume: 0.4
+    pitch: 3
+    loop: 0
 --- !u!4 &918994683
 Transform:
   m_ObjectHideFlags: 0
@@ -5587,7 +5612,7 @@ GameObject:
   - component: {fileID: 1010713216}
   - component: {fileID: 1010713215}
   - component: {fileID: 1010713214}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Boundary
   m_Icon: {fileID: 0}
@@ -6026,7 +6051,7 @@ GameObject:
   - component: {fileID: 1115182074}
   - component: {fileID: 1115182073}
   - component: {fileID: 1115182072}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -7044,7 +7069,7 @@ GameObject:
   - component: {fileID: 1253209049}
   - component: {fileID: 1253209048}
   - component: {fileID: 1253209047}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -8544,7 +8569,7 @@ GameObject:
   - component: {fileID: 1548143565}
   - component: {fileID: 1548143564}
   - component: {fileID: 1548143563}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -8804,7 +8829,7 @@ GameObject:
   - component: {fileID: 1586355084}
   - component: {fileID: 1586355083}
   - component: {fileID: 1586355082}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -9448,7 +9473,7 @@ GameObject:
   - component: {fileID: 1706194410}
   - component: {fileID: 1706194409}
   - component: {fileID: 1706194408}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -10467,7 +10492,7 @@ GameObject:
   - component: {fileID: 1921208650}
   - component: {fileID: 1921208649}
   - component: {fileID: 1921208648}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -10966,6 +10991,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 117580072}
   fireballPrefab: {fileID: 3508133537791627107, guid: 76b2610411114b540a7c961c24095ff4, type: 3}
+  waterballPrefab: {fileID: 3508133537791627107, guid: 76b2610411114b540a7c961c24095ff4, type: 3}
+  electricballPrefab: {fileID: 3508133537791627107, guid: 76b2610411114b540a7c961c24095ff4, type: 3}
   spawnDistance: 1.9
   spawnHeight: 0.85
   PunchDuration: 0.3
@@ -11152,7 +11179,7 @@ GameObject:
   - component: {fileID: 1976694430}
   - component: {fileID: 1976694429}
   - component: {fileID: 1976694428}
-  m_Layer: 0
+  m_Layer: 29
   m_Name: Floor
   m_TagString: Ground
   m_Icon: {fileID: 0}

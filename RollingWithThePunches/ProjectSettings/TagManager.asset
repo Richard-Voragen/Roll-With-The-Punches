@@ -8,6 +8,7 @@ TagManager:
   - Boundary
   - Enemy
   - Bumper
+  - Platform
   layers:
   - Default
   - TransparentFX
@@ -30,17 +31,17 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
   - Boundary
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Ground
+  - Platform
+  - 
   m_SortingLayers:
   - name: Default
     uniqueID: 0
