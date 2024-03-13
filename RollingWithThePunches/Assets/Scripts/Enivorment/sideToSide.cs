@@ -23,20 +23,23 @@ public class sideToSide : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Trigger");
+        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "Bumper")
         {
             speed = -speed;
         }
+    }
 
-        if (collision.gameObject.tag == "Player")
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
         {
-            this.player = collision.gameObject;
+            this.player = other.gameObject;
         }
     }
 
     void OnCollisionStay2D(Collision2D other) {
-        if (other.gameObject.name == "Player")
+        if (other.gameObject.tag == "Player")
         {
             player.transform.position += new Vector3(Vector2.right.x, Vector2.right.y, 0) * speed * Time.deltaTime;
         }

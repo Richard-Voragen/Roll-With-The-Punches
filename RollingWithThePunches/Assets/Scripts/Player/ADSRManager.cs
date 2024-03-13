@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ADSRManager : MonoBehaviour
 {
+    [SerializeField] private GameObject sprite;
     [SerializeField] private bool ShowPhases = true;
 
     [SerializeField] private float Speed = 6.5f;
@@ -36,26 +37,29 @@ public class ADSRManager : MonoBehaviour
     private float velocity;
     private float jumpButtonActive = 0.15f;
     private float jumpTimer = 0.0f;
+    private IPlayerCommand shoot;
 
     void Start()
     {
         this.CurrentPhase = Phase.None;
         rb = GetComponent<Rigidbody2D>(); 
-        animator = this.GetComponent<Animator>();
+        animator = this.sprite.GetComponent<Animator>();
+        this.shoot = GetComponent<ShootFireball>();
     }
 
     void Update()
     {
         CheckMovementInput();
         CheckJumpInput();
+        CheckAttackInput();
 
         if (this.InputDirection < 0)
         {
-            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            transform.localScale = new Vector3(-1, 1, 1);
         }
         else if (this.InputDirection > 0)
         {
-            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            transform.localScale = new Vector3(1, 1, 1);
         }
 
         if (this.CurrentPhase != Phase.None)
@@ -73,6 +77,29 @@ public class ADSRManager : MonoBehaviour
 
         animator.SetFloat("YVelocity", rb.velocity.y);
         animator.SetBool("Grounded", !IsJumping);
+    }
+
+    void CheckAttackInput()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            this.shoot.Execute(this.gameObject);
+            animator.SetBool("Punch", true);
+            this.InputDirection = 0f;
+        }
+
+        if (Input.GetButton("Fire1"))
+        {
+            this.shoot.Execute(this.gameObject);
+            this.velocity = 0f;
+        }
+
+        if (Input.GetButtonUp("Fire1"))
+        {
+            this.shoot.Execute(this.gameObject);
+            animator.SetBool("Punch", false);
+            this.velocity = 0f;
+        }
     }
 
     void CheckMovementInput()
@@ -193,7 +220,7 @@ public class ADSRManager : MonoBehaviour
         {
             color = Color.grey;
         }
-        this.gameObject.GetComponent<Renderer>().material.color = color;
+        this.sprite.GetComponent<Renderer>().material.color = color;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -201,6 +228,14 @@ public class ADSRManager : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             IsJumping = false;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            IsJumping = true;
         }
     }
 }
