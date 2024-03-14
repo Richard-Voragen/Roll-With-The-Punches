@@ -5,11 +5,13 @@ using UnityEngine;
 public class DroneController : MonoBehaviour
 {
     [SerializeField] private GameObject target;
+    [SerializeField] private GameObject bombPrefab;
     public float floatHeight;
     public float damping;
     [SerializeField] private bool ShowPhases = true;
 
     [SerializeField] private float Speed = 6.5f;
+    [SerializeField] private float BombDropSpeed = 2f;
     [SerializeField] private float AttackDuration = 0.1f;
     [SerializeField] private AnimationCurve Attack;
     [SerializeField] private float ReleaseDuration = 0.3f;
@@ -17,6 +19,7 @@ public class DroneController : MonoBehaviour
 
     private float AttackTimer;
     private float ReleaseTimer;
+    private float bombTimer;
     private Rigidbody2D rb;
     private float InputDirection = -1f;
         private enum Phase { Attack, Decay, Sustain, Release, None };
@@ -58,6 +61,14 @@ public class DroneController : MonoBehaviour
         {
             ChangeHeight();
         }
+
+        bombTimer += Time.deltaTime;
+        if (bombTimer > BombDropSpeed)
+        {
+            GameObject bomb = Instantiate(this.bombPrefab, this.transform.position, Quaternion.identity);
+            bomb.GetComponent<Rigidbody2D>().velocity = new Vector2(this.rb.velocity.x, 0f);
+            bombTimer = 0.0f;
+        }
     }
 
     void ChangeHeight()
@@ -74,8 +85,6 @@ public class DroneController : MonoBehaviour
                 // Apply the force to the rigidbody.
                 if (distance < this.floatHeight)
                 {
-                    Debug.Log(distance);
-                    Debug.Log("Height:" + floatHeight);
                     rb.velocity = new Vector2(rb.velocity.x, damping);
                     break;
                 }

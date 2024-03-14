@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1805869020035760157}
   - component: {fileID: 8248148511040393839}
   - component: {fileID: -3591261498105806208}
-  - component: {fileID: -1069581688407535403}
+  - component: {fileID: 7633456506740143498}
   m_Layer: 0
   m_Name: FireBall Red
   m_TagString: Attack
@@ -159,7 +159,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-1069581688407535403
+--- !u!114 &7633456506740143498
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
