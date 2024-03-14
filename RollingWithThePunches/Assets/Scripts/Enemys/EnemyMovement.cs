@@ -7,6 +7,8 @@ public class EnemyMovement : MonoBehaviour
     public float attackRadius = 5.0f;
     public LayerMask playerLayer;
     public GameObject projectilePrefab;
+    public float fireballCooldown = 1.5f;
+    private float lastFireballTime = -5f;
 
     private Rigidbody2D rb;
     private Transform player;
@@ -68,11 +70,12 @@ public class EnemyMovement : MonoBehaviour
     {
         // Shoot projectile towards the player
         Debug.Log("ATTACK");
-        if (projectilePrefab != null && player != null)
+        if (Time.time - lastFireballTime > fireballCooldown && projectilePrefab != null && player != null)
         {
             Vector2 direction = (player.position - transform.position).normalized;
             GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             projectile.GetComponent<Rigidbody2D>().velocity = direction * speed;
+            lastFireballTime = Time.time; // Update the time a fireball was last shot
 
             // Flip projectile if shooting to the left
             projectile.GetComponent<SpriteRenderer>().flipX = direction.x < 0;
