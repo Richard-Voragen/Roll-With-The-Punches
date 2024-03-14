@@ -11662,6 +11662,10 @@ PrefabInstance:
       value: Ice_Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4705839239078100484, guid: d8155b06cdddd4f4085eed5e7e09fceb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705839239078100484, guid: d8155b06cdddd4f4085eed5e7e09fceb, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
