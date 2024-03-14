@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFireball : MonoBehaviour
+public class Fireball : MonoBehaviour
 {
     public float speed = 10f;
     public Vector2 direction = Vector2.right; 
@@ -23,7 +23,7 @@ public class EnemyFireball : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
