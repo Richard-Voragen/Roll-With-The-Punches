@@ -19,11 +19,15 @@ public class ShootFireball : MonoBehaviour, IPlayerCommand
     private GameObject[] prefabs = new GameObject[3];
     private String[] sounds = new string[3];
     private int currentPrefab = 0;
+    private float currentSpawn;
+    private float currentHeight;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); 
         animator = this.sprite.GetComponent<Animator>();
+        this.currentSpawn = spawnDistance;
+        this.currentHeight = spawnHeight;
         prefabs[0] = fireballPrefab;
         prefabs[1] = waterballPrefab;
         prefabs[2] = electricballPrefab;
@@ -53,6 +57,9 @@ public class ShootFireball : MonoBehaviour, IPlayerCommand
         {
             if(this.punchTimer > this.PunchDuration)
             {
+                if (this.currentPrefab == 2) {
+                    this.currentSpawn += 1;
+                }
                 animator.SetBool("Punch", true);
                 Execute(this.gameObject);
                 this.punchTimer = 0.0f;
@@ -61,6 +68,7 @@ public class ShootFireball : MonoBehaviour, IPlayerCommand
 
         else if (Input.GetButtonUp("Fire1"))
         {
+            currentSpawn = spawnDistance;
             animator.SetBool("Punch", false);
             this.punchTimer = 0.0f;
         }
@@ -69,22 +77,24 @@ public class ShootFireball : MonoBehaviour, IPlayerCommand
 
         if (Input.GetButtonDown("Fire2"))
         {
-            currentPrefab += 1;
-            if (currentPrefab >= 3) 
+            currentPrefab -= 1;
+            currentHeight = spawnHeight;
+            if (currentPrefab < 0) 
             {
-                currentPrefab = 0;
+                currentPrefab = 2;
+                currentHeight = 0;
             }
         }
     }
 
     public void Execute(GameObject gameObject)
     {
-        Vector2 spawnOffset = new Vector2(Mathf.Sign(gameObject.transform.localScale.x) * spawnDistance, spawnHeight);
+        Vector2 spawnOffset = new Vector2(Mathf.Sign(gameObject.transform.localScale.x) * currentSpawn, currentHeight);
         Vector3 spawnPosition = gameObject.transform.position + new Vector3(spawnOffset.x, spawnOffset.y, 0);
         GameObject fireball = Instantiate(prefabs[currentPrefab], spawnPosition, Quaternion.identity);
         FindObjectOfType<SoundManager>().PlaySoundEffect(sounds[currentPrefab]);
 
-        Fireball fireballScript = fireball.GetComponent<Fireball>();
+        FireballController fireballScript = fireball.GetComponent<FireballController>();
         if (fireballScript != null)
         {
             //Set the direction for the fireball

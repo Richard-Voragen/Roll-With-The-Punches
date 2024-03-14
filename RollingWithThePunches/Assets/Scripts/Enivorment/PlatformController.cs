@@ -5,50 +5,45 @@ using UnityEngine;
 public class PlatformController : MonoBehaviour
 {
     private GameObject player;
-    private BoxCollider2D collider;
+    private BoxCollider2D boxCollider;
 
     // Start is called before the first frame update
     void Start()
     {
-        collider = GetComponent<BoxCollider2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     public void PhaseThrough()
     {
-        collider.isTrigger = true;
-        Debug.Log("FALL");
+        boxCollider.isTrigger = true;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("collision.gameObject.transform.position.y");
-
         if (collision.gameObject.tag == "Player")
         {
             if (collision.gameObject.transform.position.y >= this.gameObject.transform.position.y-0.1)
             {
-                collider.isTrigger = false;
+                boxCollider.isTrigger = false;
             }
             else 
             {
-                collider.isTrigger = true;
+                boxCollider.isTrigger = true;
             }
         }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("collision.gameObject.transform.position.y");
-
         if (collision.gameObject.tag == "Player")
         {
             if (collision.gameObject.transform.position.y > this.gameObject.transform.position.y)
             {
-                collider.isTrigger = false;
+                boxCollider.isTrigger = false;
             }
             else 
             {
-                collider.isTrigger = true;
+                boxCollider.isTrigger = true;
             }
         }
     }
@@ -64,7 +59,7 @@ public class PlatformController : MonoBehaviour
     void OnCollisionExit2D(Collision2D other) {
         if (other.gameObject.tag == "Player")
         {
-            collider.isTrigger = true;
+            boxCollider.isTrigger = true;
         }
     }
 }

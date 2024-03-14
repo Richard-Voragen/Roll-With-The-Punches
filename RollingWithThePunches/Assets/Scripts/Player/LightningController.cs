@@ -22,8 +22,8 @@ public class LightningController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
+            //Destroy(collision.gameObject);
+            //Destroy(gameObject);
         }
     }
 }

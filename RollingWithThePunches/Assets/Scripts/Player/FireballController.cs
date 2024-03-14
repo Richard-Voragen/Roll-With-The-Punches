@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class FireballController : MonoBehaviour
 {
     public float speed = 10f;
     public Vector2 direction = Vector2.right; 
@@ -27,7 +27,6 @@ public class Fireball : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
-            //Debug.Log(gameObject);
         }
     }
 }
