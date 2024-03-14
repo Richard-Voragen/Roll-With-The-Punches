@@ -67,23 +67,38 @@ public class EnemyMovement : MonoBehaviour
 
     void Attack()
     {
-        // Shoot projectile towards the player
+        //Shoot projectile towards the player
         Debug.Log("ATTACK");
         if (Time.time - lastFireballTime > fireballCooldown && projectilePrefab != null && player != null)
-        {
-            Vector2 direction = (player.position - transform.position).normalized;
-            GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            projectile.GetComponent<Rigidbody2D>().velocity = direction * speed;
-            lastFireballTime = Time.time; // Update the time a fireball was last shot
+    {
+        Vector2 direction = (player.position - transform.position).normalized;
+        direction.y = 0; //Ensure fireball moves strictly horizontally
 
-            // Flip projectile if shooting to the left
+        //Calculate spawn position at enemy's center
+        Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y + GetComponent<Collider2D>().bounds.extents.y);
+
+        //Flip the enemy sprite based on the direction to the player
+        gameObject.GetComponent<SpriteRenderer>().flipX = direction.x < 0;
+
+        GameObject projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
+        EnemyFireball fireballScript = projectile.GetComponent<EnemyFireball>();
+
+        if (fireballScript != null)
+        {
+            fireballScript.direction = direction; // Set the fireball's direction towards the player
+
+            //Flip the fireball sprite if shooting to the right
             projectile.GetComponent<SpriteRenderer>().flipX = direction.x < 0;
         }
 
-        // Random jump
+        lastFireballTime = Time.time; //Update the time a fireball was last shot
+    }
+
+
+        //Random jump
         if (Time.time - lastJumpTime > jumpCooldown)
         {
-            if (Random.value > 0.1f) // 50% chance to jump
+            if (Random.value > 0.05f) //5% chance to jump
             {
                 rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
                 lastJumpTime = Time.time;
