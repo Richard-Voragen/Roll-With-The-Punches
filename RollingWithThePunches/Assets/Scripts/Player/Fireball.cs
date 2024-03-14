@@ -27,6 +27,7 @@ public class Fireball : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            Debug.Log(gameObject);
         }
     }
 }

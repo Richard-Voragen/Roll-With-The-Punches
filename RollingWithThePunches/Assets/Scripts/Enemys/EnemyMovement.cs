@@ -21,17 +21,15 @@ public class EnemyMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+     private void Update()
     {
-        CheckForPlayer();
-
-        if (!isAttacking)
+        if (isAttacking)
         {
-            CheckForPlayer();
+            Attack();
         }
         else
         {
-            Attack();
+            Move();
         }
     }
 
@@ -48,16 +46,18 @@ public class EnemyMovement : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
     }
-
-    void CheckForPlayer()
+        private void OnTriggerEnter2D(Collider2D collision)
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, attackRadius, playerLayer);
-        if (hits.Length > 0)
+        if (collision.CompareTag("Player"))
         {
             isAttacking = true;
-            player = hits[0].transform;
+            player = collision.transform;
         }
-        else
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
         {
             isAttacking = false;
             player = null;

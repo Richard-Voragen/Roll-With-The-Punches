@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1805869020035760157}
   - component: {fileID: 8248148511040393839}
   - component: {fileID: -3591261498105806208}
-  - component: {fileID: -1069581688407535403}
+  - component: {fileID: -1135536976145111637}
   m_Layer: 0
   m_Name: FireBall Red 1
   m_TagString: Untagged
@@ -159,7 +159,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-1069581688407535403
+--- !u!114 &-1135536976145111637
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3508133537791627107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d1f25a73b649a04c85a461d3b3ee5ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 62e7d52cca0d45c4d89db397ee639133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
