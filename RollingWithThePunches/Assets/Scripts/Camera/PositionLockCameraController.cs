@@ -22,7 +22,7 @@ namespace Obscura
             var targetPosition = this.Target.transform.position;
             var cameraPosition = managedCamera.transform.position;
 
-            cameraPosition = new Vector3(targetPosition.x, targetPosition.y, cameraPosition.z);
+            cameraPosition = new Vector3(targetPosition.x, targetPosition.y + 2f, cameraPosition.z);
 
             managedCamera.transform.position = cameraPosition;
 

@@ -25,7 +25,7 @@ public class PlatformController : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
-            if (collision.gameObject.transform.position.y > this.gameObject.transform.position.y)
+            if (collision.gameObject.transform.position.y >= this.gameObject.transform.position.y-0.1)
             {
                 collider.isTrigger = false;
             }

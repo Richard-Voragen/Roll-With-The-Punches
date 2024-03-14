@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Bumper
   - Platform
+  - Attack
   layers:
   - Default
   - TransparentFX
