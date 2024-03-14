@@ -4,7 +4,6 @@ public class EnemyMovement : MonoBehaviour
 {
     public float speed = 2.0f;
     public float jumpForce = 5.0f;
-    public float attackRadius = 5.0f;
     public LayerMask playerLayer;
     public GameObject projectilePrefab;
     public float fireballCooldown = 1.5f;
@@ -105,12 +104,5 @@ public class EnemyMovement : MonoBehaviour
             Debug.Log("OOB");
             Destroy(gameObject); 
         }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        //To visually see the attack radius in the editor
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
 }
