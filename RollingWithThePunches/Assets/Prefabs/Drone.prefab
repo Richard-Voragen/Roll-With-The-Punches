@@ -197,7 +197,7 @@ MonoBehaviour:
   bombPrefab: {fileID: 1830746655493223735, guid: df77c690cf5ccd941a4ce7df5badb864, type: 3}
   floatHeight: 6.4
   damping: 1
-  ShowPhases: 1
+  ShowPhases: 0
   Speed: 8.5
   BombDropSpeed: 2
   AttackDuration: 0.8

@@ -36,11 +36,11 @@ public class DroneController : MonoBehaviour
 
     void Update()
     {
-        if (this.InputDirection < 0)
+        if (this.InputDirection > 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        else if (this.InputDirection > 0)
+        else if (this.InputDirection < 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
@@ -166,7 +166,6 @@ public class DroneController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Ouch");
         if (collision.gameObject.CompareTag("Attack"))
         {
             var impulse = (60 * Mathf.Deg2Rad) * rb.inertia;
@@ -177,6 +176,7 @@ public class DroneController : MonoBehaviour
 
         if (collision.gameObject.layer >= 29 && this.crashed)
         {
+            FindObjectOfType<SoundManager>().PlaySoundEffect("Explosion");
             Destroy(gameObject);
         }
     }

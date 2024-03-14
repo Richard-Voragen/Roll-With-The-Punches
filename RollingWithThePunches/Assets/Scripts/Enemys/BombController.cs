@@ -32,6 +32,7 @@ public class BombController : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Enemy"))
         {
+            FindObjectOfType<SoundManager>().PlaySoundEffect("Explosion");
             Destroy(gameObject);
         }
     }

@@ -16,13 +16,10 @@ public class PlatformController : MonoBehaviour
     public void PhaseThrough()
     {
         boxCollider.isTrigger = true;
-        Debug.Log("FALL");
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("collision.gameObject.transform.position.y");
-
         if (collision.gameObject.tag == "Player")
         {
             if (collision.gameObject.transform.position.y >= this.gameObject.transform.position.y-0.1)
@@ -38,8 +35,6 @@ public class PlatformController : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("collision.gameObject.transform.position.y");
-
         if (collision.gameObject.tag == "Player")
         {
             if (collision.gameObject.transform.position.y > this.gameObject.transform.position.y)
