@@ -99,6 +99,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (collision.gameObject.layer == 31) //Current "Out of Bounds" layer #
         {
+            Debug.Log("OOB");
             Destroy(gameObject); 
         }
     }
