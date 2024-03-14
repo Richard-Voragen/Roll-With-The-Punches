@@ -74,8 +74,8 @@ public class DroneController : MonoBehaviour
                 // Apply the force to the rigidbody.
                 if (distance < this.floatHeight)
                 {
-                    Debug.Log(distance);
-                    Debug.Log("Height:" + floatHeight);
+                    //Debug.Log(distance);
+                    //Debug.Log("Height:" + floatHeight);
                     rb.velocity = new Vector2(rb.velocity.x, damping);
                     break;
                 }

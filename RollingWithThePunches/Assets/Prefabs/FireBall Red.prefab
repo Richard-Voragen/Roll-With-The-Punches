@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8248148511040393839}
   - component: {fileID: -3591261498105806208}
   - component: {fileID: -1069581688407535403}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FireBall Red
   m_TagString: Attack
   m_Icon: {fileID: 0}
