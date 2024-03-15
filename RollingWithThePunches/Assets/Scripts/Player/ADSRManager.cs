@@ -38,6 +38,8 @@ public class ADSRManager : MonoBehaviour
     private float jumpButtonActive = 0.15f;
     private float jumpTimer = 0.0f;
     private bool canJump = true;
+    private bool crouching = false;
+    private bool IsCrouchJumping = false;
 
     void Start()
     {
@@ -62,8 +64,9 @@ public class ADSRManager : MonoBehaviour
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
+        Debug.Log(this.crouching);
 
-        if (this.CurrentPhase != Phase.None)
+        if (this.CurrentPhase != Phase.None && !(this.IsCrouchJumping))
         {
             var position = this.gameObject.transform.position;
             this.velocity = this.ADSREnvelope();
@@ -90,6 +93,20 @@ public class ADSRManager : MonoBehaviour
         float input = Input.GetAxis("Horizontal");
         if (animator.GetBool((Animator.StringToHash("Punch")))){
             CurrentPhase = Phase.Release;
+        }
+
+        if (Input.GetAxis("Vertical") < -0.1f && IsJumping == false)
+        {
+            CurrentPhase = Phase.Release;
+            animator.SetBool("Crouch", true);
+            this.crouching = true;
+        }
+        else if (this.crouching && Input.GetAxis("Vertical") >= -0.1f && IsJumping == false)
+        {
+            this.ResetTimers();
+            CurrentPhase = Phase.Attack;
+            animator.SetBool("Crouch", false);
+            this.crouching = false;
         }
 
         if (this.velocity < 0.1f && this.CurrentPhase != Phase.Attack && input > 0.01)
@@ -125,12 +142,21 @@ public class ADSRManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && !IsJumping)
         {
-            rb.AddForce(new Vector2(0, JumpForce/4.0f), ForceMode2D.Impulse);
-            this.jumpTimer = 0.0f;
-            IsJumping = true;
+            if (this.crouching) 
+            {
+                float directionX = Mathf.Sign(gameObject.transform.localScale.x);
+                rb.AddForce(new Vector2(directionX * 10.0f, 6.0f), ForceMode2D.Impulse);
+                this.IsCrouchJumping = true;
+            }
+            else
+            {
+                rb.AddForce(new Vector2(0, JumpForce/4.0f), ForceMode2D.Impulse);
+                this.jumpTimer = 0.0f;
+                this.IsJumping = true;
+            }
         }
 
-        if (Input.GetButton("Jump") && this.jumpTimer < this.jumpButtonActive)
+        if (Input.GetButton("Jump") && this.jumpTimer < this.jumpButtonActive && !this.crouching)
         {
             this.jumpTimer += Time.deltaTime;
             rb.AddForce(new Vector2(0, (JumpForce)*(Time.deltaTime/this.jumpButtonActive)), ForceMode2D.Impulse);
@@ -202,6 +228,7 @@ public class ADSRManager : MonoBehaviour
         if (collision.gameObject.layer >= 29)
         {
             IsJumping = false;
+            this.IsCrouchJumping = false;
         }
     }
 
@@ -221,6 +248,7 @@ public class ADSRManager : MonoBehaviour
                 if (Input.GetButton("Jump"))
                 {
                     collision.gameObject.GetComponent<PlatformController>().PhaseThrough();
+                    this.IsJumping = true;
                 }
             }
         }

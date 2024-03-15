@@ -25,7 +25,7 @@ public class EnemyFireball : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
             Destroy(gameObject);
             //Debug.Log(gameObject);
         }

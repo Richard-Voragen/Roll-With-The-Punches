@@ -22,7 +22,7 @@ public class PlatformController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (collision.gameObject.transform.position.y >= this.gameObject.transform.position.y-0.1)
+            if (collision.gameObject.transform.position.y >= this.gameObject.transform.position.y - 0.3f)
             {
                 boxCollider.isTrigger = false;
             }
