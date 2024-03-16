@@ -77,15 +77,14 @@ public class EnemyMovement : MonoBehaviour
         //Calculate spawn position at enemy's center
         Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y + GetComponent<Collider2D>().bounds.extents.y);
 
-        //Flip the enemy sprite based on the direction to the player
         gameObject.GetComponent<SpriteRenderer>().flipX = direction.x < 0;
 
         GameObject projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
-        EnemyFireball fireballScript = projectile.GetComponent<EnemyFireball>();
+        EnemyFireball fireball = projectile.GetComponent<EnemyFireball>();
 
-        if (fireballScript != null)
+        if (fireball != null)
         {
-            fireballScript.direction = direction; // Set the fireball's direction towards the player
+            fireball.direction = direction; // Set the fireball's direction towards the player
 
             //Flip the fireball sprite if shooting to the right
             projectile.GetComponent<SpriteRenderer>().flipX = direction.x < 0;
