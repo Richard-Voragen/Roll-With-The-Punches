@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BombController : MonoBehaviour
 {
+    public EffectTypes projectileType = EffectTypes.Fire; 
     public float damper = 4f;
     public float lifetime = 10f;
 
@@ -32,7 +33,7 @@ public class BombController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (collision.gameObject.GetComponent<PlayerDamageEngine>().TakeDamage(EffectTypes.Fire))
+            if (collision.gameObject.GetComponent<PlayerDamageEngine>().TakeDamage(this.gameObject, projectileType))
             {
                 Destroy(gameObject);
             }

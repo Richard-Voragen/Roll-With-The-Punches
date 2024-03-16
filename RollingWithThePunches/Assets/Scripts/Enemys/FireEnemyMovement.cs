@@ -6,8 +6,8 @@ using UnityEngine;
 public class FireEnemyMovement : MonoBehaviour, IEnemyController
 {
     public GameObject target;
-    public float speed = 2.0f;
-    public float jumpForce = 5.0f;
+    public float speed = 4.0f;
+    public float jumpForce = 8.0f;
     [SerializeField] private GameObject projectilePrefab;
     public float fireballCooldown = 1.5f;
     private float lastFireballTime = 0.0f;
@@ -25,6 +25,13 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
     {
         rb = GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
+    }
+
+    public void SetUpProcess(GameObject targ)
+    {
+        this.target = targ;
+        this.speed = UnityEngine.Random.Range(3f, 4.5f);
+        this.fireballCooldown = UnityEngine.Random.Range(1.2f, 2.5f);
     }
 
     public void Stun(bool stund)
@@ -86,12 +93,12 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
     if (target.transform.position.x < transform.position.x)
     {
         rb.velocity = new Vector2(-speed, rb.velocity.y);
-        gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        gameObject.GetComponent<SpriteRenderer>().flipX = true;
     }
     else
     {
         rb.velocity = new Vector2(speed, rb.velocity.y);
-        gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        gameObject.GetComponent<SpriteRenderer>().flipX = false;
     }
 }
 
@@ -105,7 +112,7 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
         }
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerDamageEngine>().TakeDamage(EffectTypes.Fire);
+            collision.gameObject.GetComponent<PlayerDamageEngine>().TakeDamage(this.gameObject, EffectTypes.Fire);
         }
     }
 
@@ -113,7 +120,7 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerDamageEngine>().TakeDamage(EffectTypes.Fire);
+            collision.gameObject.GetComponent<PlayerDamageEngine>().TakeDamage(this.gameObject, EffectTypes.Fire);
         }
     }
 
@@ -137,7 +144,7 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
         bool isPlayerLeft = target.transform.position.x < transform.position.x;
         fireball.direction = isPlayerLeft ? Vector2.left : Vector2.right;
 
-        projectile.GetComponent<SpriteRenderer>().flipX = isPlayerLeft;
+        projectile.GetComponent<SpriteRenderer>().flipX = !isPlayerLeft;
     }
 }
     public void Death()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ADSRManager : MonoBehaviour
 {
     [SerializeField] private GameObject sprite;
-    [SerializeField] public float Speed = 6.5f;
+    [SerializeField] public float speed = 6.5f;
 
     [SerializeField] private float JumpForce = 5.0f;
 
@@ -25,9 +25,9 @@ public class ADSRManager : MonoBehaviour
     private float InputDirection = 0.0f;
     private bool IsJumping = false;
 
-    private enum Phase { Attack, Decay, Sustain, Release, None };
+    public enum Phase { Attack, Decay, Sustain, Release, None };
 
-    private Phase CurrentPhase;
+    public Phase CurrentPhase;
 
     private Rigidbody2D rb; 
     private Animator animator;
@@ -35,8 +35,10 @@ public class ADSRManager : MonoBehaviour
     private float velocity;
     private float jumpButtonActive = 0.15f;
     private float jumpTimer = 0.0f;
-    public bool crouching = false;
-    public bool IsCrouchJumping = false;
+    [HideInInspector] public bool crouching = false;
+    private bool IsCrouchJumping = false;
+    public bool overrideInput = false;
+    private Vector2 overrideForce;
     private BoxCollider2D boxColl;
 
     void Awake()
@@ -60,15 +62,6 @@ public class ADSRManager : MonoBehaviour
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
-        Debug.Log(this.crouching);
-
-        if (this.CurrentPhase != Phase.None && !(this.IsCrouchJumping))
-        {
-            var position = this.gameObject.transform.position;
-            this.velocity = this.ADSREnvelope();
-            this.rb.velocity = new Vector2(this.InputDirection * this.Speed * this.velocity, this.rb.velocity.y);
-            this.gameObject.transform.position = position;
-        }
 
         if (transform.position.y < -20f) {
             transform.position = new Vector3(5.5f, 24f, 0f);
@@ -77,6 +70,17 @@ public class ADSRManager : MonoBehaviour
 
         animator.SetFloat("YVelocity", rb.velocity.y);
         animator.SetBool("Grounded", !IsJumping);
+    }
+
+    void LateUpdate() 
+    {
+        if (!(this.overrideInput))
+        {
+            var position = this.gameObject.transform.position;
+            this.velocity = this.ADSREnvelope();
+            this.rb.velocity = new Vector2(this.InputDirection * this.speed * this.velocity, this.rb.velocity.y);
+            this.gameObject.transform.position = position;
+        }
     }
 
     void CheckMovementInput()
@@ -138,13 +142,12 @@ public class ADSRManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && !IsJumping)
         {
-            if (this.crouching) 
+            if (this.crouching && this.IsJumping == false) 
             {
                 float directionX = Mathf.Sign(gameObject.transform.localScale.x);
-                rb.AddForce(new Vector2(directionX * 10.0f, 6.0f), ForceMode2D.Impulse);
-                this.IsCrouchJumping = true;
+                OverrideWithForce(new Vector2(directionX * 12.0f, 6.0f));
             }
-            else
+            else if (this.crouching == false)
             {
                 rb.AddForce(new Vector2(0, JumpForce/4.0f), ForceMode2D.Impulse);
                 this.jumpTimer = 0.0f;
@@ -201,7 +204,7 @@ public class ADSRManager : MonoBehaviour
         if (collision.gameObject.layer >= 29 && collision.gameObject.transform.position.y <= this.gameObject.transform.position.y + 0.3f)
         {
             IsJumping = false;
-            this.IsCrouchJumping = false;
+            this.overrideInput = false;
         }
     }
 
@@ -210,7 +213,7 @@ public class ADSRManager : MonoBehaviour
         if (collision.gameObject.layer >= 29)
         {
             IsJumping = false;
-            this.IsCrouchJumping = false;
+            this.overrideInput = false;
         }
     }
 
@@ -218,7 +221,7 @@ public class ADSRManager : MonoBehaviour
     {
         if (collision.gameObject.layer >= 29)
         {
-            IsJumping = false;
+            this.overrideInput = false;
         }
     }
 
@@ -227,7 +230,19 @@ public class ADSRManager : MonoBehaviour
         if (collision.gameObject.layer >= 29)
         {
             IsJumping = true;
+            if (this.IsCrouchJumping)
+            {
+                this.overrideInput = true;
+                rb.AddForce(this.overrideForce, ForceMode2D.Impulse);
+                this.IsCrouchJumping = false;
+            }
         }
+    }
+
+    public void OverrideWithForce(Vector2 force) {
+        this.overrideForce = new Vector2(force.x, 0f);
+        rb.AddForce(new Vector2(0f, force.y), ForceMode2D.Impulse);
+        this.IsCrouchJumping = true;
     }
 
     public void SetPhaseRelease() 

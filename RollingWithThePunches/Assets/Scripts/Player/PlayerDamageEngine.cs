@@ -6,6 +6,7 @@ public class PlayerDamageEngine : MonoBehaviour
     [SerializeField] private GameObject sprite;
     [SerializeField] private float health;
     [SerializeField] private float invincibilityTime; 
+    [SerializeField] private bool knockback; 
 
     private bool canTakeDamage = true;
     private float i_time = 0.0f;
@@ -15,14 +16,14 @@ public class PlayerDamageEngine : MonoBehaviour
 
     private float originalSpeed;
     public float slowMultiplier = 0.5f;
-    public float speedMultiplier = 1.5f;
+    public float speedMultiplier = 1f;
     public float effectDuration = 2f;
 
     void Start()
     {
         colorpicker = sprite.GetComponent<Renderer>();
         rb = GetComponent<Rigidbody2D>(); 
-        originalSpeed = GetComponent<ADSRManager>().Speed; 
+        originalSpeed = GetComponent<ADSRManager>().speed; 
     }
 
     void Update()
@@ -35,9 +36,9 @@ public class PlayerDamageEngine : MonoBehaviour
         }
     }
 
-    public bool TakeDamage(EffectTypes projectileType)
+    public bool TakeDamage(GameObject attack, EffectTypes projectileType)
     {
-        if (GetComponent<ADSRManager>().IsCrouchJumping || !canTakeDamage)
+        if (GetComponent<ADSRManager>().overrideInput || !canTakeDamage)
         {
             return false;
         }
@@ -47,6 +48,13 @@ public class PlayerDamageEngine : MonoBehaviour
         colorpicker.material.color = Color.red;
         i_time = 0.0f;
         health -= 1f;
+
+        if (knockback)
+        {
+            float directionX = (attack.transform.position.x < this.transform.position.x)? 7f : -7f;
+            float jumpForce = (rb.velocity.y > 0.1f) ? 0f : 4f;
+            GetComponent<ADSRManager>().OverrideWithForce(new Vector2(directionX, jumpForce));
+        }
 
         if (health <= 0.0f)
         {
@@ -79,11 +87,11 @@ public class PlayerDamageEngine : MonoBehaviour
     IEnumerator ModifySpeed(float multiplier, float duration)
     {
         ADSRManager playerController = GetComponent<ADSRManager>();
-        playerController.Speed *= multiplier;
+        playerController.speed *= multiplier;
         yield return new WaitForSeconds(duration);
-        playerController.Speed = originalSpeed; 
+        playerController.speed = originalSpeed; 
     }
-        IEnumerator DisableMovementTemporarily()
+    IEnumerator DisableMovementTemporarily()
     {
         GetComponent<ADSRManager>().enabled = false;
         yield return new WaitForSeconds(2f);

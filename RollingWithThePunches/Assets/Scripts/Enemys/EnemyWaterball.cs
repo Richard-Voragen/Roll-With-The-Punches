@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyWaterball : MonoBehaviour
 {
+    public EffectTypes projectileType = EffectTypes.Water; 
     public GameObject player;
     public float speed = 5f;
     public Vector2 direction = Vector2.right; 
@@ -30,7 +31,7 @@ public class EnemyWaterball : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (collision.gameObject.GetComponent<PlayerDamageEngine>().TakeDamage(EffectTypes.Fire))
+            if (collision.gameObject.GetComponent<PlayerDamageEngine>().TakeDamage(this.gameObject, projectileType))
             {
                 Destroy(gameObject);
             }

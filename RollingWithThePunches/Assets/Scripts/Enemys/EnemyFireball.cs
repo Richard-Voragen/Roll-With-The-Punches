@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EnemyFireball : MonoBehaviour
 {
+    public EffectTypes projectileType = EffectTypes.Fire; 
     public float speed = 10f;
     public Vector2 direction = Vector2.right; 
     public float lifetime = 2f;
-
     private Rigidbody2D rb;
 
     void Start()
@@ -25,8 +25,7 @@ public class EnemyFireball : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("HELLO");
-            if (collision.gameObject.GetComponent<PlayerDamageEngine>().TakeDamage(EffectTypes.Fire))
+            if (collision.gameObject.GetComponent<PlayerDamageEngine>().TakeDamage(this.gameObject, projectileType))
             {
                 Destroy(gameObject);
             }

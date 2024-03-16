@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6020253106931192590}
   - component: {fileID: 2253942924265213790}
   - component: {fileID: 4214940606439008743}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bomb
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07592541, y: 0.09296984}
+  m_Offset: {x: -0.07592541, y: 0.12751836}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -152,7 +152,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.518451, y: 0.63311344}
+  m_Size: {x: 0.518451, y: 0.56401634}
   m_EdgeRadius: 0
 --- !u!50 &2253942924265213790
 Rigidbody2D:

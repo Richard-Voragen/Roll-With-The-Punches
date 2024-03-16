@@ -8,7 +8,7 @@ public class DroneController : MonoBehaviour, IEnemyController
     [SerializeField] private GameObject bombPrefab;
     public float floatHeight;
     public float damping;
-    [SerializeField] private float Speed = 6.5f;
+    [SerializeField] private float speed = 6.5f;
     [SerializeField] private float BombDropSpeed = 2f;
     [SerializeField] private float AttackDuration = 0.1f;
     [SerializeField] private AnimationCurve Attack;
@@ -20,7 +20,7 @@ public class DroneController : MonoBehaviour, IEnemyController
     private float bombTimer;
     private Rigidbody2D rb;
     private float InputDirection = -1f;
-        private enum Phase { Attack, Decay, Sustain, Release, None };
+    private enum Phase { Attack, Decay, Sustain, Release, None };
 
     private Phase CurrentPhase;
 
@@ -30,6 +30,13 @@ public class DroneController : MonoBehaviour, IEnemyController
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    public void SetUpProcess(GameObject targ)
+    {
+        this.target = targ;
+        this.speed = Random.Range(6f, 9f);
+        this.BombDropSpeed = Random.Range(0.8f, 1.6f);
     }
 
     public void Stun(bool stund)
@@ -50,7 +57,7 @@ public class DroneController : MonoBehaviour, IEnemyController
         if (this.CurrentPhase != Phase.None && this.crashed == false)
         {
             var position = this.gameObject.transform.position;
-            this.rb.velocity = new Vector2(this.InputDirection * this.Speed * this.ADSREnvelope(), this.rb.velocity.y);
+            this.rb.velocity = new Vector2(this.InputDirection * this.speed * this.ADSREnvelope(), this.rb.velocity.y);
             this.gameObject.transform.position = position;
         }
 
