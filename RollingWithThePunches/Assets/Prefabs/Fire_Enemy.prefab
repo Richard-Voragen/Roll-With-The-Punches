@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 8061994418681395955}
   - component: {fileID: 3945982403028537500}
   - component: {fileID: 6799681421494063904}
-  - component: {fileID: -132324323098219846}
-  m_Layer: 0
+  - component: {fileID: 8183266461680612137}
+  - component: {fileID: 3614884438097032259}
+  m_Layer: 7
   m_Name: Fire_Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1766885679533637433}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.8316627, y: -0.6815041, z: 0}
+  m_LocalPosition: {x: 13.733613, y: 2.8471844, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -117,13 +118,13 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.42517138, y: 1.1122601}
+  m_Offset: {x: -0.04536295, y: 1.009712}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.65, y: 0.05}
+    pivot: {x: 0.5, y: 0.05}
     oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
@@ -131,7 +132,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2953501, y: 2.1654801}
+  m_Size: {x: 1.169179, y: 2.1401577}
   m_EdgeRadius: 0
 --- !u!50 &3945982403028537500
 Rigidbody2D:
@@ -181,7 +182,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-132324323098219846
+--- !u!114 &8183266461680612137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -195,9 +196,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 4
-  jumpForce: 5
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
+  jumpForce: 8
   projectilePrefab: {fileID: 2505885612178651283, guid: 050a06af0a777a843ac867013eba129c, type: 3}
   fireballCooldown: 1.5
+--- !u!114 &3614884438097032259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766885679533637433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f6f36372ac9994badebc6514933e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userType: 0
+  health: 80
+  invincibilityTime: 0.1
+  stunTime: 2

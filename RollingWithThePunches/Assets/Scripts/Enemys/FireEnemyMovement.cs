@@ -19,7 +19,7 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
 
     private Animator animator;
 
-    public bool stunned = false;
+    private bool stunned = false;
 
     private void Start()
     {
@@ -29,7 +29,6 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
 
     public void Stun(bool stund)
     {
-        Debug.Log("STUNNED");
         this.stunned = stund;
         if (stund)
         {
@@ -50,12 +49,12 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
             Attack();
         }
         
-        if (Mathf.Abs(target.transform.position.x - transform.position.x) > 1.7f && lastFireballTime > 0.5f)
+        if (Mathf.Abs(target.transform.position.x - transform.position.x) > 1f && lastFireballTime > 0.5f)
         {
             animator.SetBool("Punch", false);
             Move();
         }
-        else if (Mathf.Abs(target.transform.position.x - transform.position.x) <= 1.7f)
+        else if (Mathf.Abs(target.transform.position.x - transform.position.x) <= 1f)
         {
             rb.velocity = new Vector2(0f, rb.velocity.y);
             animator.SetBool("Punch", true);
@@ -111,10 +110,9 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.layer >= 29)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            //rb.gravityScale = 0;
-            //rb.velocity = new Vector2(rb.velocity.x, 0f);
+            collision.gameObject.GetComponent<PlayerDamageEngine>().TakeDamage(EffectTypes.Fire);
         }
     }
 
@@ -147,7 +145,12 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
             }
         }
     }
-    
+
+    public void Death()
+    {
+        Destroy(gameObject);
+    }
+
     void OnDrawGizmos()
     {
         // Draw a green box at the transform's position

@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroneController : MonoBehaviour
+public class DroneController : MonoBehaviour, IEnemyController
 {
     [SerializeField] private GameObject target;
     [SerializeField] private GameObject bombPrefab;
     public float floatHeight;
     public float damping;
-    [SerializeField] private bool ShowPhases = true;
-
     [SerializeField] private float Speed = 6.5f;
     [SerializeField] private float BombDropSpeed = 2f;
     [SerializeField] private float AttackDuration = 0.1f;
@@ -34,6 +32,10 @@ public class DroneController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    public void Stun(bool stund)
+    {
+    }
+
     void Update()
     {
         if (this.InputDirection > 0)
@@ -50,11 +52,6 @@ public class DroneController : MonoBehaviour
             var position = this.gameObject.transform.position;
             this.rb.velocity = new Vector2(this.InputDirection * this.Speed * this.ADSREnvelope(), this.rb.velocity.y);
             this.gameObject.transform.position = position;
-        }
-
-        if (this.ShowPhases)
-        {
-            this.SetColorByPhase();
         }
 
         if (this.crashed == false) 
@@ -141,39 +138,16 @@ public class DroneController : MonoBehaviour
         this.ReleaseTimer = 0.0f;
     }
 
-    private void SetColorByPhase()
+    public void Death()
     {
-        var color = Color.white;
-
-        if(Phase.Attack == this.CurrentPhase)
-        {
-            color = Color.green;
-        }
-        else if (Phase.Decay == this.CurrentPhase) 
-        {
-            color = Color.yellow;
-        }
-        else if (Phase.Sustain == this.CurrentPhase)
-        {
-            color = Color.blue;
-        }
-        else if (Phase.Release == this.CurrentPhase)
-        {
-            color = Color.grey;
-        }
-        this.GetComponent<Renderer>().material.color = color;
+        var impulse = (60 * Mathf.Deg2Rad) * rb.inertia;
+        rb.AddTorque(impulse, ForceMode2D.Impulse);
+        rb.gravityScale = 1f;
+        this.crashed = true;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Attack"))
-        {
-            var impulse = (60 * Mathf.Deg2Rad) * rb.inertia;
-            rb.AddTorque(impulse, ForceMode2D.Impulse);
-            rb.gravityScale = 1f;
-            this.crashed = true;
-        }
-
         if (collision.gameObject.layer >= 29 && this.crashed)
         {
             FindObjectOfType<SoundManager>().PlaySoundEffect("Explosion");

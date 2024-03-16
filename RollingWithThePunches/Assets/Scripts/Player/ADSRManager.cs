@@ -5,8 +5,6 @@ using UnityEngine;
 public class ADSRManager : MonoBehaviour
 {
     [SerializeField] private GameObject sprite;
-    [SerializeField] private bool ShowPhases = true;
-
     [SerializeField] private float Speed = 6.5f;
 
     [SerializeField] private float JumpForce = 5.0f;
@@ -37,7 +35,6 @@ public class ADSRManager : MonoBehaviour
     private float velocity;
     private float jumpButtonActive = 0.15f;
     private float jumpTimer = 0.0f;
-    private bool canJump = true;
     public bool crouching = false;
     public bool IsCrouchJumping = false;
     private BoxCollider2D boxColl;
@@ -53,10 +50,7 @@ public class ADSRManager : MonoBehaviour
     void Update()
     {
         CheckMovementInput();
-        if (canJump)
-        {
-            CheckJumpInput();
-        }
+        CheckJumpInput();
 
         if (this.InputDirection < 0)
         {
@@ -74,11 +68,6 @@ public class ADSRManager : MonoBehaviour
             this.velocity = this.ADSREnvelope();
             this.rb.velocity = new Vector2(this.InputDirection * this.Speed * this.velocity, this.rb.velocity.y);
             this.gameObject.transform.position = position;
-        }
-
-        if (this.ShowPhases)
-        {
-            //this.SetColorByPhase();
         }
 
         if (transform.position.y < -20f) {
@@ -207,27 +196,13 @@ public class ADSRManager : MonoBehaviour
         this.ReleaseTimer = 0.0f;
     }
 
-    private void SetColorByPhase()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        var color = Color.white;
-
-        if(Phase.Attack == this.CurrentPhase)
+        if (collision.gameObject.layer >= 29 && collision.gameObject.transform.position.y <= this.gameObject.transform.position.y + 0.3f)
         {
-            color = Color.green;
+            IsJumping = false;
+            this.IsCrouchJumping = false;
         }
-        else if (Phase.Decay == this.CurrentPhase) 
-        {
-            color = Color.yellow;
-        }
-        else if (Phase.Sustain == this.CurrentPhase)
-        {
-            color = Color.blue;
-        }
-        else if (Phase.Release == this.CurrentPhase)
-        {
-            color = Color.grey;
-        }
-        this.sprite.GetComponent<Renderer>().material.color = color;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -235,7 +210,6 @@ public class ADSRManager : MonoBehaviour
         if (collision.gameObject.layer >= 29)
         {
             IsJumping = false;
-            Debug.Log("landed");
             this.IsCrouchJumping = false;
         }
     }
@@ -245,20 +219,6 @@ public class ADSRManager : MonoBehaviour
         if (collision.gameObject.layer >= 29)
         {
             IsJumping = false;
-            canJump = true;
-        }
-        
-        if (collision.gameObject.layer == 30)
-        {
-            if (Input.GetAxis("Vertical") < -0.1)
-            {
-                canJump = false;
-                if (Input.GetButton("Jump"))
-                {
-                    collision.gameObject.GetComponent<TilePlatformController>().PhaseThrough();
-                    this.IsJumping = true;
-                }
-            }
         }
     }
 

@@ -12,7 +12,7 @@ public class EnemyDamageEngine : MonoBehaviour
 
     private bool canTakeDamage = false;
     private float i_time = 0.0f;
-    private float stunTimer = 999.0f;
+    private float stunTimer = 0.0f;
     private Renderer colorpicker;
     private Rigidbody2D rb; 
 
@@ -20,21 +20,18 @@ public class EnemyDamageEngine : MonoBehaviour
     {
         colorpicker = this.GetComponent<Renderer>();
         rb = GetComponent<Rigidbody2D>(); 
-
-        //IEnemyController[] tests = ConvertToArray<IEnemyController>(GetComponents(typeof(IEnemyController)));
-        //Debug.Log(tests.Length, this);
-    
-        //IEnemyController test = GetComponent(typeof(IEnemyController)) as IEnemyController;
-        //Debug.Log(test != null ? "Found ITest" : "ITest Not Found", this);
     }
 
     void Update()
     {
         i_time += Time.deltaTime;
-        if (i_time > invincibilityTime && stunTimer == 0.0f)
+        if (i_time > invincibilityTime)
         {
             this.canTakeDamage = true;
-            this.colorpicker.material.color = Color.white;
+            if (stunTimer == 0.0f)
+            {
+                this.colorpicker.material.color = Color.white;
+            }
         }
 
         if (stunTimer > 0.0f)
@@ -56,8 +53,8 @@ public class EnemyDamageEngine : MonoBehaviour
         }
         FindObjectOfType<SoundManager>().PlaySoundEffect("Laser");
         this.canTakeDamage = false;
-        this.colorpicker.material.color = Color.red;
         this.i_time = 0.0f;
+        this.colorpicker.material.color = Color.red;
         this.health -= damage * TypeFactor(userType, projectileType);
         if (projectileType == EffectTypes.Electric)
         {
@@ -65,10 +62,17 @@ public class EnemyDamageEngine : MonoBehaviour
             GetComponent<IEnemyController>().Stun(true); 
             this.colorpicker.material.color = Color.grey;
             GetComponent<Animator>().enabled = false;
+            this.canTakeDamage = true;
+            
+        }
+        if (stunTimer == 0.0f)
+        {
+            this.colorpicker.material.color = Color.red;
+            
         }
         if (this.health <= 0.0f)
         {
-            Destroy(gameObject);
+            GetComponent<IEnemyController>().Death();
         }
 
         return true;
@@ -76,8 +80,9 @@ public class EnemyDamageEngine : MonoBehaviour
 
     private static float[,] damageTable = { 
         {0.25f, 1f, 0f},
-        {0.25f, 0.5f, 0.5f},
+        {0.25f, 0.5f, 0.25f},
         {0.5f, 0.25f, 0f},
+        {0f, 0f, 1f}
     };
 
     public static float TypeFactor(EffectTypes userType, EffectTypes projectileType)

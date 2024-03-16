@@ -25,6 +25,7 @@ public class EnemyFireball : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("HELLO");
             if (collision.gameObject.GetComponent<PlayerDamageEngine>().TakeDamage(EffectTypes.Fire))
             {
                 Destroy(gameObject);

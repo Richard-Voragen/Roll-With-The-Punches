@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 2335480487279864089}
   - component: {fileID: 6431285386836267796}
   - component: {fileID: 5319635198156908741}
+  - component: {fileID: 5278306875951063864}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -227,7 +228,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 7911859461922520349}
-  ShowPhases: 1
   Speed: 8
   JumpForce: 12
   AttackDuration: 0.2
@@ -314,6 +314,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  crouching: 0
+  IsCrouchJumping: 0
 --- !u!114 &5319635198156908741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,3 +335,19 @@ MonoBehaviour:
   spawnDistance: 1.9
   spawnHeight: 0.85
   PunchDuration: 0.3
+--- !u!114 &5278306875951063864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8686020808787201472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495624faba4477147acac94fb622ec5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 7911859461922520349}
+  health: 4
+  invincibilityTime: 0.9
+  knockback: 0
