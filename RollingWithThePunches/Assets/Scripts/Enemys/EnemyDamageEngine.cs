@@ -31,8 +31,7 @@ public class EnemyDamageEngine : MonoBehaviour
     void Update()
     {
         i_time += Time.deltaTime;
-        stunTimer += Time.deltaTime;
-        if (i_time > invincibilityTime)
+        if (i_time > invincibilityTime && stunTimer == 0.0f)
         {
             this.canTakeDamage = true;
             this.colorpicker.material.color = Color.white;
@@ -40,10 +39,12 @@ public class EnemyDamageEngine : MonoBehaviour
 
         if (stunTimer > 0.0f)
             stunTimer += Time.deltaTime;
-        if (stunTimer < stunTime)
+        if (stunTimer > stunTime)
         {
             stunTimer = 0.0f;
             GetComponent<IEnemyController>().Stun(false); 
+            this.colorpicker.material.color = Color.white;
+            GetComponent<Animator>().enabled = true;
         }
     }
 
@@ -60,9 +61,10 @@ public class EnemyDamageEngine : MonoBehaviour
         this.health -= damage * TypeFactor(userType, projectileType);
         if (projectileType == EffectTypes.Electric)
         {
-            Debug.Log("STUNNED");
             stunTimer = 0.001f;
-            GetComponent<IEnemyController>().Stun(false); 
+            GetComponent<IEnemyController>().Stun(true); 
+            this.colorpicker.material.color = Color.grey;
+            GetComponent<Animator>().enabled = false;
         }
         if (this.health <= 0.0f)
         {

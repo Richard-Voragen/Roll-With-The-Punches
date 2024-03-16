@@ -29,7 +29,13 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
 
     public void Stun(bool stund)
     {
+        Debug.Log("STUNNED");
         this.stunned = stund;
+        if (stund)
+        {
+            rb.velocity = new Vector2(0f, rb.velocity.y);
+            animator.SetBool("Punch", false);
+        }
     }
 
     private void Update()
@@ -44,16 +50,16 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
             Attack();
         }
         
-        if (Mathf.Abs(target.transform.position.x - transform.position.x) > 1.5f && lastFireballTime > 0.5f)
+        if (Mathf.Abs(target.transform.position.x - transform.position.x) > 1.7f && lastFireballTime > 0.5f)
         {
             animator.SetBool("Punch", false);
             Move();
         }
-        else if (Mathf.Abs(target.transform.position.x - transform.position.x) <= 1.5f)
+        else if (Mathf.Abs(target.transform.position.x - transform.position.x) <= 1.7f)
         {
             rb.velocity = new Vector2(0f, rb.velocity.y);
             animator.SetBool("Punch", true);
-            if (lastFireballTime > fireballCooldown && UnityEngine.Random.Range(0, 10) > 7)
+            if (lastFireballTime > fireballCooldown)
             {
                 this.lastFireballTime = 0.0f;
                 animator.SetBool("Punch", true);
@@ -66,7 +72,7 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
         {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             lastJumpTime = Time.time;
-            if (UnityEngine.Random.value < 0.01f) //5% chance to jump
+            if (UnityEngine.Random.value < 0.01f)
             {
                 rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
                 lastJumpTime = Time.time;

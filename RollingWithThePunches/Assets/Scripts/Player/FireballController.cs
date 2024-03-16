@@ -6,6 +6,8 @@ public class FireballController : MonoBehaviour
 {
     public float speed = 10f;
     public Vector2 direction = Vector2.right; 
+    [SerializeField] private float damage = 10f; 
+    [SerializeField] private EffectTypes projectileType; 
     public float lifetime = 2f;
 
     private Rigidbody2D rb;
@@ -25,7 +27,7 @@ public class FireballController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (collision.gameObject.GetComponent<EnemyDamageEngine>().TakeDamage(10f, EffectTypes.Fire))
+            if (collision.gameObject.GetComponent<EnemyDamageEngine>().TakeDamage(damage, projectileType))
             {
                 Destroy(gameObject);
             }

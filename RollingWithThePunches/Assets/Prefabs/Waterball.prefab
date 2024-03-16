@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -229092690, guid: 0574f5396654c9a4486b90689cf2d77c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.12, y: 1.97}
@@ -123,6 +123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   direction: {x: 1, y: 0}
+  damage: 10
+  projectileType: 1
   lifetime: 2
 --- !u!61 &-3728473808214057107
 BoxCollider2D:
