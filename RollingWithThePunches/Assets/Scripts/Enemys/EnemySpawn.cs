@@ -9,6 +9,6 @@ public class EnemySpawn
     public bool positionIsOffset;
     public float spawnRate;
 
-    [HideInInspector] public float currentTime = 0.0f;
-    [HideInInspector] public bool canSpawn = true;
+    [HideInInspector] public float currentTime;
+    [HideInInspector] public bool canSpawn;
 }

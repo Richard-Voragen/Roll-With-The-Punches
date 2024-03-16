@@ -63,7 +63,7 @@ public class ADSRManager : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 1);
         }
 
-        if (transform.position.y < -20f) {
+        if (transform.position.y < -18f) {
             transform.position = new Vector3(5.5f, 24f, 0f);
             
         }
@@ -95,7 +95,6 @@ public class ADSRManager : MonoBehaviour
             CurrentPhase = Phase.Release;
             animator.SetBool("Crouch", true);
             this.crouching = true;
-            Debug.Log(this.boxColl.offset.x);
             this.boxColl.size = new Vector2(0.8f, 1f);
             this.boxColl.offset = new Vector2(this.boxColl.offset.x, 0.495f);
         }

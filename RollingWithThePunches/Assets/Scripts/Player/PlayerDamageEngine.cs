@@ -47,7 +47,10 @@ public class PlayerDamageEngine : MonoBehaviour
         canTakeDamage = false;
         colorpicker.material.color = Color.red;
         i_time = 0.0f;
-        health -= 1f;
+        if (projectileType != EffectTypes.Tutorial)
+        {
+            this.health -= 1f;
+        }
 
         if (knockback)
         {
@@ -79,7 +82,6 @@ public class PlayerDamageEngine : MonoBehaviour
                 StartCoroutine(DisableMovementTemporarily());
                 break;
             default:
-                Destroy(gameObject);
                 break;
         }
     }

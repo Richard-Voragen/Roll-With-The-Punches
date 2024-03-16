@@ -8,6 +8,15 @@ public class EnemyFactory : MonoBehaviour
     [SerializeField] private GameObject target;
     [SerializeField] private List<EnemySpawn> enemies;
 
+    private void Start()
+    {
+        foreach(EnemySpawn enemy in enemies)
+        {
+            enemy.canSpawn = true;
+            enemy.currentTime = 0.0f;
+        }
+    }
+
     private void Update()
     {
         foreach(EnemySpawn enemy in enemies)
