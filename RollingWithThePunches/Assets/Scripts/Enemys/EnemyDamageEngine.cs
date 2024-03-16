@@ -80,7 +80,7 @@ public class EnemyDamageEngine : MonoBehaviour
 
     private static float[,] damageTable = { 
         {0.25f, 1f, 0f},
-        {0.25f, 0.5f, 0.25f},
+        {0.25f, 0.5f, 0f},
         {0.5f, 0.25f, 0f},
         {0f, 0f, 1f}
     };

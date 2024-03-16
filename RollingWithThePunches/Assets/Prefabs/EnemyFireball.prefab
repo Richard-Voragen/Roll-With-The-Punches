@@ -148,7 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e7d52cca0d45c4d89db397ee639133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  projectileType: 0
+  speed: 7
   direction: {x: 1, y: 0}
   lifetime: 30
 --- !u!58 &2294761454381310999

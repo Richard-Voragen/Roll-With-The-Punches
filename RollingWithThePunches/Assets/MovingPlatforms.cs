@@ -49,6 +49,14 @@ public class MovingPlatforms : MonoBehaviour
         transform.LeanMove(startPos, duration); 
     }
 
+    void OnCollisionStay2D(Collision2D other) {
+        if (other.gameObject.tag == "Player")
+        {
+            player = other.gameObject;
+            player.transform.SetParent(transform);
+        }
+    }
+
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Player"))

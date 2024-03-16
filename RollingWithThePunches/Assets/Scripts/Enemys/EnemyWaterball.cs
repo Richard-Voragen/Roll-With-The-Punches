@@ -5,9 +5,8 @@ using UnityEngine;
 public class EnemyWaterball : MonoBehaviour
 {
     public EffectTypes projectileType = EffectTypes.Water; 
-    public GameObject player;
+    private GameObject player;
     public float speed = 5f;
-    public Vector2 direction = Vector2.right; 
     public float lifetime = 5f;
 
     private Rigidbody2D rb;
@@ -18,9 +17,19 @@ public class EnemyWaterball : MonoBehaviour
         Destroy(gameObject, lifetime); 
     }
 
+    public void SetAngle(GameObject target) 
+    {
+        this.player = target;
+
+        Vector2 playerPosition = new Vector2(player.transform.position.x, player.transform.position.y + 0.2f);
+        float angle = Mathf.Atan2(playerPosition.y + 1f - this.transform.position.y, playerPosition.x - this.transform.position.x ) * Mathf.Rad2Deg;
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 1f);
+    }
+
     void Update()
     {
-        Vector2 playerPosition = new Vector2(player.transform.position.x, player.transform.position.y + 0.45f);
+        Vector2 playerPosition = new Vector2(player.transform.position.x, player.transform.position.y + 0.2f);
         float angle = Mathf.Atan2(playerPosition.y + 1f - this.transform.position.y, playerPosition.x - this.transform.position.x ) * Mathf.Rad2Deg;
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, speed/2 * Time.deltaTime);

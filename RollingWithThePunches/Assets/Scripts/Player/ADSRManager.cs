@@ -40,6 +40,7 @@ public class ADSRManager : MonoBehaviour
     public bool overrideInput = false;
     private Vector2 overrideForce;
     private BoxCollider2D boxColl;
+    private BoxCollider2D defaultBoxColl;
 
     void Awake()
     {
@@ -47,6 +48,7 @@ public class ADSRManager : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); 
         animator = this.sprite.GetComponent<Animator>();
         boxColl = GetComponent<BoxCollider2D>();
+        defaultBoxColl = boxColl;
     }
 
     void Update()
@@ -104,8 +106,8 @@ public class ADSRManager : MonoBehaviour
             CurrentPhase = Phase.Attack;
             animator.SetBool("Crouch", false);
             this.crouching = false;
-            this.boxColl.size = new Vector2(1.096168f, 1.871117f);
-            this.boxColl.offset = new Vector2(this.boxColl.offset.x, 0.9351177f);
+            this.boxColl.size = this.defaultBoxColl.size;
+            this.boxColl.offset = this.defaultBoxColl.offset;
         }
 
         if (this.velocity < 0.1f && this.CurrentPhase != Phase.Attack && input > 0.01)
@@ -200,10 +202,39 @@ public class ADSRManager : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer >= 29 && collision.gameObject.transform.position.y <= this.gameObject.transform.position.y + 0.3f)
+        if (collision.gameObject.layer >= 29)
         {
-            IsJumping = false;
-            this.overrideInput = false;
+            if (rb.velocity.y < -0.1f)
+            {
+                IsJumping = false;
+                this.overrideInput = false;
+                boxColl.isTrigger = false;
+            }
+            if (collision.gameObject.layer == 29)
+            {
+                boxColl.isTrigger = false;
+                IsJumping = false;
+                this.overrideInput = false;
+            }
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer >= 29)
+        {
+            if (rb.velocity.y < -0.1f)
+            {
+                IsJumping = false;
+                this.overrideInput = false;
+                boxColl.isTrigger = false;
+            }
+            if (collision.gameObject.layer == 29)
+            {
+                boxColl.isTrigger = false;
+                IsJumping = false;
+                this.overrideInput = false;
+            }
         }
     }
 
@@ -218,8 +249,9 @@ public class ADSRManager : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.layer >= 29)
+        if (collision.gameObject.layer >= 29 && !crouching)
         {
+            IsJumping = false;
             this.overrideInput = false;
         }
     }
@@ -229,11 +261,13 @@ public class ADSRManager : MonoBehaviour
         if (collision.gameObject.layer >= 29)
         {
             IsJumping = true;
+            boxColl.isTrigger = true;
             if (this.IsCrouchJumping)
             {
                 this.overrideInput = true;
                 rb.AddForce(this.overrideForce, ForceMode2D.Impulse);
                 this.IsCrouchJumping = false;
+                //this.crouching = false;
             }
         }
     }
@@ -242,6 +276,7 @@ public class ADSRManager : MonoBehaviour
         this.overrideForce = new Vector2(force.x, 0f);
         rb.AddForce(new Vector2(0f, force.y), ForceMode2D.Impulse);
         this.IsCrouchJumping = true;
+        //boxColl.isTrigger = true;
     }
 
     public void SetPhaseRelease() 

@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 662239798801793639}
   - component: {fileID: 3142322161140256407}
   - component: {fileID: 6114346907101757659}
-  m_Layer: 0
+  - component: {fileID: 6218569487068248447}
+  - component: {fileID: 8192665623264629994}
+  m_Layer: 7
   m_Name: Ice_Enemy
-  m_TagString: Ground
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4705839239078100484}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.92, y: -0.73, z: 0}
+  m_LocalPosition: {x: 8.32, y: 1.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -116,13 +118,13 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.009651184, y: 1.0900002}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.65, y: 0.05}
+    pivot: {x: 0.5, y: 0.05}
     oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
@@ -180,3 +182,35 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6218569487068248447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705839239078100484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a91485af78cea348be4a9c274f51367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  jumpForce: 6
+  projectilePrefab: {fileID: 7623582144597366392, guid: 4e3648cc537a5d14585f44b3c69c0897, type: 3}
+  waterballCooldown: 5
+--- !u!114 &8192665623264629994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705839239078100484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f6f36372ac9994badebc6514933e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userType: 1
+  health: 30
+  invincibilityTime: 0.1
+  stunTime: 6
