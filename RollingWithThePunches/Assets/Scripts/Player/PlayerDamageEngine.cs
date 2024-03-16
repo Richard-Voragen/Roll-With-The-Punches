@@ -1,12 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class PlayerDamageEngine : MonoBehaviour
 {
     [SerializeField] private GameObject sprite;
     [SerializeField] private float health;
     [SerializeField] private float invincibilityTime; 
-    [SerializeField] private bool knockback; 
+    [SerializeField] private bool knockback;
+    [SerializeField] private TMP_Text healthText;
 
     private bool canTakeDamage = true;
     private float i_time = 0.0f;
@@ -23,7 +25,8 @@ public class PlayerDamageEngine : MonoBehaviour
     {
         colorpicker = sprite.GetComponent<Renderer>();
         rb = GetComponent<Rigidbody2D>(); 
-        originalSpeed = GetComponent<ADSRManager>().speed; 
+        originalSpeed = GetComponent<ADSRManager>().speed;
+        healthText.text = "" + health;
     }
 
     void Update()
@@ -50,6 +53,7 @@ public class PlayerDamageEngine : MonoBehaviour
         if (projectileType != EffectTypes.Tutorial)
         {
             this.health -= 1f;
+            healthText.text = "" + this.health;
         }
 
         if (knockback)
