@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 8061994418681395955}
   - component: {fileID: 3945982403028537500}
   - component: {fileID: 6799681421494063904}
+  - component: {fileID: -132324323098219846}
   m_Layer: 0
   m_Name: Fire_Enemy
-  m_TagString: Ground
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,7 +120,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.009651184, y: 1.0900002}
+  m_Offset: {x: 0.42517138, y: 1.1122601}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.65, y: 0.05}
@@ -130,7 +131,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1865234, y: 2.21}
+  m_Size: {x: 1.2953501, y: 2.1654801}
   m_EdgeRadius: 0
 --- !u!50 &3945982403028537500
 Rigidbody2D:
@@ -180,3 +181,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-132324323098219846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766885679533637433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8754a3e7a576fa440ae3a1fc83e56ab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 4
+  jumpForce: 5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  projectilePrefab: {fileID: 2505885612178651283, guid: 050a06af0a777a843ac867013eba129c, type: 3}
+  fireballCooldown: 1.5

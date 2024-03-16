@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerDamageEngine : MonoBehaviour
 {
     [SerializeField] private GameObject sprite;
-    [SerializeField] private EffectTypes userType; 
     [SerializeField] private float health;
     [SerializeField] private float invincibilityTime; 
     [SerializeField] private bool knockback; 
@@ -52,8 +51,9 @@ public class PlayerDamageEngine : MonoBehaviour
         if (knockback)
         {
             float directionX = Mathf.Sign(gameObject.transform.localScale.x);
-            rb.AddForce(new Vector2(directionX * -6.0f, 3.5f), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(directionX * -6.0f, 5f), ForceMode2D.Impulse);
             GetComponent<ADSRManager>().IsCrouchJumping = true;
+            GetComponent<ADSRManager>().crouching = true;
         }
         return true;
     }

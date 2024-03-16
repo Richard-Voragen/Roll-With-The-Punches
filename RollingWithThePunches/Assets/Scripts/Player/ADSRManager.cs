@@ -38,7 +38,7 @@ public class ADSRManager : MonoBehaviour
     private float jumpButtonActive = 0.15f;
     private float jumpTimer = 0.0f;
     private bool canJump = true;
-    private bool crouching = false;
+    public bool crouching = false;
     public bool IsCrouchJumping = false;
     private BoxCollider2D boxColl;
 
