@@ -114,10 +114,12 @@ public class EnemyMovement : MonoBehaviour
         //Calculate spawn position at enemy's center
         Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y + GetComponent<Collider2D>().bounds.extents.y);
 
-        GameObject projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
-        EnemyFireball fireballScript = projectile.GetComponent<EnemyFireball>();
+        gameObject.GetComponent<SpriteRenderer>().flipX = direction.x < 0;
 
-        if (fireballScript != null)
+        GameObject projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
+        EnemyFireball fireball = projectile.GetComponent<EnemyFireball>();
+
+        if (fireball != null)
         {
             fireballScript.player = target; // Set the fireball's direction towards the player
 
