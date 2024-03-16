@@ -5,37 +5,51 @@ using UnityEngine;
 
 public class EnemyDamageEngine : MonoBehaviour
 {
-    [SerializeField] private GameObject sprite;
     [SerializeField] private EffectTypes userType; 
     [SerializeField] private float health;
     [SerializeField] private float invincibilityTime; 
-    [SerializeField] private bool knockback; 
+    [SerializeField] private float stunTime; 
 
     private bool canTakeDamage = false;
     private float i_time = 0.0f;
-
+    private float stunTimer = 999.0f;
     private Renderer colorpicker;
     private Rigidbody2D rb; 
 
     void Start()
     {
-        colorpicker = this.sprite.GetComponent<Renderer>();
+        colorpicker = this.GetComponent<Renderer>();
         rb = GetComponent<Rigidbody2D>(); 
+
+        //IEnemyController[] tests = ConvertToArray<IEnemyController>(GetComponents(typeof(IEnemyController)));
+        //Debug.Log(tests.Length, this);
+    
+        //IEnemyController test = GetComponent(typeof(IEnemyController)) as IEnemyController;
+        //Debug.Log(test != null ? "Found ITest" : "ITest Not Found", this);
     }
 
     void Update()
     {
         i_time += Time.deltaTime;
+        stunTimer += Time.deltaTime;
         if (i_time > invincibilityTime)
         {
             this.canTakeDamage = true;
             this.colorpicker.material.color = Color.white;
         }
+
+        if (stunTimer > 0.0f)
+            stunTimer += Time.deltaTime;
+        if (stunTimer < stunTime)
+        {
+            stunTimer = 0.0f;
+            GetComponent<IEnemyController>().Stun(false); 
+        }
     }
 
     public bool TakeDamage(float damage, EffectTypes projectileType)
     {
-        if (GetComponent<ADSRManager>().IsCrouchJumping || this.canTakeDamage == false)
+        if (this.canTakeDamage == false)
         {
             return false;
         }
@@ -43,18 +57,18 @@ public class EnemyDamageEngine : MonoBehaviour
         this.canTakeDamage = false;
         this.colorpicker.material.color = Color.red;
         this.i_time = 0.0f;
-        this.health -= 1f;
+        this.health -= damage * TypeFactor(userType, projectileType);
+        if (projectileType == EffectTypes.Electric)
+        {
+            Debug.Log("STUNNED");
+            stunTimer = 0.001f;
+            GetComponent<IEnemyController>().Stun(false); 
+        }
         if (this.health <= 0.0f)
         {
             Destroy(gameObject);
         }
 
-        if (knockback)
-        {
-            float directionX = Mathf.Sign(gameObject.transform.localScale.x);
-            rb.AddForce(new Vector2(directionX * -6.0f, 3.5f), ForceMode2D.Impulse);
-            GetComponent<ADSRManager>().IsCrouchJumping = true;
-        }
         return true;
     }
 

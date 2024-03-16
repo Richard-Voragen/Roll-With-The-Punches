@@ -42,7 +42,7 @@ public class ADSRManager : MonoBehaviour
     public bool IsCrouchJumping = false;
     private BoxCollider2D boxColl;
 
-    void Start()
+    void Awake()
     {
         this.CurrentPhase = Phase.None;
         rb = GetComponent<Rigidbody2D>(); 
@@ -102,7 +102,8 @@ public class ADSRManager : MonoBehaviour
             CurrentPhase = Phase.Release;
             animator.SetBool("Crouch", true);
             this.crouching = true;
-            this.boxColl.size = new Vector2(this.boxColl.size.x, 1f);
+            Debug.Log(this.boxColl.offset.x);
+            this.boxColl.size = new Vector2(0.8f, 1f);
             this.boxColl.offset = new Vector2(this.boxColl.offset.x, 0.495f);
         }
         else if (this.crouching && Input.GetAxis("Vertical") >= -0.1f && IsJumping == false)
@@ -111,7 +112,7 @@ public class ADSRManager : MonoBehaviour
             CurrentPhase = Phase.Attack;
             animator.SetBool("Crouch", false);
             this.crouching = false;
-            this.boxColl.size = new Vector2(this.boxColl.size.x, 1.871117f);
+            this.boxColl.size = new Vector2(1.096168f, 1.871117f);
             this.boxColl.offset = new Vector2(this.boxColl.offset.x, 0.9351177f);
         }
 
@@ -271,5 +272,13 @@ public class ADSRManager : MonoBehaviour
     public void SetPhaseRelease() 
     {
         this.CurrentPhase = Phase.Release;
+    }
+
+    void OnDrawGizmos()
+    {
+        // Draw a green box at the transform's position
+        BoxCollider2D box = GetComponent<BoxCollider2D>();
+        Gizmos.color = Color.green;
+        Gizmos.DrawCube((Vector2)transform.position + box.offset, box.size);
     }
 }
