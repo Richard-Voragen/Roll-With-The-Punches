@@ -30,7 +30,14 @@ public class BombController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (collision.gameObject.GetComponent<PlayerDamageEngine>().TakeDamage(EffectTypes.Fire))
+            {
+                Destroy(gameObject);
+            }
+        }
+        else if (!collision.gameObject.CompareTag("Enemy"))
         {
             FindObjectOfType<SoundManager>().PlaySoundEffect("Explosion");
             Destroy(gameObject);

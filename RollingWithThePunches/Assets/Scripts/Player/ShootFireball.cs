@@ -102,7 +102,7 @@ public class ShootFireball : MonoBehaviour, IPlayerCommand
             fireballScript.direction = new Vector2(directionX, 0);
 
             //Flip the fireball sprite when shooting left
-            if (directionX < 0)
+            if (directionX > 0)
             {
                 fireball.transform.localScale = new Vector3(-1 * fireball.transform.localScale.x, fireball.transform.localScale.y, fireball.transform.localScale.z);
             }
