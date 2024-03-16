@@ -39,13 +39,15 @@ public class ADSRManager : MonoBehaviour
     private float jumpTimer = 0.0f;
     private bool canJump = true;
     private bool crouching = false;
-    private bool IsCrouchJumping = false;
+    public bool IsCrouchJumping = false;
+    private BoxCollider2D boxColl;
 
     void Start()
     {
         this.CurrentPhase = Phase.None;
         rb = GetComponent<Rigidbody2D>(); 
         animator = this.sprite.GetComponent<Animator>();
+        boxColl = GetComponent<BoxCollider2D>();
     }
 
     void Update()
@@ -76,7 +78,7 @@ public class ADSRManager : MonoBehaviour
 
         if (this.ShowPhases)
         {
-            this.SetColorByPhase();
+            //this.SetColorByPhase();
         }
 
         if (transform.position.y < -20f) {
@@ -100,6 +102,8 @@ public class ADSRManager : MonoBehaviour
             CurrentPhase = Phase.Release;
             animator.SetBool("Crouch", true);
             this.crouching = true;
+            this.boxColl.size = new Vector2(this.boxColl.size.x, 1f);
+            this.boxColl.offset = new Vector2(this.boxColl.offset.x, 0.495f);
         }
         else if (this.crouching && Input.GetAxis("Vertical") >= -0.1f && IsJumping == false)
         {
@@ -107,6 +111,8 @@ public class ADSRManager : MonoBehaviour
             CurrentPhase = Phase.Attack;
             animator.SetBool("Crouch", false);
             this.crouching = false;
+            this.boxColl.size = new Vector2(this.boxColl.size.x, 1.871117f);
+            this.boxColl.offset = new Vector2(this.boxColl.offset.x, 0.9351177f);
         }
 
         if (this.velocity < 0.1f && this.CurrentPhase != Phase.Attack && input > 0.01)

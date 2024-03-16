@@ -22,8 +22,7 @@ public class LightningController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            //Destroy(collision.gameObject);
-            //Destroy(gameObject);
+            collision.gameObject.GetComponent<EnemyDamageEngine>().TakeDamage(10f, EffectTypes.Electric);
         }
     }
 }
