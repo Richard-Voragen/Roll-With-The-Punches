@@ -121,7 +121,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (fireball != null)
         {
-            fireballScript.player = target; // Set the fireball's direction towards the player
+            //fireballScript.player = target; // Set the fireball's direction towards the player
 
             //Flip the fireball sprite if shooting to the right
             projectile.GetComponent<SpriteRenderer>().flipX = direction.x < 0;
