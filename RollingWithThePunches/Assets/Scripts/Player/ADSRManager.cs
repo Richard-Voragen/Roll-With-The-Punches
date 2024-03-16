@@ -5,7 +5,7 @@ using UnityEngine;
 public class ADSRManager : MonoBehaviour
 {
     [SerializeField] private GameObject sprite;
-    [SerializeField] private float Speed = 6.5f;
+    [SerializeField] public float Speed = 6.5f;
 
     [SerializeField] private float JumpForce = 5.0f;
 
@@ -233,13 +233,5 @@ public class ADSRManager : MonoBehaviour
     public void SetPhaseRelease() 
     {
         this.CurrentPhase = Phase.Release;
-    }
-
-    void OnDrawGizmos()
-    {
-        // Draw a green box at the transform's position
-        BoxCollider2D box = GetComponent<BoxCollider2D>();
-        Gizmos.color = Color.green;
-        Gizmos.DrawCube((Vector2)transform.position + box.offset, box.size);
     }
 }

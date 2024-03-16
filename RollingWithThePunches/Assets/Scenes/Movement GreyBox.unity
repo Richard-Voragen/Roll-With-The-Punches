@@ -10156,11 +10156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8754a3e7a576fa440ae3a1fc83e56ab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
   speed: 2
   jumpForce: 5
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
   projectilePrefab: {fileID: 3508133537791627107, guid: f3fd8c7adc66fa6469681a671e85708d, type: 3}
   fireballCooldown: 1.5
 --- !u!58 &1860792323
@@ -10677,7 +10675,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 117580072}
-  ShowPhases: 1
   Speed: 8
   JumpForce: 12
   AttackDuration: 0.2
@@ -10764,6 +10761,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  crouching: 0
   IsCrouchJumping: 0
 --- !u!61 &1953221370
 BoxCollider2D:
@@ -10866,9 +10864,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 117580072}
-  fireballPrefab: {fileID: 3508133537791627107, guid: 76b2610411114b540a7c961c24095ff4, type: 3}
+  fireballPrefab: {fileID: 5152050760351329694, guid: f05d18ed9bb295849b193da2dc9b9718, type: 3}
   waterballPrefab: {fileID: 3508133537791627107, guid: 76b2610411114b540a7c961c24095ff4, type: 3}
-  electricballPrefab: {fileID: 5731241970438162381, guid: 90004a28c5658d84a99e84f2701d4bbb, type: 3}
+  electricballPrefab: {fileID: 5152050760351329694, guid: f05d18ed9bb295849b193da2dc9b9718, type: 3}
   spawnDistance: 1.9
   spawnHeight: 0.85
   PunchDuration: 0.3
@@ -11186,6 +11184,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3142322161140256407, guid: d8155b06cdddd4f4085eed5e7e09fceb, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3646192247789865852, guid: d8155b06cdddd4f4085eed5e7e09fceb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.66
@@ -11262,11 +11264,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8754a3e7a576fa440ae3a1fc83e56ab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 1953221368}
   speed: 2
   jumpForce: 5
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
   projectilePrefab: {fileID: 8066676481164154863, guid: 25b5b87d7919ab04da9dd61c31eb5fa1, type: 3}
   fireballCooldown: 1.5
 --- !u!58 &2075378822
@@ -11281,7 +11281,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 2147483648

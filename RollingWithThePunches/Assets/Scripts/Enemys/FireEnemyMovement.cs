@@ -82,18 +82,19 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
     }
 
     void Move()
+{
+    if (target.transform.position.x < transform.position.x)
     {
-        if (target.transform.position.x < transform.position.x)
-        {
-            rb.velocity = new Vector2(-speed, rb.velocity.y);
-            gameObject.GetComponent<SpriteRenderer>().flipX = true;
-        }
-        else
-        {
-            rb.velocity = new Vector2(speed, rb.velocity.y);
-            gameObject.GetComponent<SpriteRenderer>().flipX = false;
-        }
+        rb.velocity = new Vector2(-speed, rb.velocity.y);
+        gameObject.GetComponent<SpriteRenderer>().flipX = false;
     }
+    else
+    {
+        rb.velocity = new Vector2(speed, rb.velocity.y);
+        gameObject.GetComponent<SpriteRenderer>().flipX = true;
+    }
+}
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -125,37 +126,22 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
     }
 
     void Attack()
+{
+    Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y + 1.5f);
+
+    GameObject projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
+    EnemyFireball fireball = projectile.GetComponent<EnemyFireball>();
+
+    if (fireball != null)
     {
-        //Calculate spawn position at enemy's center
-        Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y + 1.5f);
+        bool isPlayerLeft = target.transform.position.x < transform.position.x;
+        fireball.direction = isPlayerLeft ? Vector2.left : Vector2.right;
 
-        GameObject projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
-        EnemyFireball fireball = projectile.GetComponent<EnemyFireball>();
-
-        if (fireball != null)
-        {
-            if (gameObject.GetComponent<SpriteRenderer>().flipX == true)
-            {
-                fireball.direction = -transform.right;
-                projectile.gameObject.GetComponent<SpriteRenderer>().flipX = false;
-            }
-            else 
-            {
-                fireball.direction = transform.right;
-            }
-        }
+        projectile.GetComponent<SpriteRenderer>().flipX = isPlayerLeft;
     }
-
+}
     public void Death()
     {
         Destroy(gameObject);
-    }
-
-    void OnDrawGizmos()
-    {
-        // Draw a green box at the transform's position
-        BoxCollider2D box = GetComponent<BoxCollider2D>();
-        Gizmos.color = Color.green;
-        Gizmos.DrawCube((Vector2)transform.position + box.offset, box.size);
     }
 }

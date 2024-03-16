@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerDamageEngine : MonoBehaviour
@@ -8,18 +6,23 @@ public class PlayerDamageEngine : MonoBehaviour
     [SerializeField] private GameObject sprite;
     [SerializeField] private float health;
     [SerializeField] private float invincibilityTime; 
-    [SerializeField] private bool knockback; 
 
-    private bool canTakeDamage = false;
+    private bool canTakeDamage = true;
     private float i_time = 0.0f;
 
     private Renderer colorpicker;
     private Rigidbody2D rb; 
 
+    private float originalSpeed;
+    public float slowMultiplier = 0.5f;
+    public float speedMultiplier = 1.5f;
+    public float effectDuration = 2f;
+
     void Start()
     {
-        colorpicker = this.sprite.GetComponent<Renderer>();
+        colorpicker = sprite.GetComponent<Renderer>();
         rb = GetComponent<Rigidbody2D>(); 
+        originalSpeed = GetComponent<ADSRManager>().Speed; 
     }
 
     void Update()
@@ -27,34 +30,63 @@ public class PlayerDamageEngine : MonoBehaviour
         i_time += Time.deltaTime;
         if (i_time > invincibilityTime)
         {
-            this.canTakeDamage = true;
-            this.colorpicker.material.color = Color.white;
+            canTakeDamage = true;
+            colorpicker.material.color = Color.white;
         }
     }
 
     public bool TakeDamage(EffectTypes projectileType)
     {
-        if (GetComponent<ADSRManager>().IsCrouchJumping || this.canTakeDamage == false)
+        if (GetComponent<ADSRManager>().IsCrouchJumping || !canTakeDamage)
         {
             return false;
         }
+
         FindObjectOfType<SoundManager>().PlaySoundEffect("Laser");
-        this.canTakeDamage = false;
-        this.colorpicker.material.color = Color.red;
-        this.i_time = 0.0f;
-        this.health -= 1f;
-        if (this.health <= 0.0f)
+        canTakeDamage = false;
+        colorpicker.material.color = Color.red;
+        i_time = 0.0f;
+        health -= 1f;
+
+        if (health <= 0.0f)
         {
             Destroy(gameObject);
         }
 
-        if (knockback)
-        {
-            float directionX = Mathf.Sign(gameObject.transform.localScale.x);
-            rb.AddForce(new Vector2(directionX * -6.0f, 5f), ForceMode2D.Impulse);
-            GetComponent<ADSRManager>().IsCrouchJumping = true;
-            GetComponent<ADSRManager>().crouching = true;
-        }
+        ApplyEffect(projectileType);
         return true;
+    }
+
+    void ApplyEffect(EffectTypes projectileType)
+    {
+        switch (projectileType)
+        {
+            case EffectTypes.Water:
+                StartCoroutine(ModifySpeed(slowMultiplier, effectDuration));
+                break;
+            case EffectTypes.Fire:
+                StartCoroutine(ModifySpeed(speedMultiplier, effectDuration));
+                break;
+            case EffectTypes.Electric:
+                StartCoroutine(DisableMovementTemporarily());
+                break;
+            default:
+                Destroy(gameObject);
+                break;
+        }
+    }
+
+    IEnumerator ModifySpeed(float multiplier, float duration)
+    {
+        ADSRManager playerController = GetComponent<ADSRManager>();
+        playerController.Speed *= multiplier;
+        yield return new WaitForSeconds(duration);
+        playerController.Speed = originalSpeed; 
+    }
+        IEnumerator DisableMovementTemporarily()
+    {
+        GetComponent<ADSRManager>().enabled = false;
+        yield return new WaitForSeconds(2f);
+        GetComponent<ADSRManager>().enabled = true;
     }
 }
