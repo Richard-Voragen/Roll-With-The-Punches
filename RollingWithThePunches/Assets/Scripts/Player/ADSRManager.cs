@@ -235,6 +235,7 @@ public class ADSRManager : MonoBehaviour
         if (collision.gameObject.layer >= 29)
         {
             IsJumping = false;
+            Debug.Log("landed");
             this.IsCrouchJumping = false;
         }
     }
@@ -254,7 +255,7 @@ public class ADSRManager : MonoBehaviour
                 canJump = false;
                 if (Input.GetButton("Jump"))
                 {
-                    collision.gameObject.GetComponent<PlatformController>().PhaseThrough();
+                    collision.gameObject.GetComponent<TilePlatformController>().PhaseThrough();
                     this.IsJumping = true;
                 }
             }
