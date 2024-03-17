@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShootFireball : MonoBehaviour, IPlayerCommand
 {
@@ -12,6 +13,7 @@ public class ShootFireball : MonoBehaviour, IPlayerCommand
     [SerializeField] private float spawnDistance = 1f;
     [SerializeField] private float spawnHeight = 0.5f;
     [SerializeField] private float PunchDuration = 0.3f;
+    [SerializeField] private Image weaponImage;
 
     private float punchTimer = 0.0f;
     private Animator animator;
@@ -34,6 +36,8 @@ public class ShootFireball : MonoBehaviour, IPlayerCommand
         sounds[0] = "Fireball";
         sounds[1] = "Waterball";
         sounds[2] = "Laser";
+        Sprite weaponSprite = Resources.Load<Sprite>("Sprites/Fire");
+        weaponImage.sprite = weaponSprite;
     }
 
     void LateUpdate()
@@ -77,12 +81,29 @@ public class ShootFireball : MonoBehaviour, IPlayerCommand
 
         if (Input.GetButtonDown("Fire2"))
         {
+            Sprite weaponSprite;
             currentPrefab -= 1;
             currentHeight = spawnHeight;
             if (currentPrefab < 0) 
             {
                 currentPrefab = 2;
                 currentHeight = 0;
+            }
+
+            switch (currentPrefab)
+            {
+                case 0:
+                    weaponSprite = Resources.Load<Sprite>("Sprites/Fire");
+                    weaponImage.sprite = weaponSprite;
+                    break;
+                case 1:
+                    weaponSprite = Resources.Load<Sprite>("Sprites/Ice");
+                    weaponImage.sprite = weaponSprite;
+                    break;
+                case 2:
+                    weaponSprite = Resources.Load<Sprite>("Sprites/Lazer");
+                    weaponImage.sprite = weaponSprite;
+                    break;
             }
         }
     }
