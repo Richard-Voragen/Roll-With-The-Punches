@@ -46,6 +46,16 @@ public class PlayerDamageEngine : MonoBehaviour
             return false;
         }
 
+        if (projectileType == EffectTypes.Electric) 
+        {
+            FindObjectOfType<SoundManager>().PlaySoundEffect("Laser");
+            canTakeDamage = false;
+            colorpicker.material.color = Color.grey;
+            i_time = 0.0f;
+            ApplyEffect(projectileType);
+            return true;
+        }
+
         FindObjectOfType<SoundManager>().PlaySoundEffect("Laser");
         canTakeDamage = false;
         colorpicker.material.color = Color.red;
@@ -103,8 +113,8 @@ public class PlayerDamageEngine : MonoBehaviour
     }
     IEnumerator DisableMovementTemporarily()
     {
-        GetComponent<ADSRManager>().enabled = false;
+        GetComponent<ADSRManager>().frozen = true;
         yield return new WaitForSeconds(2f);
-        GetComponent<ADSRManager>().enabled = true;
+        GetComponent<ADSRManager>().frozen = false;
     }
 }
