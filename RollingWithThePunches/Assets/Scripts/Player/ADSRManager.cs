@@ -40,7 +40,8 @@ public class ADSRManager : MonoBehaviour
     public bool overrideInput = false;
     private Vector2 overrideForce;
     private BoxCollider2D boxColl;
-    private BoxCollider2D defaultBoxColl;
+    private Vector2 defaultBoxCollSize;
+    private Vector2 defaultBoxCollOffset;
 
     public bool frozen = false;
 
@@ -50,7 +51,8 @@ public class ADSRManager : MonoBehaviour
         rb = GetComponent<Rigidbody2D>(); 
         animator = this.sprite.GetComponent<Animator>();
         boxColl = GetComponent<BoxCollider2D>();
-        this.defaultBoxColl = this.boxColl;
+        this.defaultBoxCollSize = this.boxColl.size;
+        this.defaultBoxCollOffset = this.boxColl.offset;
     }
 
     void Update()
@@ -110,8 +112,8 @@ public class ADSRManager : MonoBehaviour
             CurrentPhase = Phase.Attack;
             animator.SetBool("Crouch", false);
             this.crouching = false;
-            this.boxColl.size = this.defaultBoxColl.size;
-            this.boxColl.offset = this.defaultBoxColl.offset;
+            this.boxColl.size = this.defaultBoxCollSize;
+            this.boxColl.offset = this.defaultBoxCollOffset;
         }
 
         if (this.velocity < 0.1f && this.CurrentPhase != Phase.Attack && input > 0.01)
@@ -287,6 +289,7 @@ public class ADSRManager : MonoBehaviour
         this.CurrentPhase = Phase.Release;
     }
 
+
     void OnDrawGizmosSelected()
     {
         // Draw a semitransparent red cube at the transforms position
@@ -294,4 +297,5 @@ public class ADSRManager : MonoBehaviour
         Gizmos.DrawCube((Vector2)transform.position, boxColl.size);
         Debug.Log("HELLo");
     }
+
 }

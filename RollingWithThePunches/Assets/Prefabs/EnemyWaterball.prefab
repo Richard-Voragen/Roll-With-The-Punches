@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8344067516281529621}
   - component: {fileID: 8385940272178389324}
   - component: {fileID: 2055261810019867015}
-  - component: {fileID: 1224932852510770077}
+  - component: {fileID: 8992692117807947673}
   m_Layer: 8
   m_Name: EnemyWaterball
   m_TagString: Enemy
@@ -171,7 +171,7 @@ CircleCollider2D:
   m_Offset: {x: 1.9396968, y: -0.30705625}
   serializedVersion: 2
   m_Radius: 0.6502619
---- !u!114 &1224932852510770077
+--- !u!114 &8992692117807947673
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7623582144597366392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d0564ba8503e5e4d98cad92ff427630, type: 3}
+  m_Script: {fileID: 11500000, guid: df482cf643d93744bb0039189b1c9437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectileType: 1
