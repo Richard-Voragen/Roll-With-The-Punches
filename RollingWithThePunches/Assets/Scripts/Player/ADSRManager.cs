@@ -42,13 +42,15 @@ public class ADSRManager : MonoBehaviour
     private BoxCollider2D boxColl;
     private BoxCollider2D defaultBoxColl;
 
+    public bool frozen = false;
+
     void Awake()
     {
         this.CurrentPhase = Phase.None;
         rb = GetComponent<Rigidbody2D>(); 
         animator = this.sprite.GetComponent<Animator>();
         boxColl = GetComponent<BoxCollider2D>();
-        defaultBoxColl = boxColl;
+        this.defaultBoxColl = this.boxColl;
     }
 
     void Update()
@@ -89,6 +91,7 @@ public class ADSRManager : MonoBehaviour
     void CheckMovementInput()
     {
         float input = Input.GetAxis("Horizontal");
+        if (frozen) input = 0.0f;
         if (animator.GetBool((Animator.StringToHash("Punch")))){
             CurrentPhase = Phase.Release;
         }
@@ -282,5 +285,13 @@ public class ADSRManager : MonoBehaviour
     public void SetPhaseRelease() 
     {
         this.CurrentPhase = Phase.Release;
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        // Draw a semitransparent red cube at the transforms position
+        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.DrawCube((Vector2)transform.position, boxColl.size);
+        Debug.Log("HELLo");
     }
 }

@@ -81,7 +81,12 @@ public class ElectricEnemyMovement : MonoBehaviour, IEnemyController
     void CheckToTurn()
     {
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position + transform.right*0.25f, -Vector2.up, 1f);
-        if (hits.Length < 2 && this.active)
+        bool turn = true;
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider.gameObject.layer >= 29) turn = false;
+        }
+        if (turn && this.active)
         {
             this.speed *= -1f;
             this.active = false;
@@ -94,7 +99,7 @@ public class ElectricEnemyMovement : MonoBehaviour, IEnemyController
                 gameObject.GetComponent<SpriteRenderer>().flipX = false;
             }
         }
-        if (hits.Length >= 2)
+        if (turn == false)
         {
             this.active = true;
         }
@@ -158,17 +163,16 @@ public class ElectricEnemyMovement : MonoBehaviour, IEnemyController
     {
         rb.velocity = new Vector2(0f, rb.velocity.y);
 
-        Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y + 1.5f);
+        Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y + 1.4f);
 
         GameObject projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
-        EnemyFireball fireball = projectile.GetComponent<EnemyFireball>();
+        EnemyLightning fireball = projectile.GetComponent<EnemyLightning>();
 
         if (fireball != null)
         {
-            bool isPlayerLeft = target.transform.position.x < transform.position.x;
-            fireball.direction = isPlayerLeft ? Vector2.left : Vector2.right;
+            fireball.direction = GetComponent<SpriteRenderer>().flipX ? Vector2.left : Vector2.right;
 
-            projectile.GetComponent<SpriteRenderer>().flipX = !isPlayerLeft;
+            projectile.GetComponent<SpriteRenderer>().flipX = GetComponent<SpriteRenderer>().flipX;
         }
     }
 
