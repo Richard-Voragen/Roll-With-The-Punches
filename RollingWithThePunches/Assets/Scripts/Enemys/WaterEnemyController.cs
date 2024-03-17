@@ -55,6 +55,10 @@ public class WaterEnemyMovement : MonoBehaviour, IEnemyController
             return;
         }
 
+        if (transform.position.y < -18f) {
+            Destroy(gameObject);
+        }
+
         Move();
 
         this.lastWaterballTime += Time.deltaTime;
@@ -100,6 +104,22 @@ public class WaterEnemyMovement : MonoBehaviour, IEnemyController
         if (collision.gameObject.layer >= 29 && rb.velocity.y < 0.0f)
         {
             boxColl.isTrigger = false;
+        }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerDamageEngine>().TakeDamage(this.gameObject, EffectTypes.Water);
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer >= 29 && rb.velocity.y < 0.0f)
+        {
+            boxColl.isTrigger = false;
+        }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerDamageEngine>().TakeDamage(this.gameObject, EffectTypes.Water);
         }
     }
 

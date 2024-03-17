@@ -58,6 +58,10 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
             return;
         }
 
+        if (transform.position.y < -18f) {
+            Destroy(gameObject);
+        }
+
         this.lastFireballTime += Time.deltaTime;
         if (lastFireballTime > fireballCooldown && UnityEngine.Random.Range(0, 10) > 7)
         {

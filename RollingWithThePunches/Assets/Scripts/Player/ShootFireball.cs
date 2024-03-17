@@ -57,7 +57,7 @@ public class ShootFireball : MonoBehaviour, IPlayerCommand
         {
             if(this.punchTimer > this.PunchDuration && GetComponent<ADSRManager>().crouching == false)
             {
-                if (this.currentPrefab == 2) {
+                if (this.currentPrefab == 2 && this.currentSpawn <= 10f) {
                     this.currentSpawn += 1;
                 }
                 animator.SetBool("Punch", true);

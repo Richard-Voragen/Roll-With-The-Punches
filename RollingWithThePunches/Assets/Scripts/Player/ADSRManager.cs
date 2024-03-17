@@ -66,8 +66,9 @@ public class ADSRManager : MonoBehaviour
         }
 
         if (transform.position.y < -18f) {
+            this.overrideInput = false;
+            boxColl.isTrigger = false;
             transform.position = new Vector3(5.5f, 24f, 0f);
-            
         }
 
         animator.SetFloat("YVelocity", rb.velocity.y);
