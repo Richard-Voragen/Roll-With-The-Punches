@@ -35,7 +35,7 @@ public class BombController : MonoBehaviour
         {
             if (collision.gameObject.GetComponent<PlayerDamageEngine>().TakeDamage(this.gameObject, projectileType))
             {
-                Destroy(gameObject);
+                Destroy(gameObject); 
             }
         }
         else if (!collision.gameObject.CompareTag("Enemy"))
