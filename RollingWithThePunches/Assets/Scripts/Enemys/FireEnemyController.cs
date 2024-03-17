@@ -48,7 +48,7 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
 
     private void Update()
     {
-        if (stunned) return;
+        if (stunned || target == null) return;
 
         if (Vector2.Distance(target.transform.position, this.transform.position) > 20f)
         {
@@ -115,9 +115,25 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer >= 29 && rb.velocity.y < -0.1f)
+        if (collision.gameObject.layer >= 29 && rb.velocity.y < 0.0f)
         {
             boxColl.isTrigger = false;
+        }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerDamageEngine>().TakeDamage(this.gameObject, EffectTypes.Fire);
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer >= 29 && rb.velocity.y < 0.0f)
+        {
+            boxColl.isTrigger = false;
+        }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<PlayerDamageEngine>().TakeDamage(this.gameObject, EffectTypes.Fire);
         }
     }
 
@@ -146,20 +162,21 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
     }
 
     void Attack()
-{
-    Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y + 1.5f);
-
-    GameObject projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
-    EnemyFireball fireball = projectile.GetComponent<EnemyFireball>();
-
-    if (fireball != null)
     {
-        bool isPlayerLeft = target.transform.position.x < transform.position.x;
-        fireball.direction = isPlayerLeft ? Vector2.left : Vector2.right;
+        Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y + 1.5f);
 
-        projectile.GetComponent<SpriteRenderer>().flipX = !isPlayerLeft;
+        GameObject projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
+        EnemyFireball fireball = projectile.GetComponent<EnemyFireball>();
+
+        if (fireball != null)
+        {
+            bool isPlayerLeft = target.transform.position.x < transform.position.x;
+            fireball.direction = isPlayerLeft ? Vector2.left : Vector2.right;
+
+            projectile.GetComponent<SpriteRenderer>().flipX = !isPlayerLeft;
+        }
     }
-}
+
     public void Death()
     {
         Destroy(gameObject);

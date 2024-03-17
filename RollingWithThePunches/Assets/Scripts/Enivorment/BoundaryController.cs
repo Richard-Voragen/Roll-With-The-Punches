@@ -6,7 +6,7 @@ public class BoundaryController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.SendMessage("ChangeDirection");
+            //collision.gameObject.SendMessage("ChangeDirection");
         }
     }
 }

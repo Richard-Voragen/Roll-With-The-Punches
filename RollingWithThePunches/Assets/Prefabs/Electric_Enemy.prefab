@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6057241542200959631}
   - component: {fileID: 8990822220924525183}
   - component: {fileID: 426493866864233217}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Electric_Enemy
-  m_TagString: Ground
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

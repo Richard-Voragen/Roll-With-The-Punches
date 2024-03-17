@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6020253106931192590}
   - component: {fileID: 2253942924265213790}
   - component: {fileID: 4214940606439008743}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Bomb
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -193,5 +193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb61b1c80ab98714e84ef66309fd3bc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileType: 0
   damper: 4
   lifetime: 5

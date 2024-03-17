@@ -59,7 +59,11 @@ public class PlayerDamageEngine : MonoBehaviour
         if (knockback)
         {
             float directionX = (attack.transform.position.x < this.transform.position.x)? 7f : -7f;
-            float jumpForce = (rb.velocity.y > 0.1f) ? 0f : 4f;
+            float jumpForce = 4f;
+            if (rb.velocity.y > 0.01f)
+            {
+                rb.velocity = new Vector2(0f, 0f);
+            }
             GetComponent<ADSRManager>().OverrideWithForce(new Vector2(directionX, jumpForce));
         }
 

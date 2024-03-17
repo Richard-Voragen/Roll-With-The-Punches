@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 8385940272178389324}
   - component: {fileID: 2055261810019867015}
   - component: {fileID: 1224932852510770077}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemyWaterball
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

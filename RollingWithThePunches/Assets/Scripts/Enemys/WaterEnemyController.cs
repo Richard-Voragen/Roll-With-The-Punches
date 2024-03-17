@@ -97,7 +97,7 @@ public class WaterEnemyMovement : MonoBehaviour, IEnemyController
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer >= 29 && rb.velocity.y < -0.1f)
+        if (collision.gameObject.layer >= 29 && rb.velocity.y < 0.0f)
         {
             boxColl.isTrigger = false;
         }

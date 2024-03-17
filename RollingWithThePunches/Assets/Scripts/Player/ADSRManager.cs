@@ -221,7 +221,7 @@ public class ADSRManager : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.layer >= 29)
+        if (collision.gameObject.layer == 30)
         {
             if (rb.velocity.y < -0.1f)
             {
@@ -229,12 +229,12 @@ public class ADSRManager : MonoBehaviour
                 this.overrideInput = false;
                 boxColl.isTrigger = false;
             }
-            if (collision.gameObject.layer == 29)
-            {
-                boxColl.isTrigger = false;
-                IsJumping = false;
-                this.overrideInput = false;
-            }
+        }
+        else if (collision.gameObject.layer == 29)
+        {
+            boxColl.isTrigger = false;
+            IsJumping = false;
+            this.overrideInput = false;
         }
     }
 
@@ -267,7 +267,6 @@ public class ADSRManager : MonoBehaviour
                 this.overrideInput = true;
                 rb.AddForce(this.overrideForce, ForceMode2D.Impulse);
                 this.IsCrouchJumping = false;
-                //this.crouching = false;
             }
         }
     }
