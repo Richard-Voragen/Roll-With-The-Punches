@@ -59,14 +59,27 @@ public class ShootFireball : MonoBehaviour, IPlayerCommand
 
         else if (Input.GetButton("Fire1"))
         {
-            if(this.punchTimer > this.PunchDuration && GetComponent<ADSRManager>().crouching == false)
+            if(this.punchTimer > this.PunchDuration)
             {
-                if (this.currentPrefab == 2 && this.currentSpawn <= 10f) {
-                    this.currentSpawn += 1;
+                if (GetComponent<ADSRManager>().crouching == false)
+                {
+                    if (this.currentPrefab == 2 && this.currentSpawn <= 10f) 
+                    {
+                        this.currentSpawn += 1;
+                    }
+                    animator.SetBool("Punch", true);
+                    Execute(this.gameObject);
+                    this.punchTimer = 0.0f;
                 }
-                animator.SetBool("Punch", true);
-                Execute(this.gameObject);
-                this.punchTimer = 0.0f;
+                else 
+                {
+                    if (this.currentPrefab == 2) 
+                    {
+                        animator.SetBool("Punch", true);
+                        Execute(this.gameObject);
+                        this.punchTimer = 0.0f;
+                    }
+                }
             }
         }
 

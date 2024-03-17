@@ -69,13 +69,15 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
             animator.SetBool("Punch", true);
             Attack();
         }
+
+        bool onEdge = CheckEdge();
         
-        if (Mathf.Abs(target.transform.position.x - transform.position.x) > 1f && lastFireballTime > 0.5f)
+        if (Mathf.Abs(target.transform.position.x - transform.position.x) > 1f && lastFireballTime > 0.5f && !onEdge)
         {
             animator.SetBool("Punch", false);
             Move();
         }
-        else if (Mathf.Abs(target.transform.position.x - transform.position.x) <= 1f)
+        else if (Mathf.Abs(target.transform.position.x - transform.position.x) <= 1f || onEdge)
         {
             rb.velocity = new Vector2(0f, rb.velocity.y);
             animator.SetBool("Punch", true);
@@ -100,6 +102,18 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
         }
 
         animator.SetFloat("XVelocity", Mathf.Abs(rb.velocity.x));
+    }
+
+    bool CheckEdge()
+    {
+        float extra = (target.transform.position.x < transform.position.x)? -0.5f : 1.2f;
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position + transform.right*extra, -Vector2.up, 4f);
+        bool turn = true;
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider.gameObject.layer >= 29) turn = false;
+        }
+        return turn;
     }
 
     void Move()

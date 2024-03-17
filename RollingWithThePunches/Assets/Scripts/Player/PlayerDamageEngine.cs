@@ -56,7 +56,7 @@ public class PlayerDamageEngine : MonoBehaviour
             return true;
         }
 
-        FindObjectOfType<SoundManager>().PlaySoundEffect("Laser");
+        FindObjectOfType<SoundManager>().PlaySoundEffect("Hit");
         canTakeDamage = false;
         colorpicker.material.color = Color.red;
         i_time = 0.0f;

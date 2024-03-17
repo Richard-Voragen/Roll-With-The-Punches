@@ -152,7 +152,7 @@ public class ADSRManager : MonoBehaviour
             if (this.crouching && this.IsJumping == false) 
             {
                 float directionX = Mathf.Sign(gameObject.transform.localScale.x);
-                OverrideWithForce(new Vector2(directionX * 12.0f, 6.0f));
+                OverrideWithForce(new Vector2(directionX * 10.0f, 6.0f));
             }
             else if (this.crouching == false)
             {

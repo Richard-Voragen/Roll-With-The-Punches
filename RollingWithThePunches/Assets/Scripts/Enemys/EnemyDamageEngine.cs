@@ -51,7 +51,15 @@ public class EnemyDamageEngine : MonoBehaviour
         {
             return false;
         }
-        FindObjectOfType<SoundManager>().PlaySoundEffect("Laser");
+
+        if (projectileType == EffectTypes.Fire)
+        {
+            FindObjectOfType<SoundManager>().PlaySoundEffect("FireHit");
+        }
+        else if (projectileType == EffectTypes.Water)
+        {
+            FindObjectOfType<SoundManager>().PlaySoundEffect("WaterHit");
+        }
         this.canTakeDamage = false;
         this.i_time = 0.0f;
         this.colorpicker.material.color = Color.red;

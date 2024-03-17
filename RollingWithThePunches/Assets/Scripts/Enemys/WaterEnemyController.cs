@@ -48,7 +48,7 @@ public class WaterEnemyMovement : MonoBehaviour, IEnemyController
     {
         if (stunned) return;
 
-        if (Vector2.Distance(target.transform.position, this.transform.position) > 20f)
+        if (Vector2.Distance(target.transform.position, this.transform.position) > 30f)
         {
             animator.SetBool("Punch", false);
             rb.velocity = new Vector2(0f, rb.velocity.y);
