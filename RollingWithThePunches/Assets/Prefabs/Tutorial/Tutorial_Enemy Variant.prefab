@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3614884438097032259, guid: d8a68cb0d42cf834fbcf629aa598efc8, type: 3}
       propertyPath: health
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3614884438097032259, guid: d8a68cb0d42cf834fbcf629aa598efc8, type: 3}
       propertyPath: stunTime
@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8061994418681395955, guid: d8a68cb0d42cf834fbcf629aa598efc8, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8183266461680612137, guid: d8a68cb0d42cf834fbcf629aa598efc8, type: 3}
       propertyPath: speed
       value: 0
@@ -76,6 +80,10 @@ PrefabInstance:
       propertyPath: fireballCooldown
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8945857988242159426, guid: d8a68cb0d42cf834fbcf629aa598efc8, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 2505885612178651283, guid: b1fb2e264fcd73440b5381d59bfcf9ac, type: 3}
     m_RemovedComponents:
     - {fileID: 8183266461680612137, guid: d8a68cb0d42cf834fbcf629aa598efc8, type: 3}
     m_RemovedGameObjects: []
