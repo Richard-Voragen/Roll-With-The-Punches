@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 662239798801793639}
   - component: {fileID: 3142322161140256407}
   - component: {fileID: 6114346907101757659}
-  - component: {fileID: 6218569487068248447}
   - component: {fileID: 8192665623264629994}
   m_Layer: 7
   m_Name: Ice_Enemy
@@ -182,22 +181,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6218569487068248447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4705839239078100484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a91485af78cea348be4a9c274f51367, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  jumpForce: 6
-  projectilePrefab: {fileID: 7623582144597366392, guid: 4e3648cc537a5d14585f44b3c69c0897, type: 3}
-  waterballCooldown: 5
 --- !u!114 &8192665623264629994
 MonoBehaviour:
   m_ObjectHideFlags: 0

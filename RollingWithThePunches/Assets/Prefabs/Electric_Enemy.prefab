@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8990822220924525183}
   - component: {fileID: 426493866864233217}
   - component: {fileID: 7297415212574242203}
-  - component: {fileID: 1316389280432393266}
+  - component: {fileID: 831865619593237810}
   m_Layer: 7
   m_Name: Electric_Enemy
   m_TagString: Enemy
@@ -198,7 +198,7 @@ MonoBehaviour:
   health: 45
   invincibilityTime: 0.1
   stunTime: 3
---- !u!114 &1316389280432393266
+--- !u!114 &831865619593237810
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,11 +207,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1872417532034497176}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c70ded01ca8722e45bd6bb085ce4810f, type: 3}
+  m_Script: {fileID: 11500000, guid: b8f686813dbf9ab45b5b42570d1254ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 4
-  jumpForce: 8
-  projectilePrefab: {fileID: 2505885612178651283, guid: 050a06af0a777a843ac867013eba129c, type: 3}
+  projectilePrefab: {fileID: 0}
   fireballCooldown: 1.5
