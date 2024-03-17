@@ -125,7 +125,7 @@ MonoBehaviour:
   direction: {x: 1, y: 0}
   damage: 10
   projectileType: 1
-  lifetime: 2
+  lifetime: 4
 --- !u!61 &-3728473808214057107
 BoxCollider2D:
   m_ObjectHideFlags: 0

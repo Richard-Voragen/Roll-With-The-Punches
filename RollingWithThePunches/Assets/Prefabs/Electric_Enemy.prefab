@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 6057241542200959631}
   - component: {fileID: 8990822220924525183}
   - component: {fileID: 426493866864233217}
+  - component: {fileID: 7297415212574242203}
+  - component: {fileID: 1316389280432393266}
   m_Layer: 7
   m_Name: Electric_Enemy
   m_TagString: Enemy
@@ -29,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1872417532034497176}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.17, y: 1.92, z: 0}
+  m_LocalPosition: {x: 15.44, y: 1.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -122,7 +124,7 @@ BoxCollider2D:
   m_Offset: {x: 0.009651184, y: 1.0900002}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.65, y: 0.05}
+    pivot: {x: 0.5, y: 0.05}
     oldSize: {x: 2.56, y: 2.56}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
@@ -180,3 +182,36 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7297415212574242203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872417532034497176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f6f36372ac9994badebc6514933e51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userType: 2
+  health: 45
+  invincibilityTime: 0.1
+  stunTime: 3
+--- !u!114 &1316389280432393266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872417532034497176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70ded01ca8722e45bd6bb085ce4810f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  speed: 4
+  jumpForce: 8
+  projectilePrefab: {fileID: 2505885612178651283, guid: 050a06af0a777a843ac867013eba129c, type: 3}
+  fireballCooldown: 1.5

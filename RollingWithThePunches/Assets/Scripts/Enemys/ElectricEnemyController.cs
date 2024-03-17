@@ -7,20 +7,14 @@ public class ElectricEnemyMovement : MonoBehaviour, IEnemyController
 {
     public GameObject target;
     public float speed = 4.0f;
-    public float jumpForce = 8.0f;
     [SerializeField] private GameObject projectilePrefab;
     public float fireballCooldown = 1.5f;
     private float lastFireballTime = 0.0f;
 
     private Rigidbody2D rb;
-
-    private float jumpCooldown = 2f;
-    private float lastJumpTime = -2f;
-
     private bool active = true;
 
     private Animator animator;
-
     private bool stunned = false;
     private BoxCollider2D boxColl;
 
@@ -35,8 +29,8 @@ public class ElectricEnemyMovement : MonoBehaviour, IEnemyController
     public void SetUpProcess(GameObject targ)
     {
         this.target = targ;
-        this.speed = UnityEngine.Random.Range(3f, 4.5f);
-        this.fireballCooldown = UnityEngine.Random.Range(1.2f, 2.5f);
+        this.speed = UnityEngine.Random.Range(4f, 6f);
+        this.fireballCooldown = UnityEngine.Random.Range(2.5f, 4.5f);
     }
 
     public void Stun(bool stund)
@@ -87,7 +81,6 @@ public class ElectricEnemyMovement : MonoBehaviour, IEnemyController
     void CheckToTurn()
     {
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position + transform.right*0.25f, -Vector2.up, 1f);
-        Debug.Log(hits.Length);
         if (hits.Length < 2 && this.active)
         {
             this.speed *= -1f;

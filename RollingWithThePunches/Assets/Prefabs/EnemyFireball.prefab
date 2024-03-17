@@ -149,9 +149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileType: 0
-  speed: 7
+  speed: 7.5
   direction: {x: 1, y: 0}
-  lifetime: 30
+  lifetime: 5
 --- !u!58 &2294761454381310999
 CircleCollider2D:
   m_ObjectHideFlags: 0

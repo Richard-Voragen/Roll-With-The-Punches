@@ -167,6 +167,8 @@ public class FireEnemyMovement : MonoBehaviour, IEnemyController
 
     void Attack()
     {
+        rb.velocity = new Vector2(0f, rb.velocity.y);
+
         Vector2 spawnPosition = new Vector2(transform.position.x, transform.position.y + 1.5f);
 
         GameObject projectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);

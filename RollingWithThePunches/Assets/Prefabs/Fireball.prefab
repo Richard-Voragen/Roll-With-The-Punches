@@ -123,7 +123,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   direction: {x: 1, y: 0}
-  lifetime: 2
+  damage: 10
+  projectileType: 0
+  lifetime: 4
 --- !u!50 &4733814475840843319
 Rigidbody2D:
   serializedVersion: 4
