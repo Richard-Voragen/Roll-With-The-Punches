@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: -7412140805838295790}
   - component: {fileID: -3728473808214057107}
   - component: {fileID: 4139826023500525087}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Waterball
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
