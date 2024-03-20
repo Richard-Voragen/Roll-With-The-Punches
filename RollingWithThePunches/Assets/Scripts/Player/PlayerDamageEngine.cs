@@ -79,7 +79,7 @@ public class PlayerDamageEngine : MonoBehaviour
 
         if (health <= 0.0f)
         {
-            Destroy(gameObject);
+            this.GetComponent<ADSRManager>().PlayerDied();
         }
 
         ApplyEffect(projectileType);
@@ -116,5 +116,14 @@ public class PlayerDamageEngine : MonoBehaviour
         GetComponent<ADSRManager>().frozen = true;
         yield return new WaitForSeconds(2f);
         GetComponent<ADSRManager>().frozen = false;
+    }
+
+    IEnumerator Died()
+    {
+        this.sprite.GetComponent<Animator>().SetBool("Dead", true);
+        this.sprite.GetComponent<Animator>().SetTrigger("Died");
+        this.GetComponent<ADSRManager>().overrideInput = true;
+        yield return new WaitForSeconds(2f);
+        this.GetComponent<BoxCollider2D>().isTrigger = true;
     }
 }

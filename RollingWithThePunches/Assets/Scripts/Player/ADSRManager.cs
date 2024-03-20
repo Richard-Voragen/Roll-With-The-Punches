@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ADSRManager : MonoBehaviour
 {
@@ -44,6 +45,8 @@ public class ADSRManager : MonoBehaviour
     private Vector2 defaultBoxCollOffset;
 
     public bool frozen = false;
+
+    private bool playerDead = false;
 
     void Awake()
     {
@@ -93,7 +96,7 @@ public class ADSRManager : MonoBehaviour
     void CheckMovementInput()
     {
         float input = Input.GetAxis("Horizontal");
-        if (frozen) input = 0.0f;
+        if (frozen || playerDead) input = 0.0f;
         if (animator.GetBool((Animator.StringToHash("Punch")))){
             CurrentPhase = Phase.Release;
         }
@@ -208,6 +211,8 @@ public class ADSRManager : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (playerDead) return;
+
         if (collision.gameObject.layer >= 29)
         {
             if (rb.velocity.y < -0.1f)
@@ -227,6 +232,8 @@ public class ADSRManager : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
+        if (playerDead) return;
+
         if (collision.gameObject.layer == 30)
         {
             if (rb.velocity.y < -0.1f)
@@ -281,7 +288,6 @@ public class ADSRManager : MonoBehaviour
         this.overrideForce = new Vector2(force.x, 0f);
         rb.AddForce(new Vector2(0f, force.y), ForceMode2D.Impulse);
         this.IsCrouchJumping = true;
-        //boxColl.isTrigger = true;
     }
 
     public void SetPhaseRelease() 
@@ -295,7 +301,18 @@ public class ADSRManager : MonoBehaviour
         // Draw a semitransparent red cube at the transforms position
         Gizmos.color = new Color(1, 0, 0, 0.5f);
         Gizmos.DrawCube((Vector2)transform.position, boxColl.size);
-        Debug.Log("HELLo");
     }
 
+    public void PlayerDied()
+    {
+        StartCoroutine(Died());
+    }
+    IEnumerator Died()
+    {
+        animator.SetBool("Dead", true);
+        animator.SetTrigger("Died");
+        yield return new WaitForSeconds(1.5f);
+        this.playerDead = true;
+        this.GetComponent<BoxCollider2D>().isTrigger = true;
+    }
 }
