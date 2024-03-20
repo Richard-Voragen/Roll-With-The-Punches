@@ -27,7 +27,8 @@ public class FireballController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (collision.gameObject.GetComponent<EnemyDamageEngine>().TakeDamage(damage, projectileType))
+            EnemyDamageEngine dam = collision.gameObject.GetComponent<EnemyDamageEngine>();
+            if (dam != null && dam.TakeDamage(damage, projectileType))
             {
                 Destroy(gameObject);
             }

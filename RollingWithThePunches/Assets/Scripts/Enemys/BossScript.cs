@@ -2,27 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossScript : MonoBehaviour
+public class BossScript : MonoBehaviour, IEnemyController
 {
+    public GameObject player;
     public GameObject homingMissilePrefab;
-    [SerializeField] private float health = 100f; 
     public float spawnInterval = 3f;
     public float spawnRadius = 5f;
     private bool isWithinTrigger = false;
+    private bool stunned = false;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Stun(bool stund)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isWithinTrigger = true;
-
-            StartCoroutine(SpawnMissiles());
-        }
+        this.stunned = stund;
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    public void SetUpProcess(GameObject targ)
     {
-        if (collision.gameObject.CompareTag("Player"))
+    }
+
+    public void Death()
+    {
+        Destroy(gameObject);
+    }
+
+    void Update()
+    {
+        if (Vector2.Distance(player.transform.position, this.transform.position) < 40f && isWithinTrigger == false)
+        {
+            isWithinTrigger = true;
+            StartCoroutine(SpawnMissiles());
+        }
+        else if (Vector2.Distance(player.transform.position, this.transform.position) > 40f)
         {
             isWithinTrigger = false;
         }
@@ -30,7 +40,7 @@ public class BossScript : MonoBehaviour
 
     IEnumerator SpawnMissiles()
     {
-        while (isWithinTrigger)
+        while (isWithinTrigger && !stunned)
         {
             for (int i = 0; i < 3; i++)
             {

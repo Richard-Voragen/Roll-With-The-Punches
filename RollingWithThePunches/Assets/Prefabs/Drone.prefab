@@ -198,7 +198,7 @@ MonoBehaviour:
   bombPrefab: {fileID: 1830746655493223735, guid: df77c690cf5ccd941a4ce7df5badb864, type: 3}
   floatHeight: 6.4
   damping: 1
-  Speed: 8.5
+  speed: 6.5
   BombDropSpeed: 1
   AttackDuration: 0.8
   Attack:
@@ -263,6 +263,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userType: 3
-  health: 40
+  health: 20
   invincibilityTime: 0.5
   stunTime: 0.1

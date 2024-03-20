@@ -58,6 +58,15 @@ public class ADSRManager : MonoBehaviour
         this.defaultBoxCollOffset = this.boxColl.offset;
     }
 
+    private void Respawn()
+    {
+        GetComponent<PlayerDamageEngine>().TakeDamage(this.gameObject, EffectTypes.Fire);
+        this.overrideInput = false;
+        boxColl.isTrigger = false;
+        transform.position = new Vector3(transform.position.x, 16f, transform.position.z);
+        rb.velocity = new Vector2(0f, 0f);
+    }
+
     void Update()
     {
         CheckMovementInput();
@@ -73,9 +82,7 @@ public class ADSRManager : MonoBehaviour
         }
 
         if (transform.position.y < -18f) {
-            this.overrideInput = false;
-            boxColl.isTrigger = false;
-            transform.position = new Vector3(5.5f, 24f, 0f);
+            Respawn();
         }
 
         animator.SetFloat("YVelocity", rb.velocity.y);
@@ -162,6 +169,7 @@ public class ADSRManager : MonoBehaviour
                 rb.AddForce(new Vector2(0, JumpForce/4.0f), ForceMode2D.Impulse);
                 this.jumpTimer = 0.0f;
                 this.IsJumping = true;
+                this.IsCrouchJumping = false;
             }
         }
 
@@ -169,6 +177,7 @@ public class ADSRManager : MonoBehaviour
         {
             this.jumpTimer += Time.deltaTime;
             rb.AddForce(new Vector2(0, (JumpForce)*(Time.deltaTime/this.jumpButtonActive)), ForceMode2D.Impulse);
+            this.IsCrouchJumping = false;
         }
     }
 
@@ -211,8 +220,6 @@ public class ADSRManager : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (playerDead) return;
-
         if (collision.gameObject.layer >= 29)
         {
             if (rb.velocity.y < -0.1f)
@@ -232,8 +239,6 @@ public class ADSRManager : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (playerDead) return;
-
         if (collision.gameObject.layer == 30)
         {
             if (rb.velocity.y < -0.1f)
@@ -311,8 +316,9 @@ public class ADSRManager : MonoBehaviour
     {
         animator.SetBool("Dead", true);
         animator.SetTrigger("Died");
-        yield return new WaitForSeconds(1.5f);
         this.playerDead = true;
-        this.GetComponent<BoxCollider2D>().isTrigger = true;
+        yield return new WaitForSeconds(3f);
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
 }
