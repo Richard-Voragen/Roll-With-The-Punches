@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Obscura
+namespace CameraControls
 {
     [RequireComponent(typeof(Camera))]
     [RequireComponent(typeof(LineRenderer))]

@@ -195,9 +195,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userType: 0
-  health: 80
+  health: 60
   invincibilityTime: 0.1
-  stunTime: 2
+  stunTime: 3
 --- !u!114 &8945857988242159426
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,8 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField]
     private AudioMixerGroup sfxMixerGroup;
+    [SerializeField]
+    private string defaultBackround;
 
     [SerializeField]
     private List<SoundClip> musicTracks;
@@ -45,7 +47,7 @@ public class SoundManager : MonoBehaviour
         }
 
         //play initial track
-        this.PlayMusicTrack("Background");
+        this.PlayMusicTrack(defaultBackround);
     }
 
     public void PlayMusicTrack(string title)

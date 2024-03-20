@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Obscura
+namespace CameraControls
 {
     public class PushBoxCamera : AbstractCameraController
     {
