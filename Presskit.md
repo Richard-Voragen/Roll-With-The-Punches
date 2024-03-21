@@ -41,7 +41,11 @@ Boss Fight
 ### Developers
 
 Producer: Richard Voragen
+
 Movement/Physics: Jared Martinez
+
 Game Logic: David Liu
+
 Animation and Visuals: Pablo Rivera
+
 User Interface and Input: Jason Kohl
