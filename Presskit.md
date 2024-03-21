@@ -5,5 +5,4 @@ A loser, bottom-of-the-barrel boxer going on a run finds a pair of golden boxing
 Roll With The Punches is a 2D run-and-gun platformer where the player will have to overcome stage obstacles and takedown a variety of grunts left and right with their new powers to reach the boss. The gameplay will consist of a platform style game where the player will be able to move left and right, as well as jump on top of any obstacles in their way. 
 
 ### Trailer
-<!--<a href="https://youtu.be/6IHbzBngjl0?si=dyH1bY0KTx7Go3g1" target="_blank"><img src="https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit%20Images/TrailerTitle.PNG" alt="Trailer" /></a>-->
-<iframe width="560" height="315" src="https://www.youtube.com/embed/6IHbzBngjl0?si=9MurElegaUShf6NW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<a href="https://youtu.be/6IHbzBngjl0?si=dyH1bY0KTx7Go3g1" target="_blank"><img src="https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit%20Images/TrailerTitle.PNG" alt="Trailer" /></a>
