@@ -9,13 +9,25 @@ Roll With The Punches is a 2D run-and-gun platformer where the player will have 
 
 ### Gameplay Images
 
+Game Introduction
 ![Game Introduction][opening]
-test
+
+Tutorial Level
 ![Tutorial Level][tut]
+
+In Game Combat with Enemy
 ![In Game Combat with Enemy][fight]
+
+Platforming
 ![Platforming][jump]
+
+In Game Combat with Enemies
 ![In Game Combat with Enemies][fight2]
+
+Platforming with Enemies
 ![Platforming with Enemies][plat]
+
+Boss Fight
 ![Boss Fight][boss]
 
 [opening]: https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit%20Images/Opening.PNG "Game Introduction"
