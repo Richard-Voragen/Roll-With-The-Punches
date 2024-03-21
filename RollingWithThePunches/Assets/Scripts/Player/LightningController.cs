@@ -20,9 +20,14 @@ public class LightningController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<EnemyDamageEngine>().TakeDamage(10f, EffectTypes.Electric);
+            EnemyDamageEngine engine = collision.gameObject.GetComponent<EnemyDamageEngine>();
+            if (engine != null)
+            {
+                engine.TakeDamage(10f, EffectTypes.Electric);
+            }
         }
     }
 }
