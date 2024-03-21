@@ -300,14 +300,6 @@ public class ADSRManager : MonoBehaviour
         this.CurrentPhase = Phase.Release;
     }
 
-
-    void OnDrawGizmosSelected()
-    {
-        // Draw a semitransparent red cube at the transforms position
-        Gizmos.color = new Color(1, 0, 0, 0.5f);
-        Gizmos.DrawCube((Vector2)transform.position, boxColl.size);
-    }
-
     public void PlayerDied()
     {
         StartCoroutine(Died());
