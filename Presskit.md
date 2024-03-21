@@ -37,3 +37,11 @@ Boss Fight
 [jump]: https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit%20Images/JumpingPlatform.PNG "Platforming"
 [plat]: https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit%20Images/Platforms.PNG "Platforming with Enemies"
 [boss]: https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit%20Images/BossFight.PNG "Boss Fight"
+
+### Developers
+
+Producer: Richard Voragen
+Movement/Physics: Jared Martinez
+Game Logic: David Liu
+Animation and Visuals: Pablo Rivera
+User Interface and Input: Jason Kohl
