@@ -18,7 +18,6 @@ public class ToggleScript : MonoBehaviour
     void Update()
     {
         if (player.transform.position.y < -20f) {
-            Debug.Log("ResetPos"); 
             callWhenOff.Invoke();   
         }
     }
@@ -28,12 +27,10 @@ public class ToggleScript : MonoBehaviour
     {
         if (collision.gameObject.name == "Lightning(Clone)")
         {
-            Debug.Log("Shocked");
             callWhenOn.Invoke();
         }
         if (collision.gameObject.name == "Waterball(Clone)")
         {
-            Debug.Log("diluted");
             callWhenOff.Invoke();
         }
     }
