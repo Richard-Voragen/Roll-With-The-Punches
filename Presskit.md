@@ -9,20 +9,18 @@ Roll With The Punches is a 2D run-and-gun platformer where the player will have 
 
 ### Gameplay Images
 
-![Start menue][start]
-![Player Casting Fireball][fireball]
-![Player Casting Firestorm][firestorm]
-![Player Lighting a Torch][unlit]
-![Torch is Lit][lit]
-![Player Fights enemies][fight]
-![Player gets traped][lock]
-![Player finds a chest][chest]
+![Game Introduction][opening]
+![Tutorial Level][tut]
+![In Game Combat with Enemy][fight]
+![Platforming][jump]
+![In Game Combat with Enemies][fight2]
+![Platforming with Enemies][plat]
+![Boss Fight][boss]
 
-[fireball]: https://github.com/CardCaster-UCD/CardCasterGame/blob/c15f013a86d8e22124b74b5384ff9e1ee0f76169/ImagesPresskit/FireBallCast.png "Using Fireball"
-[firestorm]: https://github.com/CardCaster-UCD/CardCasterGame/blob/c15f013a86d8e22124b74b5384ff9e1ee0f76169/ImagesPresskit/firestormcast.PNG "Using Firestorm"
-[unlit]: https://github.com/CardCaster-UCD/CardCasterGame/blob/c15f013a86d8e22124b74b5384ff9e1ee0f76169/ImagesPresskit/FireTorch.png "Player ligjting torch"
-[lit]: https://github.com/CardCaster-UCD/CardCasterGame/blob/c15f013a86d8e22124b74b5384ff9e1ee0f76169/ImagesPresskit/LitTorch.png "Torch is now lit"
-[fight]: https://github.com/CardCaster-UCD/CardCasterGame/blob/c15f013a86d8e22124b74b5384ff9e1ee0f76169/ImagesPresskit/AttackUPCast.png "Player fighting enemies"
-[lock]: https://github.com/CardCaster-UCD/CardCasterGame/blob/c15f013a86d8e22124b74b5384ff9e1ee0f76169/ImagesPresskit/SealedEntrence.png "Player gets locked in"
-[chest]: https://github.com/CardCaster-UCD/CardCasterGame/blob/c15f013a86d8e22124b74b5384ff9e1ee0f76169/ImagesPresskit/Treasuer.PNG "Find riches"
-[start]: https://github.com/CardCaster-UCD/CardCasterGame/blob/c15f013a86d8e22124b74b5384ff9e1ee0f76169/ImagesPresskit/Start_Screen.png "Start menue"
+[opening]: https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit%20Images/Opening.PNG "Game Introduction"
+[tut]: https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit%20Images/GameJournalistsCannotPassThisLevel.PNG "Tutorial Level"
+[fight]: https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit%20Images/Fight.PNG "In Game Combat with Enemy"
+[fight2]: https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit%20Images/Fight2.PNG "In Game Combat with Enemies"
+[jump]: https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit%20Images/JumpingPlatform.PNG "Platforming"
+[plat]: https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit%20Images/Platforms.PNG "Platforming with Enemies"
+[boss]: https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit%20Images/BossFight.PNG "Boss Fight"
