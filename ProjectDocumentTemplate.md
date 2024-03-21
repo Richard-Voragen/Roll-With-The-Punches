@@ -35,7 +35,8 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 ## Producer (Richard Voragen)
 
-As producer I was tasked with ensuring that my group was up to date on the plan with the game and caught up with deadlines. In order to do this I created a detailed Gantt spreadsheet detailing all of tasks each group member was tasked to do and when those tasks had to be submitted. Beyond that I organized weekly meetings on those deadline days where each group member would show off what they have completed. Along with organizing those meetings I also helped a lot with the coding when group members fell behind schedule due to school or other personal reasons since it was my job to keep the group on schedule. 
+As producer I was tasked with ensuring that my group was up to date on the plan with the game and caught up with deadlines. In order to do this I created a detailed Gantt spreadsheet detailing all of tasks each group member was tasked to do and when those tasks had to be submitted. <br> Beyond that I organized weekly meetings on those deadline days where each group member would show off what they have completed. Every Tuesday I would check in with each group member every Tuesday to remind them what is due that Thurday and I would message each group member on Thursdays to assign them their work for the week.<br>
+Along with organizing those meetings and updates I also helped a lot with the coding when group members fell behind schedule due to school or other personal reasons since it was my job to keep the group on schedule.
 
 ## User Interface and Input
 
@@ -63,11 +64,11 @@ Audio: Richard Voragen
 
 ## Audio
 
-The songs that were used are listed below. Some touch ups were personally done to the music to remove static from the recordings.<br>
+The songs that were used are listed below. Some touch-ups were done in Audacity to the music to remove static from the recordings.<br>
 1. [Buggle Call Rag](https://www.loc.gov/item/jukebox-16321/) by Victor Military Band. This song was recorded in 1916 so under the Music Modernization Act it is free to use in the public domain.
 2. [My Own Iona](https://www.loc.gov/item/jukebox-21051/) by Victor Military Band. This song was recorded in 1916 so under the Music Modernization Act it is free to use in the public domain.
 
-<br>The sound effects are listed below. Pitch and volume have been modified in Unity.<br>
+The sound effects are listed below. Pitch and volume have been modified in Unity.<br>
 1. Fireball attack sound: [fireball.wav](https://freesound.org/people/perduuus/sounds/701804/) by [perduuus](https://freesound.org/people/perduuus/). The licence is Attribution Noncommercial 4.0
 2. Waterball attack sound: [Freeze](https://freesound.org/people/JustInvoke/sounds/446112/) by [JustInvoke](https://freesound.org/people/JustInvoke/). The licence is Attribution 4.0
 3. Lightning zap sound: [FX_Red_Laser_Shot_5.wav](https://freesound.org/people/JakeAMT/sounds/681974/) by [JakeAMT](https://freesound.org/people/JakeAMT/). The licence is Creative Commons 0
