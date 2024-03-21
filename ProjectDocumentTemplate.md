@@ -69,10 +69,13 @@ The songs that were used are listed below. Some touch-ups were done in Audacity 
 2. [My Own Iona](https://www.loc.gov/item/jukebox-21051/) by Victor Military Band. This song was recorded in 1916 so under the Music Modernization Act it is free to use in the public domain.
 
 The sound effects are listed below. Pitch and volume have been modified in Unity.<br>
-1. Fireball attack sound: [fireball.wav](https://freesound.org/people/perduuus/sounds/701804/) by [perduuus](https://freesound.org/people/perduuus/). The licence is Attribution Noncommercial 4.0
-2. Waterball attack sound: [Freeze](https://freesound.org/people/JustInvoke/sounds/446112/) by [JustInvoke](https://freesound.org/people/JustInvoke/). The licence is Attribution 4.0
-3. Lightning zap sound: [FX_Red_Laser_Shot_5.wav](https://freesound.org/people/JakeAMT/sounds/681974/) by [JakeAMT](https://freesound.org/people/JakeAMT/). The licence is Creative Commons 0
-4. Bomb/drone exploding sound: [Explosion 4.wav](https://freesound.org/people/theplax/sounds/560575/) by [theplax](https://freesound.org/people/theplax/). The licence is Attribution 4.0
+1. Fireball attack sound: [fireball.wav](https://freesound.org/people/perduuus/sounds/701804/) by [perduuus](https://freesound.org/people/perduuus/). The licence is Attribution Noncommercial 4.0, it is free to use for noncommercial purposes with credit given to the author.
+2. Fireball hit sound: [Fireball Explosion.wav](https://freesound.org/people/HighPixel/sounds/431174/) by [HighPixel](https://freesound.org/people/HighPixel/). The licence is Creative Commons 0, it is free to use for anyone.
+3. Waterball attack sound: [Freeze](https://freesound.org/people/JustInvoke/sounds/446112/) by [JustInvoke](https://freesound.org/people/JustInvoke/). The licence is Attribution 4.0, it is free to use with credit given to the author.
+4. Waterball hit sound: [ICEImpt_ImpactBreak01_InMotion](https://freesound.org/people/InMotionAudio/sounds/719169/) by [InMotionAudio](https://freesound.org/people/InMotionAudio/). The licence is Creative Commons 0, it is free to use for anyone.
+5. Lightning zap sound: [FX_Red_Laser_Shot_5.wav](https://freesound.org/people/JakeAMT/sounds/681974/) by [JakeAMT](https://freesound.org/people/JakeAMT/). The licence is Creative Commons 0, it is free to use for anyone.
+6. Bomb/drone exploding sound: [Explosion 4.wav](https://freesound.org/people/theplax/sounds/560575/) by [theplax](https://freesound.org/people/theplax/). The licence is Attribution 4.0, it is free to use with credit given to the author.
+7. Player taking damage sound: [Casual Death Loose](https://freesound.org/people/GameAudio/sounds/220203/) by [GameAudio](https://freesound.org/people/GameAudio/). The licence is Creative Commons 0, it is free to use for anyone.
 
 ## Gameplay Testing
 
