@@ -92,6 +92,14 @@ Level design had a big role in our game as it was the environment that the user 
 
 **Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
 
+Getting the movement to feel similar or the same as Cuphead was one of the most vital steps for this game. 
+
+Controls:
+| Action | Button |
+| ----------- | ----------- |
+| Left | A or Left DPad/Joystick |
+| Jump | Space |
+
 ## Animation and Visuals (Pablo Rivera)
 
 **List your assets, including their sources and licenses.**
