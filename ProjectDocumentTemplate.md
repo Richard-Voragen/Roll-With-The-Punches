@@ -133,11 +133,9 @@ The sound effects are listed below. Pitch and volume have been modified in Unity
 6. Bomb/drone exploding sound: [Explosion 4.wav](https://freesound.org/people/theplax/sounds/560575/) by [theplax](https://freesound.org/people/theplax/). The licence is Attribution 4.0, it is free to use with credit given to the author.
 7. Player taking damage sound: [Casual Death Loose](https://freesound.org/people/GameAudio/sounds/220203/) by [GameAudio](https://freesound.org/people/GameAudio/). The licence is Creative Commons 0, it is free to use for anyone.
 
-## Gameplay Testing
+## Gameplay Testing (Richard Voragen, Jared Martinez, Pablo Rivera, Jason Kohl)
 
-**Add a link to the full results of your gameplay tests.**
-
-**Summarize the key findings from your gameplay tests.**
+The key findings of our public playtesting is that our game had great visuals as well as great audio. Our game is also very challenging, as many players were not able to make it even halfway through our game's level. Though our game was challenging, participants reported that they liked the art as well as the audio enough to want to play more of our game, even though they were not actually doing very good. Some participants even reported liking the challenge of our game and wanted to play it more because it was hard.
 
 ## Narrative Design
 
