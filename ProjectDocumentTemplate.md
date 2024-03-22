@@ -98,7 +98,11 @@ Controls:
 | Action | Button |
 | ----------- | ----------- |
 | Left | A or Left DPad/Joystick |
+| Right | A or Right DPad/Joystick |
 | Jump | Space |
+| Duck | S |
+| Roll | S + Space |
+| Roll | S + Space |
 
 ## Animation and Visuals (Pablo Rivera)
 
