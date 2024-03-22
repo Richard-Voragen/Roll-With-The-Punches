@@ -136,6 +136,8 @@ The sound effects are listed below. Pitch and volume have been modified in Unity
 ## Press Kit and Trailer (Jason Kohl)
 
 <a href="https://github.com/Richard-Voragen/Roll-With-The-Punches/edit/main/Presskit.md">Presskit</a>
+
+Trailer
 <a href="https://youtu.be/6IHbzBngjl0?si=dyH1bY0KTx7Go3g1" target="_blank"><img src="https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit%20Images/TrailerTitle.PNG" alt="Trailer" /></a>
 
 To best showcase our work, I played through our game multiple times to capture exciting or cool moments that I would find interesting and enticing if I was watching a gameplay trailer. I then loaded all of the clips that I had recorded into shortcut and worked on cutting down the clips into only the best and most exciting parts. I then wanted to follow the theme of our game and included the music that is used in-game in the trailer. The music track was way too long, so I managed to splice it into a 1-minute version to fit the gameplay trailer timeline. I then added in some free video of silent movie cards to really go with the theme of the game and add variety to the trailer so that it was not only gameplay. I made sure to keep the title cards short to maximize audience attention.
