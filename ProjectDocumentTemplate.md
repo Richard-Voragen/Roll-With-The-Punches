@@ -83,9 +83,16 @@ These following scripts are for the game logic:
 
 **Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
 
-## Animation and Visuals
+## Animation and Visuals (Pablo Rivera)
 
 **List your assets, including their sources and licenses.**
+Stage Asset Tileset: https://guardian5.itch.io/warehouse-tileset (Used for all elements minus the moving platforms which were made by me, also the concrete tile flooring was made by me as well)
+Projectile Assets:
+  Lightning: https://sanctumpixel.itch.io/lightning-lines-pixel-art-effect?download
+  Fire and Water: https://www.gamedeveloperstudio.com/graphics/viewgraphic.php?item=1k4p441y0p3p8z9a5n
+Initial Concepts: 
+  We went into the project with a strong concept for a run-and-gun style game revolving around boxers to fit the theme of "rolling with the punches". After we established the core concept of the game, I went into research looking for brawler-type sprites to reference and use as a base for my animations. This led me to reference Scott Pilgrim Vs the World: The Game, where their expressive motions I sought to emulate in my work. ![image](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/8150ed7d-cb13-4aa7-99d1-cadd2de0b3e7)
+
 
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
 
