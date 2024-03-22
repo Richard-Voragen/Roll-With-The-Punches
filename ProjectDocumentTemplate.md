@@ -158,7 +158,7 @@ https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/b7bb922f64d7cfc811
 
 ## Game Logic
 
-**Document the game states and game data you managed and the design patterns you used to complete your task.**
+For our game logic, we implemented multiple scripts to handle everything from camera controls to enemy spawning.  The PlayerDamageEngine.cs script was integral to managing our game’s state as it tracked when the game should reset depending on the health of the player. We also had scripts such as Teleport.cs that moved the player from the tutorial scene over to the main level scene once the player’s location reached a certain point on the tutorial map. The EnemyFactory.cs script was also important to the game’s state as it tracked the location of the player and started spawning enemies once the player reached a certain distance. The PositionLockCamera.cs script also played a large role in our game’s state as it tracked the player’s location and moved the camera to stay with the player. 
 
 # Sub-Roles
 
