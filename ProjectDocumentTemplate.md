@@ -8,7 +8,7 @@
 
 ## Project Resources
 
-[Web-playable version of your game.](https://itch.io/)  
+[Web-playable version of your game.](https://jmg21ucd.itch.io/rolling-with-the-punches)
 [Trailor](https://youtu.be/6IHbzBngjl0?si=dyH1bY0KTx7Go3g1)  
 [Press Kit](https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit.md)  
 [Proposal: make your own copy of the linked doc.](https://docs.google.com/document/d/1qwWCpMwKJGOLQ-rRJt8G8zisCa2XHFhv6zSWars0eWM/edit?usp=sharing)  
