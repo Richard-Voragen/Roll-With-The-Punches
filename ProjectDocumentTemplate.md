@@ -92,7 +92,7 @@ Level design had a big role in our game as it was the environment that the user 
 
 **Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
 
-Getting the movement to feel similar or the same as Cuphead was one of the most vital steps for this game. 
+Getting the movement to feel similar or the same as Cuphead was one of the most vital steps for this game. At first, I had to study and really refresh my memory on how the Cuphead characters moved in their world and replicate it from a pure game feel which is also ironic since that is my other role. 
 
 Controls:
 | Action | Button |
@@ -104,6 +104,9 @@ Controls:
 | Roll/Dodge | S + Space |
 | Shoot | Left Click (Hold) |
 | Change Projectile | Right Click |
+| Pause | Escape |
+
+In terms of physics, we relied on Unity's built-in physics engine and attached rigid bodies to objects that needed some type of physics/force applied to them. Since this would be essentially a 2D platformer, the physics would not need to be very robust at all and thankfully because of that, it saved us quite a bit of headaches.
 
 ## Animation and Visuals (Pablo Rivera)
 
