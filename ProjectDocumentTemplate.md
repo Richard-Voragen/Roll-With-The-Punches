@@ -4,6 +4,8 @@
 
 **A paragraph-length pitch for your game.**
 
+**Roll With The Punches** is a platforming run and gun starring our main character, a boxer named **Arthur**. After a less-than-successful start to his career, he was humiliated in a match against the **Champ**. After suffering a huge blow to his pride, he came upon golden gloves that promised him the power to defeat anyone... at a cost that he could never lose again. With desperation, he agrees and thus inherits the elemental powers of electricity, fire, and ice, which is a fundamental aspect of the gameplay, throughout the venture **Arthur** will be up against a multitude of **The Champ's** lackeys, which is where type matchups will come into play. He aims to traverse through the underground fight club owned by **The Champ** and take him down to reclaim his pride and fulfill his contract with the golden gloves. The stages will include a multitude of projectiles, obstacles, and platforming, but with the help of the golden gloves, **Arthur** just might have a shot. 
+
 ## Project Resources
 
 [Web-playable version of your game.](https://itch.io/)  
