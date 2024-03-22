@@ -134,9 +134,17 @@ The Stage Boss was kept simple yet challenging for time constraints. It is a sta
 ![boss_statue](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/5f43e858-08c2-4820-b1af-2ff746891f9b)
 
 [Implementation of Animations and Added Responsibilities]
-  *Setting Up a Tile Map*: For us to have a workable tilemap, I had to figure out how the tilemap system works, as well as how to configure the collider and composite collider as well as the rigid body to make a dynamic collider that will adjust as we draw our tiles. The program was differentiated between a floor and platforms, which platforms used a script developed by another team member. From there I overlayed the entire stage and playtested it to ensure functionality. 
-  *Setting Up Moving Platforms* To get the desired effect from the moving platforms, I completely refactored the code for all moving platforms, as well as wrote the script for the generator platform. 
 
+  *Setting Up a Tile Map*: For us to have a workable tilemap, I had to figure out how the tilemap system works, as well as how to configure the collider and composite collider as well as the rigid body to make a dynamic collider that will adjust as we draw our tiles. The program was differentiated between a floor and platforms, which platforms used a script developed by another team member. From there I overlayed the entire stage and playtested it to ensure functionality. 
+  
+  *Setting Up Moving Platforms* To get the desired effect from the moving platforms, I completely refactored the code for all moving platforms, as well as wrote the script for the generator platform. 
+https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/b7bb922f64d7cfc8117e6f541facf9960b31e332/RollingWithThePunches/Assets/Scripts/Enivorment/MovingPlatforms.cs#L1-L77
+https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/b7bb922f64d7cfc8117e6f541facf9960b31e332/RollingWithThePunches/Assets/Scripts/Enivorment/ToggleScript.cs#L1-L39
+
+*Coding The Final Boss* 
+In addition to designing the final boss, I was in charge of writing the homing missile scripts as well as the boss script. 
+https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/b7bb922f64d7cfc8117e6f541facf9960b31e332/RollingWithThePunches/Assets/Scripts/Enemys/BossScript.cs#L1-L54
+https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/b7bb922f64d7cfc8117e6f541facf9960b31e332/RollingWithThePunches/Assets/Scripts/Enemys/Drone/HomingMissile.cs#L1-L44
 
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
 
