@@ -120,7 +120,7 @@ The original fireball projectile which spawned similar scripts for iceball and e
 
 ### Physics
 
-In terms of physics, we relied on Unity's built-in physics engine and attached rigid bodies to objects that needed some type of physics/force applied to them. Since this would be essentially a 2D platformer, the physics would not need to be very robust at all and thankfully because of that, it saved us quite a bit of headaches. 
+In terms of physics, we relied on Unity's built-in physics engine and attached rigid bodies to objects that needed some type of physics/force applied to them. Since this would be essentially a 2D platformer, the physics would not need to be very robust at all and thankfully because of that, it saved us quite a bit of headaches. However, working with the movement also led me to do some programming with the UI/Enviroment. Decorating the tutorial level and creating a simple teleport script that helps move the player from the tutorial room to the actual level. https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/9482bb21acc1a4f55bdc1ef7f592f43e1728bf2e/RollingWithThePunches/Assets/Scripts/Tutorial/Teleport.cs#L1C1-L13C2 If we were to implement anymore levels we could easily change this script to allow teleportation to different rooms. 
 
 ## Animation and Visuals (Pablo Rivera)
 
