@@ -156,7 +156,7 @@ https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/b7bb922f64d7cfc811
 
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
 
-## Game Logic
+## Game Logic (Richard Voragen, Jared Martinez, Pablo Rivera, Jason Kohl)
 
 For our game logic, we implemented multiple scripts to handle everything from camera controls to enemy spawning.  The [PlayerDamageEngine.cs]( https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/RollingWithThePunches/Assets/Scripts/Player/PlayerDamageEngine.cs) script was integral to managing our game’s state as it tracked when the game should reset depending on the health of the player. We also had scripts such as [Teleport.cs]( https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/RollingWithThePunches/Assets/Scripts/Tutorial/Teleport.cs)  that moved the player from the tutorial scene over to the main level scene once the player’s location reached a certain point on the tutorial map. The [EnemyFactory.cs]( https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/RollingWithThePunches/Assets/Scripts/Enemys/EnemyFactory.cs)  script was also important to the game’s state as it tracked the location of the player and started spawning enemies once the player reached a certain distance. The [PositionLockCameraController.cs]( https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/RollingWithThePunches/Assets/Scripts/Camera/PositionLockCameraController.cs)  script also played a large role in our game’s state as it tracked the player’s location and moved the camera to stay with the player. 
 
