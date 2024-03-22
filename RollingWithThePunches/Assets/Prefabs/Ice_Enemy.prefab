@@ -211,6 +211,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userType: 1
-  health: 60
+  health: 50
   invincibilityTime: 0.1
   stunTime: 6
