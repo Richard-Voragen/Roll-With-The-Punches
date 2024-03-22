@@ -130,10 +130,10 @@ As the game progressed we wanted to add more options to player movement and even
 ![crouch_jump](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/a5f71ea5-f1c1-4772-a5cc-cb1dd508b8b0)
 ![air_punch](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/381d330e-5387-4432-b0b3-af9d9dffe448)
 ![player_death](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/4337fdb0-23e1-45d5-8a04-fe9f5aca6555)
-The Stage Boss was kept simple yet challenging for time constraints. It is a statue modeled after the electric enemy, however, instead of stun bolts, the enemy was designed as a homing missile launcher, which makes sense as drones can already drop missiles but instead, these missiles just have a special property. It also makes sense as a first boss narratively as the champ would set up mechanical obstacles to test any challenger's abilities before a genuine face-off. Lastly, some drawings were completed for an introduction cutscene, which was directly created with the express purpose of illustrating the written narrative of Arthur's lore.   ![boss_statue](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/5b4f98f6-b466-4192-a67d-d98295e5bab8)
-![Game_Stills_1](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/de4eb412-5706-4aa0-84a1-df3d055bc195)
-![Game_Stills_3](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/4e265906-ee55-4818-b669-5d971df7d1ae)
-![Game_Stills_2](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/cd564246-101d-4d16-9ad4-7186ed04b4a1)
+The Stage Boss was kept simple yet challenging for time constraints. It is a statue modeled after the electric enemy, however, instead of stun bolts, the enemy was designed as a homing missile launcher, which makes sense as drones can already drop missiles but instead, these missiles just have a special property. It also makes sense as a first boss narratively as the champ would set up mechanical obstacles to test any challenger's abilities before a genuine face-off. Lastly, some drawings were completed for an introduction cutscene, which was directly created with the express purpose of illustrating the written narrative of Arthur's lore.  
+![boss_statue](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/5f43e858-08c2-4820-b1af-2ff746891f9b)
+
+
 
 
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
