@@ -143,7 +143,7 @@ The key findings of our public playtesting is that our game had great visuals as
 
 ## Press Kit and Trailer (Jason Kohl)
 
-<a href="https://github.com/Richard-Voragen/Roll-With-The-Punches/edit/main/Presskit.md">Presskit</a>
+<a href="https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit.md">Presskit</a>
 
 Trailer
 <a href="https://youtu.be/6IHbzBngjl0?si=dyH1bY0KTx7Go3g1" target="_blank"><img src="https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit%20Images/TrailerTitle.PNG" alt="Trailer" /></a>
