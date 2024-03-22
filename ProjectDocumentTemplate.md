@@ -112,7 +112,7 @@ The player's movement is essentially all controlled by the [ADSRManager.cs](http
 
 ### Enemy Movement and Artificial Intelligence
 
-I was also in charge of the enemy movement/AI which was a huge struggle since so many bugs arose. Thankfully, it worked pretty well after hours of debugging. https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/a4e78b7374496baa9fbc7cec06d7e299d008de97/RollingWithThePunches/Assets/Scripts/Enemys/EnemyMovement.cs#L1-L105 Tasked with making enemy AI akin to Super Mario Bros where they move left if on the ground (or move right and left if on a platform) but when they see the player they get agro'd towards them, shoot, and jump. Using a large circle collider as a trigger and a box collider for any collisions. However, the enemy AI was changed and this script had to be reworked.
+I was also in charge of the enemy movement/AI which was a huge struggle since so many bugs arose. Thankfully, it worked pretty well after hours of debugging. https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/a4e78b7374496baa9fbc7cec06d7e299d008de97/RollingWithThePunches/Assets/Scripts/Enemys/EnemyMovement.cs#L1-L105 Tasked with making enemy AI akin to Super Mario Bros where they move left if on the ground (or move right and left if on a platform) but when they see the player they get agro'd towards them, shoot, and jump. Using a large circle collider as a trigger and a box collider for any collisions. However, the enemy AI was changed and this script had to be reworked to fit the different movements that each elemental enemy would bring to the game.
 
 #### Attacks
 
