@@ -198,7 +198,7 @@ The sound effects are listed below. Pitch and volume have been modified in Unity
 
 ## Gameplay Testing (Richard Voragen, Jared Martinez, Pablo Rivera, Jason Kohl)
 
-The key findings of our public playtesting is that our game had great visuals as well as great audio. Our game is also very challenging, as many players were not able to make it even halfway through our game's level. Though our game was challenging, participants reported that they liked the art as well as the audio enough to want to play more of our game, even though they were not actually doing very good. Some participants even reported liking the challenge of our game and wanted to play it more because it was hard.
+The key findings of our public playtesting is that our game had great visuals as well as great audio. Our game is also very challenging, as many players were not able to make it even halfway through our game's level. Though our game was challenging, participants reported that they liked the art as well as the audio enough to want to play more of our game, even though they were not actually doing very good. Some participants even reported liking the challenge of our game and wanted to play it more because it was hard. After watching people playtest our game, we knew we immediately had to change the health of the enemys and increase the health of the player just to give new players a chance at reaching the end and even being able to see the boss.
 
 ## Narrative Design (Pablo Rivera)
 
