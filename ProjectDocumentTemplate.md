@@ -185,8 +185,14 @@ Admittedly, I came up with the concept, the premise, and the storyline with the 
 
 [Assets]
 As both the narrative designer and the art/animation designer, I had executive control over ensuring all of my assets fit the narrative. From the warehouse landscape, the character and enemy design, down to the death animation of the player. I made sure visually we are telling the story of Arthur and his reckless journey through the champion's warehouse where he hosts his underground fight full of lackeys. 
-[Gameplay systems]
 
+[Gameplay systems]
+The two major systems are the combat and platforming systems, both of which follow the narrative as they rely on Arthur's newfound elemental abilities from the golden gloves and physical prowess as a boxer to traverse and progress through the level.
+
+[The Introduction Cutscene] 
+The introduction cutscene was designed with the intent of giving the player all of the exposition they will need for gameplay, both the art and the writing were done by me to communicate Arthur's story in a fun and visually appealing manner. This then gives the player an idea of who the character is, their goals and motivation, and as you see throughout the gameplay the struggle is to achieve what he is after even with his newfound powers. Also, as a final gag, you see in any death the gloves explode on Arthur, as a final hint at the contract that he can no longer afford to lose or he will lose any hope of beating the champion as the gloves will reject him and combust. 
+
+Ultimately, everything was crafted with the design and intent of following the narrative that started and inspired out entire game project. 
 
 ## Press Kit and Trailer (Jason Kohl)
 
