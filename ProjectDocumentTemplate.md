@@ -1,4 +1,4 @@
-# The title of your game #
+# Roll With The Punches #
 
 ## Summary ##
 
@@ -77,6 +77,12 @@ The user interface for our game consists of a health point counter and the curre
 Since we allow the player to have different weapons, we have to be able to detect when the player wants to switch weapons. We accomplished this task by tracking the player's button presses and linked the fire2 (right click) command to swap the player's weapons. This means we also have to swap the current weapon UI that is above the player's health points counter. To do this we added code into the fire2 detection logic to track when fire2 is pressed and to then switch to the next weapon icon to match the current weapon that the player is holding. This was accomplished by editing the ShootFireball.cs file to set the correct UI weapon image to match the correct current weapon(https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/e32ea1f8b5804aaa2b87743b1ba98609c54a062d/RollingWithThePunches/Assets/Scripts/Player/ShootFireball.cs#L106).
 
 Level design had a big role in our game as it was the environment that the user was put into and interacted with throughout their time playing the game. The level design had to be both exciting enough for the user to find interesting, but also challenging as our game was also a platformer. To achieve this I researched other platformer games to see what kinds of environments and challenges they put into their games to make their games both fun and exciting to experience. One big part of many platformers is moving platforms. I was able to implement these items into the game via the upAndDown.cs and sideToSide.cs scripts. These scripts were attached to platforms that we wanted to move around to add challenge, and would detect when they collided with a bumper to know when to start moving the opposite way.The sideToSide.cs script (https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/RollingWithThePunches/Assets/Scripts/Enivorment/sideToSide.cs) is used for all horizontal moving platforms. upAndDown.cs script is used for moving the platforms vertically (https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/RollingWithThePunches/Assets/Scripts/Enivorment/upAndDown.cs), mainly in the section of the game where there are three vertical moving platforms that are all moving at once. 
+
+![Fire](https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit%20Images/fire.png)
+
+![Water](https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit%20Images/water.png)
+
+![Electricity](https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit%20Images/electric.png)
 
 ## Movement/Physics
 
