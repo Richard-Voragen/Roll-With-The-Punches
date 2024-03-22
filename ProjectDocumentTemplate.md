@@ -125,7 +125,11 @@ After the skeletons were made, a generic body outline was constructed for each a
 ![Capture_1](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/db3baff3-1943-4593-8449-e77493956042)
 ![Capture_3](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/73a0c647-f2c9-41a9-a2be-89182e815d50)
 ![Capture_2](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/74acc97e-72d0-4842-93e7-b9b1aeb3c9f0)
-
+[Last Minute Additions]
+As the game progressed we wanted to add more options to player movement and even a stage boss for the player to overcome. The three major additions were a crouch jump, an air attack, and a death animation. For the animations, I took a more freeform approach and wanted to add some game references while making them believable to the narrative. For the crouch jump, I took inspiration from Sonic's spin dashing, this kept animation simple but gave a visually appealing short hop as the player has spiky hair so it fit with the character as well. For air attacks, it was just a fusion of the jump and punch animations so nothing special. Lastly, for the death animation, I wanted to incorporate an earthbound reference, which is when Ness explodes from failed teleportation. Essentially, this fits narratively as the contract with the golden gloves implies that Arthur can never lose again, as such if he does, the gloves combust, and that is KO for Arthur.
+![crouch_jump](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/a5f71ea5-f1c1-4772-a5cc-cb1dd508b8b0)
+![air_punch](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/381d330e-5387-4432-b0b3-af9d9dffe448)
+![player_death](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/4337fdb0-23e1-45d5-8a04-fe9f5aca6555)
 
 
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
