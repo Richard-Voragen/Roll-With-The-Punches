@@ -229,6 +229,8 @@ To best showcase our work, I played through our game multiple times to capture e
 
 I chose the screenshots included in the press kit as they show a lot of the main parts of our game in order that the player would experience them. The first screenshot shows off our intro scene that gives the player the backstory of the game. I then included a screenshot of the tutorial to show how our game features a tutorial to help any players learn how to play our game. The next few screenshots show off different parts of our game such as combat scenarios that the player might find themselves in or the platforming obstacles that they will have to conquer on their way to the final boss. Lastly I included a screenshot of the player fighting the final boss as that is the ending of our game, but I did not show the player actually beating the boss as that would take away all of the suspense and drive of the player to actually play the game. 
 
-## Game Feel and Polish
+## Game Feel and Polish (Jared Martinez)
 
 **Document what you added to and how you tweaked your game to improve its game feel.**
+
+Game feel and polish was an ongoing process that honestly consisted of all of us whenever we would playtest our changes or additions. Like I mentioned in my movement section that #1 most important part was ensuring the movement was like Cuphead or else the whole inspiration and charm of the game could be lost. I first started by watching videos on Cuphead and focusing on. Like I also mentioned, a lot of scripts got revamped, rewritten, or heavily added ontop of since the beginning of the game. If you look at the scripts from the start of development to know you would be able to see the monumental differences. 
