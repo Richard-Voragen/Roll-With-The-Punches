@@ -16,8 +16,9 @@
 ## Gameplay Explanation ##
 
 **In this section, explain how the game should be played. Treat this as a manual within a game. Explaining the button mappings and the most optimal gameplay strategy is encouraged.**
+D- Right, A- Left, S- Duck, Space- Jump, S+Space- Crouch Dodge, Left Click(Hold)- Attack (Projectile NOT Melee), Right Click- Change Types. 
 
-
+After the prologue, you are dropped into a tutorial that should teach you fundamental aspects of the game such as button mapping. However, to most optimally play the game is to understand the strengths of lightning and crouch jumping. When you are dropped into the first stage, you are greeted with a drone that drops projectiles and an enemy that will chase you and launch fireballs at you. Though to a beginner it seems daunting, lightning inflicts stun on the enemy, and is the most effective way to hit pesky drones and eliminate them. Remove drones ASAP, as they are especially difficult to deal with when also facing enemies. As you progress through the stage you will find that having electricity set before you jump to new platforms is the most effective approach, as you will frequently find yourself jumping to a spot on the platform where you cannot see the enemies. Speaking of, each enemy has a distinct weakness and type of matchup, which is water beats fire, electricity stuns water for longer leaving it more vulnerable, and electricity is weak to water. However, electric enemy projectiles do not inflict damage, they inflict stun and will then rush you so you take damage as you collide with them.  
 **Add it here if you did work that should be factored into your grade but does not fit easily into the proscribed roles! Please include links to resources and descriptions of game-related material that does not fit into roles here.**
 
 # Main Roles #
