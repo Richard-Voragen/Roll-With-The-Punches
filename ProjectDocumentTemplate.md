@@ -130,10 +130,12 @@ As the game progressed we wanted to add more options to player movement and even
 ![crouch_jump](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/a5f71ea5-f1c1-4772-a5cc-cb1dd508b8b0)
 ![air_punch](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/381d330e-5387-4432-b0b3-af9d9dffe448)
 ![player_death](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/4337fdb0-23e1-45d5-8a04-fe9f5aca6555)
-The Stage Boss was kept simple yet challenging for time constraints. It is a statue modeled after the electric enemy, however, instead of stun bolts, the enemy was designed as a homing missile launcher, which makes sense as drones can already drop missiles but instead, these missiles just have a special property. It also makes sense as a first boss narratively as the champ would set up mechanical obstacles to test any challenger's abilities before a genuine face-off. Lastly, some drawings were completed for an introduction cutscene, which was directly created with the express purpose of illustrating the written narrative of Arthur's lore.  
+The Stage Boss was kept simple yet challenging for time constraints. It is a statue modeled after the electric enemy, however, instead of stun bolts, the enemy was designed as a homing missile launcher, which makes sense as drones can already drop missiles but instead, these missiles just have a special property. It also makes sense as a first boss narratively as the champ would set up mechanical obstacles to test any challenger's abilities before a genuine face-off. Lastly, some drawings were completed for an introduction cutscene, which was directly created with the express purpose of illustrating the written narrative of Arthur's lore.\  
 ![boss_statue](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/5f43e858-08c2-4820-b1af-2ff746891f9b)
 
-
+[Implementation of Animations and Added Responsibilities]
+  *Setting Up a Tile Map*: For us to have a workable tilemap, I had to figure out how the tilemap system works, as well as how to configure the collider and composite collider as well as the rigid body to make a dynamic collider that will adjust as we draw our tiles. The program was differentiated between a floor and platforms, which platforms used a script developed by another team member. From there I overlayed the entire stage and playtested it to ensure functionality. 
+  *Setting Up Moving Platforms* To get the desired effect from the moving platforms, I completely refactored the code for all moving platforms, as well as wrote the script for the generator platform. 
 
 
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
