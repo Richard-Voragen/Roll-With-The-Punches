@@ -97,12 +97,13 @@ Getting the movement to feel similar or the same as Cuphead was one of the most 
 Controls:
 | Action | Button |
 | ----------- | ----------- |
-| Left | A or Left DPad/Joystick |
-| Right | A or Right DPad/Joystick |
+| Left | A |
+| Right | D |
 | Jump | Space |
 | Duck | S |
-| Roll | S + Space |
-| Roll | S + Space |
+| Roll/Dodge | S + Space |
+| Shoot | Left Click (Hold) |
+| Change Projectile | Right Click |
 
 ## Animation and Visuals (Pablo Rivera)
 
