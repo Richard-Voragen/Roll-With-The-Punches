@@ -92,6 +92,8 @@ Level design had a big role in our game as it was the environment that the user 
 
 **Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
 
+### Movement
+
 Getting the movement to feel similar or the same as Cuphead was one of the most vital steps for this game. At first, I had to study and really refresh my memory on how the Cuphead characters moved in their world and replicate it from a pure game feel which is also ironic since that is my other role. 
 
 Controls:
@@ -106,7 +108,19 @@ Controls:
 | Change Projectile | Right Click |
 | Pause | Escape |
 
-In terms of physics, we relied on Unity's built-in physics engine and attached rigid bodies to objects that needed some type of physics/force applied to them. Since this would be essentially a 2D platformer, the physics would not need to be very robust at all and thankfully because of that, it saved us quite a bit of headaches.
+The player's movement is essentially all controlled by the [ADSRManager.cs](https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/RollingWithThePunches/Assets/Scripts/Player/ADSRManager.cs) script. I created the foundation and the other roles were able to revamp or add on top of what I created for the movement. The early version of the script still had the controls set to the arrow keys so that we could quickly prototype and start working on other enemies as well. https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/cef9adfa3bb5f7a9d6144b5e9a7d9d633a8957ee/RollingWithThePunches/Assets/Scripts/ADSRManager.cs#L1-L120 Now the ADSRManager contains essentially everything that has to do with the player inside of it like it's death, respawning, collision handling of enemy attacks, and a lot of variables, flags, and timers. The player object itself is relatively simple with just a box collider, rigid body, and 3 scripts. Those being ADSR Manager, Shoot Fireball, and Player Damage Engine. 
+
+### Enemy Movement and Artificial Intelligence
+
+I was also in charge of the enemy movement/AI which was a huge struggle since so many bugs arose. Thankfully, it worked pretty well after hours of debugging. https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/a4e78b7374496baa9fbc7cec06d7e299d008de97/RollingWithThePunches/Assets/Scripts/Enemys/EnemyMovement.cs#L1-L105 Tasked with making enemy AI akin to Super Mario Bros where they move left if on the ground (or move right and left if on a platform) but when they see the player they get agro'd towards them, shoot, and jump. Using a large circle collider as a trigger and a box collider for any collisions. However, the enemy AI was changed and this script had to be reworked.
+
+#### Attacks
+
+The original fireball projectile which spawned similar scripts for iceball and electricity. https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/b366232d4ffeabecd78dd75906c28eb31bdf0d92/RollingWithThePunches/Assets/Scripts/Fireball.cs#L1-L30 Pretty simple and effective. Ensures the fireball does not last too long, shoots in the correct direction with the sprite flipping as well, and most importantly actually does damage. (In this case just destroys the game object since the damage engine had not been implemented yet) https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/a4e78b7374496baa9fbc7cec06d7e299d008de97/RollingWithThePunches/Assets/Scripts/Enemys/EnemyFireball.cs#L1-L32 The enemy fireball works essentially the same except it is able to target the player and of course has implementation within the previously shown enemymovement.cs script.
+
+### Physics
+
+In terms of physics, we relied on Unity's built-in physics engine and attached rigid bodies to objects that needed some type of physics/force applied to them. Since this would be essentially a 2D platformer, the physics would not need to be very robust at all and thankfully because of that, it saved us quite a bit of headaches. 
 
 ## Animation and Visuals (Pablo Rivera)
 
