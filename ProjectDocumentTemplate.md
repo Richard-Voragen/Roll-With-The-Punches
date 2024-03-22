@@ -116,7 +116,7 @@ I was also in charge of the enemy movement/AI which was a huge struggle since so
 
 #### Attacks
 
-The original fireball projectile which spawned similar scripts for iceball and electricity. https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/b366232d4ffeabecd78dd75906c28eb31bdf0d92/RollingWithThePunches/Assets/Scripts/Fireball.cs#L1-L30 Pretty simple and effective. Ensures the fireball does not last too long, shoots in the correct direction with the sprite flipping as well, and most importantly actually does damage. (In this case just destroys the game object since the damage engine had not been implemented yet) https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/a4e78b7374496baa9fbc7cec06d7e299d008de97/RollingWithThePunches/Assets/Scripts/Enemys/EnemyFireball.cs#L1-L32 The enemy fireball works essentially the same except it is able to target the player and of course has implementation within the previously shown enemymovement.cs script.
+The original fireball projectile which spawned similar scripts for iceball and electricity. https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/b366232d4ffeabecd78dd75906c28eb31bdf0d92/RollingWithThePunches/Assets/Scripts/Fireball.cs#L1-L30 Pretty simple and effective. Ensures the fireball does not last too long, shoots in the correct direction with the sprite flipping as well, and most importantly actually does damage. (In this case just destroys the game object since the damage engine had not been implemented yet) The enemy fireball works essentially the same except it is able to target the player and of course has implementation within the previously shown enemymovement.cs script.
 
 ### Physics
 
