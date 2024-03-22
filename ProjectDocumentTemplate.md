@@ -178,9 +178,15 @@ The sound effects are listed below. Pitch and volume have been modified in Unity
 
 The key findings of our public playtesting is that our game had great visuals as well as great audio. Our game is also very challenging, as many players were not able to make it even halfway through our game's level. Though our game was challenging, participants reported that they liked the art as well as the audio enough to want to play more of our game, even though they were not actually doing very good. Some participants even reported liking the challenge of our game and wanted to play it more because it was hard.
 
-## Narrative Design
+## Narrative Design (Pablo Rivera)
 
 **Document how the narrative is present in the game via assets, gameplay systems, and gameplay.** 
+Admittedly, I came up with the concept, the premise, and the storyline with the support of my team. As such, throughout the entirety of the project, we went in with a clear concept, and most if not all decisions made pertained to the storyline.
+
+[Assets]
+As both the narrative designer and the art/animation designer, I had executive control over ensuring all of my assets fit the narrative. From the warehouse landscape, the character and enemy design, down to the death animation of the player. I made sure visually we are telling the story of Arthur and his reckless journey through the champion's warehouse where he hosts his underground fight full of lackeys. 
+[Gameplay systems]
+
 
 ## Press Kit and Trailer (Jason Kohl)
 
