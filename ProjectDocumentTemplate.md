@@ -91,9 +91,12 @@ Projectile Assets:
   Fire and Water: https://www.gamedeveloperstudio.com/graphics/viewgraphic.php?item=1k4p441y0p3p8z9a5n
 Initial Concepts: 
   We went into the project with a strong concept for a run-and-gun style game revolving around boxers to fit the theme of "rolling with the punches". After we established the core concept of the game, I went into research looking for brawler-type sprites to reference and use as a base for my animations. This led me to reference Scott Pilgrim Vs the World: The Game, where their expressive motions I sought to emulate in my work. ![image](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/8150ed7d-cb13-4aa7-99d1-cadd2de0b3e7)
+  
 However, I did not want to take from the style, just the motions, and I wanted my team to have workable animations ASAP, so I drew skeletons that mapped the head, joints, hands and feet for all key motions like idle, jump, punch, and run.
 Example:
-![player_idle_animation](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/692f11a3-0908-4ff3-a35b-b15491939c55)
+![player_idle_animation](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/692f11a3-0908-4ff3-a35b-b15491939c55) ![player_running_sprite](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/6a126495-23cc-4215-aa11-9a16c0027e71) ![player_punching_sprite](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/82fa295e-1ce1-420d-af46-223a30c50fad) ![player_jump_sprite](https://github.com/Richard-Voragen/Roll-With-The-Punches/assets/57019320/81be5184-ca6e-4ea6-8614-06cbfbc59561)
+
+
 
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
 
@@ -102,6 +105,7 @@ Example:
 **Document the game states and game data you managed and the design patterns you used to complete your task.**
 
 # Sub-Roles
+
 Audio: Richard Voragen
 
 ## Audio
