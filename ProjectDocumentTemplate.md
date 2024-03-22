@@ -14,7 +14,7 @@
 
 [Press Kit](https://github.com/Richard-Voragen/Roll-With-The-Punches/blob/main/Presskit.md)  
 
-[Proposal: make your own copy of the linked doc.](https://docs.google.com/document/d/1qwWCpMwKJGOLQ-rRJt8G8zisCa2XHFhv6zSWars0eWM/edit?usp=sharing)  
+[Proposal: make your own copy of the linked doc.](https://docs.google.com/document/d/1c0Az5TF7P1AOS-_UADZltUwi-6YoYZbPrAL-sjL724I/edit#heading=h.i3tv2mxf7h7z)
 
 ## Gameplay Explanation ##
 
